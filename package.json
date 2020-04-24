@@ -1,0 +1,28 @@
+{
+  "name": "beachmountain",
+  "version": "1.0.0",
+  "description": "Beach Mountain website",
+  "main": "index.js",
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "scripts": {
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dpwit/beachmountain.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dpwit/beachmountain/issues"
+  },
+  "homepage": "https://github.com/dpwit/beachmountain#readme"
+}
