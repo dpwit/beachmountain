@@ -3,6 +3,6 @@ import React from 'react';
 import { render } from 'react-dom';
 
 ReactDOM.render(
-	<h1>Hello World</h1>,
+	&lt;h1&gt;Hello World&lt;/h1&gt;,
 	document.getElementById('app')
 	);
