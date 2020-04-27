@@ -10,6 +10,8 @@
 import React from 'react';
 import { render } from 'react-dom';
 
+import Button from './Button';
+
 render(
 	<h1>Hello World</h1>,
 	document.getElementById('app')
@@ -21,4 +23,9 @@ const element = <h1>Hello {name}</h1>;
 render(
 	element,
 	document.getElementById('helloName')
+	);
+
+render(
+	<Button />,
+	document.getElementById('appButton')
 	);
