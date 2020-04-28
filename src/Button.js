@@ -1,8 +1,13 @@
 
 import React from 'react';
 
-function Button() {
-	return <button>Button</button>
+const Button = (props) => {
+	//list multiple props here
+	const { type = '' } = props
+
+	return (
+		<button type={type}>This is a button</button>
+		)
 }
 
-export default Button;
+export default Button
