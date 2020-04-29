@@ -26,6 +26,6 @@ render(
 	);
 
 render(
-	<Button />,
+	<Button type="submit" />,
 	document.getElementById('appButton')
 	);
