@@ -1,15 +1,19 @@
 
 import React from 'react';
 
+function resetProduct() {
+  document.getElementById('productLogo').src='dist/img/DPW_Skull_Logo_Mask.jpg';
+}
+
 const Button = (props) => {
 	//list multiple props here
 	const { type = '',
-	propTwo,
+	onClick,
 	propThree,
 	propFour } = props
 
 	return (
-		<button type={type} propTwo={propTwo} propThree={propThree} propFour={propFour}>This is a button</button>
+		<button type={type} onClick={resetProduct} propThree={propThree} propFour={propFour}>Reset to original</button>
 		)
 }
 
