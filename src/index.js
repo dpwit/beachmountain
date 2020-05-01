@@ -31,5 +31,6 @@ render(
 	);
 
 render(
-	resetProductAction, document.getElementById('resetProductBtn')
+	<Button onClick="{resetProduct}" />, 
+	document.getElementById('resetProductBtn')
 	);
