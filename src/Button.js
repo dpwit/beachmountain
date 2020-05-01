@@ -2,8 +2,7 @@
 import React from 'react';
 
 function resetProduct() {
-	var productImg = document.getElementById("productLogo").src;
-  document.getElementById('productLogo').innerHTML = productImg;
+  document.getElementById('productLogo').src='img/DPW_Skull_Logo_Mask.jpg';
 }
 
 const Button = (props) => {
