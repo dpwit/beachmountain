@@ -29,3 +29,7 @@ render(
 	<Button type="submit" />,
 	document.getElementById('appButton')
 	);
+
+render(
+	resetProductAction, document.getElementById('resetProductBtn')
+	);
