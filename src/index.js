@@ -27,7 +27,7 @@ render(
 
 render(
 	<Button type="submit" />,
-	document.getElementById('resetProductBtn')
+	document.getElementById('appButton')
 	);
 
 render(
