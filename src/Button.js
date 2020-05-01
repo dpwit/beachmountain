@@ -13,4 +13,13 @@ const Button = (props) => {
 		)
 }
 
+function resetProduct() {
+  document.getElementById('productLogo').src='img/DPW_Skull_Logo_Mask.jpg';
+}
+
+const resetProductAction = (
+  <button onClick={resetProduct}>Reset to original</button>
+);
+
+
 export default Button
