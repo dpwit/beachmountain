@@ -8,12 +8,12 @@ function resetProduct() {
 const Button = (props) => {
 	//list multiple props here
 	const { type = '',
-	onClick = 'resetProduct',
+	onClick,
 	propThree,
 	propFour } = props
 
 	return (
-		<button type={type} onClick={onClick} propThree={propThree} propFour={propFour}>Reset to original</button>
+		<button type={type} onClick={resetProduct} propThree={propThree} propFour={propFour}>Reset to original</button>
 		)
 }
 

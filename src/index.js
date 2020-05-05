@@ -14,4 +14,4 @@ import Button from './Button';
 
 const rootElement = document.getElementById('appButton')
 
-render(<Button onClick='resetProduct' />, rootElement)
+render(<Button onClick='{resetProduct}' />, rootElement)
