@@ -9,7 +9,7 @@ const Button = (props) => {
 	//list multiple props here
 	const { 
 		type = 'button',
-		onClick = '{resetProduct}',
+		onClick = resetProduct,
 		propThree,
 		propFour
 	} = props
