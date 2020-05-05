@@ -24,13 +24,16 @@ render(
 	element,
 	document.getElementById('helloName')
 	);
+const rootElement = document.getElementById('appButton')
 
-render(
-	<Button type="submit" />,
-	document.getElementById('appButton')
-	);
+render(<Button />, rootElement)
 
-render(
-	<Button onClick="{resetProduct}" />, 
-	document.getElementById('resetProductBtn')
-	);
+//render(
+//	<Button type="submit" />,
+//	document.getElementById('appButton')
+//	);
+
+//render(
+//	<Button onClick="{resetProduct}" />, 
+//	document.getElementById('resetProductBtn')
+//	);
