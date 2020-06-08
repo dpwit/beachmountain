@@ -14,11 +14,12 @@ const Button = (props) => {
 	//list multiple props here
 	const { 
 		type = 'button',
-		onClick = resetProduct
+		onClick,
+		children
 	} = props
 
 	return (
-		<button type={type} onClick={onClick}>Reset to original</button>
+		<button type={type} onClick={onClick}>{children}</button>
 		)
 }
 
