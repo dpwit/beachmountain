@@ -14,9 +14,7 @@ const Button = (props) => {
 	//list multiple props here
 	const { 
 		type = 'button',
-		onClick = resetProduct,
-		propThree,
-		propFour
+		onClick = resetProduct
 	} = props
 
 	return (
