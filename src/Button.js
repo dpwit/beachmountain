@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React from 'react'
 
 function resetProduct() {
   	document.getElementById('productLogo').src='img/DPW_Skull_Logo_Mask.jpg';
