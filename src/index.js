@@ -14,4 +14,13 @@ import Button from './Button';
 
 const rootElement = document.getElementById('appButton')
 
-render(<Button>Reset to original</Button>, rootElement)
+function resetProduct() {
+  	document.getElementById('productLogo').src='img/DPW_Skull_Logo_Mask.jpg';
+
+	document.getElementById("eyesBlue").checked = false;
+	document.getElementById("eyesGreen").checked = false;
+	document.getElementById("eyesGrey").checked = false;
+		
+}
+
+render(<Button onClick={resetProduct}>Reset to original</Button>, rootElement)
