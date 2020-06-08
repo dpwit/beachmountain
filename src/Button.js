@@ -18,7 +18,7 @@ const Button = (props) => {
 	} = props
 
 	return (
-		<button type={type} onClick={onClick} propThree={propThree} propFour={propFour}>Reset to original</button>
+		<button type={type} onClick={onClick}>Reset to original</button>
 		)
 }
 
