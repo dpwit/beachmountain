@@ -10,27 +10,10 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import Button from './Button';
+import Reset from './Reset';
 
 render(
-	<h1>Hello World</h1>,
-	document.getElementById('app')
-)
+    <Reset />,
+    document.getElementById('appButton')
+);
 
-const name = 'Darren';
-const element = <h1>Hello {name}</h1>;
-
-render(
-	element,
-	document.getElementById('helloName')
-	);
-
-render(
-	<Button type="submit" />,
-	document.getElementById('appButton')
-	);
-
-render(
-	<Button onClick="{resetProduct}" />, 
-	document.getElementById('resetProductBtn')
-	);
