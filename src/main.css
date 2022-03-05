@@ -20,6 +20,7 @@ h1 {
 .bm-logo {
   width: 48px;
   height: 42px;
+  margin: 1em;
   vertical-align: middle;
 }
 
@@ -29,6 +30,10 @@ h1 {
 
 .margin-none {
   margin: 0;
+}
+
+.margin-top-16 {
+  margin-top: 16px;
 }
 
 .zoom {
