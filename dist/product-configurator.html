@@ -4,21 +4,30 @@
 		.zoom {
 		  padding: 35px;
 		  transition: transform .2s; /* Animation */
-		  width: 200px;
-		  height: 200px;
 		  margin: 0 auto;
 		}
 
 		.zoom:hover {
-		  transform: scale(1.5); 
+		  transform: scale(1.5);
 		}
 		</style>
 	<head>
-		<title>Product configurator</title> 
+		<title>Product configurator</title>
 	</head>
 	<body>
 
-		<h1>Product configurator</h1>
+		<h1>React Application</h1>
+
+		<!-- Root element -->
+		<div id="app"></div>
+
+		<div id="helloName"></div>
+
+		<!--<div id="appButton"></div> -->
+
+		<hr>
+
+		<h2>Product configurator</h2>
 
 		<p>Change product colours based on options chosen</p>
 
@@ -27,15 +36,38 @@
 		<div style="display: inline-flex;">
 
 			<div style="width: 50%">
-				<p><input type="radio" id="eyesBlue" name="eyes" onclick="document.getElementById('productLogo').src='img/DPW_Skull_Logo_Mask_Blue.jpg'">Blue eyes</p>
-				<p><input type="radio" id="eyesGreen" name="eyes" onclick="document.getElementById('productLogo').src='img/DPW_Skull_Logo_Mask_Green.jpg'">Green eyes</p>
-				<p><input type="radio" id="eyesGrey" name="eyes" onclick="document.getElementById('productLogo').src='img/DPW_Skull_Logo_Mask_Grey.jpg'">Grey eyes</p>
-		
-				<p><button onclick="document.getElementById('productLogo').src='img/DPW_Skull_Logo_Mask.jpg'" id="resetBtn">Reset to original</button></p>
+				<p><input type="radio" id="eyesBlue" name="eyes" onclick="document.getElementById('productLogo').src='dist/img/DPW_Skull_Logo_Mask_Blue.jpg'">Blue eyes</p>
+				<p><input type="radio" id="eyesGreen" name="eyes" onclick="document.getElementById('productLogo').src='dist/img/DPW_Skull_Logo_Mask_Green.jpg'">Green eyes</p>
+				<p><input type="radio" id="eyesGrey" name="eyes" onclick="document.getElementById('productLogo').src='dist/img/DPW_Skull_Logo_Mask_Grey.jpg'">Grey eyes</p>
+
+				<div id="appButton"></div>
+				<script src="dist/main.js"></script>
 			</div>
 
 			<div style="width: 50%">
-				<img class="zoom" id="productLogo" src="img/DPW_Skull_Logo_Mask.jpg" height="200" width="200">
+				<img class="zoom" id="productLogo" src="dist/img/DPW_Skull_Logo_Mask.jpg" height="200" width="200">
+				<p style="text-align: center;">Hover to zoom</p>
+			</div>
+		</div>
+
+		<h2>Logo configurator</h2>
+
+		<p>Change logo colours based on options chosen</p>
+
+		<p>In this case JavaScript changes the value of the src (source) attribute of an image.</p>
+
+		<div style="display: inline-flex;">
+
+			<div style="width: 50%">
+				<p><input type="radio" id="logoRed" name="logo" onclick="document.getElementById('bmLogo').src='dist/img/Beach-Mountain-logo-red.png'">Change logo to red</p>
+				<p><input type="radio" id="logoGreen" name="logo" onclick="document.getElementById('bmLogo').src='dist/img/Beach-Mountain-logo-green.png'">Change logo to green</p>
+
+				<p><button onclick="document.getElementById('bmLogo').src='dist/img/Beach-Mountain-logo-blue.png'" id="resetLogoBtn">Reset to original</button></p>
+
+			</div>
+
+			<div style="width: 50%">
+				<img class="zoom" id="bmLogo" src="dist/img/Beach-Mountain-logo-blue.png" height="227" width="397">
 				<p style="text-align: center;">Hover to zoom</p>
 			</div>
 		</div>
@@ -56,13 +88,17 @@
 		    document.getElementById("eyesGreen").checked = false;
 		    document.getElementById("eyesBlue").checked = false;
 		}, false);
-		document.getElementById("resetBtn").addEventListener("click", function()
+
+		document.getElementById("logoGreen").addEventListener("click", function()
 		{
-		    document.getElementById("eyesBlue").checked = false;
-		    document.getElementById("eyesGreen").checked = false;
-		    document.getElementById("eyesGrey").checked = false;
+		    document.getElementById("logoRed").checked = false;
 		}, false);
+		document.getElementById("logoRed").addEventListener("click", function()
+		{
+		    document.getElementById("logoGreen").checked = false;
+		}, false);
+
 		</script>
 
 	</body>
-</html>	
+</html>
