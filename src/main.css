@@ -17,6 +17,20 @@ h1 {
   font-size: 48px;
 }
 
+.bm-logo {
+  width: 48px;
+  height: 42px;
+  vertical-align: middle;
+}
+
+.display-inline-flex {
+  display: inline-flex;
+}
+
+.margin-none {
+  margin: 0;
+}
+
 .zoom {
   padding: 35px;
   transition: transform .2s; /* Animation */
