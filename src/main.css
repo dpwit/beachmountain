@@ -1,0 +1,28 @@
+@font-face {
+  font-family: mexcellent;
+  src: url(fonts/mexcellent rg.ttf);
+}
+
+@font-face {
+  font-family: techniqu;
+  src: url(fonts/techniqu.ttf);
+}
+
+body {
+  font-family: arial;
+  }
+
+h1 {
+  font-family: techniqu;
+  font-size: 48px;
+}
+
+.zoom {
+  padding: 35px;
+  transition: transform .2s; /* Animation */
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  transform: scale(1.5);
+}
