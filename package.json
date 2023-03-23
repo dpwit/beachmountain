@@ -7,9 +7,6 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
-  "webpackConfig": {
-    "mode": "development"
-  }
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
