@@ -4,8 +4,8 @@
 }
 
 @font-face {
-  font-family: techniqu;
-  src: url(fonts/techniqu.ttf);
+  font-family: techniqo;
+  src: url(fonts/techniqo.ttf);
 }
 
 body {
@@ -13,7 +13,7 @@ body {
   }
 
 h1 {
-  font-family: techniqu;
+  font-family: techniqo;
   font-size: 32px;
 }
 
