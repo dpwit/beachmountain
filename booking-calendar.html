@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Beach Mountain | Booking Calendar</title>
+		<link rel="stylesheet" href="src/main.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+        <script>
+            function includeHTML() {
+            var z, i, elmnt, file, xhttp;
+            /*loop through a collection of all HTML elements:*/
+            z = document.getElementsByTagName("*");
+            for (i = 0; i < z.length; i++) {
+                elmnt = z[i];
+                /*search for elements with a certain attribute:*/
+                file = elmnt.getAttribute("w3-include-html");
+                if (file) {
+                /*make an HTTP request using the attribute value as the file name:*/
+                xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4) {
+                    if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+                    if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                    /*remove the attribute, and call this function once more:*/
+                    elmnt.removeAttribute("w3-include-html");
+                    includeHTML();
+                    }
+                }      
+                xhttp.open("GET", file, true);
+                xhttp.send();
+                /*exit the function:*/
+                return;
+                }
+            }
+            };
+        </script>
+	</head>
+	<body>
+        <!-- Header start -->
+		<div w3-include-html="header.html"></div> 
+        <!-- Header end -->
+        <div class="margin-left-16">
+		    <h1>Booking Calendar</h1>
+
+		    <p>paragraph content goes here</p>
+
+		    <h2>h2 heading</h2>
+
+		    <p>paragraph content goes here</p>
+        </div>
+    <!-- Footer start -->
+		<div w3-include-html="footer.html"></div> 
+    <!-- Footer end -->
+    <script>
+        includeHTML();
+    </script>
+	</body>
+</html>
