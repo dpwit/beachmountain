@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>product configurator</title>
+		<link rel="stylesheet" href="../src/main.css">
+		<script>
+            function includeHTML() {
+            var z, i, elmnt, file, xhttp;
+            /*loop through a collection of all HTML elements:*/
+            z = document.getElementsByTagName("*");
+            for (i = 0; i < z.length; i++) {
+                elmnt = z[i];
+                /*search for elements with a certain attribute:*/
+                file = elmnt.getAttribute("w3-include-html");
+                if (file) {
+                /*make an HTTP request using the attribute value as the file name:*/
+                xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4) {
+                    if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+                    if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                    /*remove the attribute, and call this function once more:*/
+                    elmnt.removeAttribute("w3-include-html");
+                    includeHTML();
+                    }
+                }      
+                xhttp.open("GET", file, true);
+                xhttp.send();
+                /*exit the function:*/
+                return;
+                }
+            }
+            };
+        </script>
+	</head>
+	<body>
+		<!-- Header start -->
+			<div w3-include-html="header.html"></div> 
+        <!-- Header end -->
+
+		<h1>Product configurator</h1>
+
+		<!-- Root element -->
+		<div id="app"></div>
+
+		<h2>Choose how the Product looks</h2>
+
+		<p>Change product colours based on options chosen</p>
+
+		<p>In this case JavaScript changes the value of the src (source) attribute of an image.</p>
+
+		<div style="display: inline-flex;">
+
+			<div style="width: 50%">
+				<p><input type="radio" id="eyesBlue" name="eyes" onclick="document.getElementById('productLogo').src='dist/img/DPW_Skull_Logo_Mask_Blue.jpg'">Blue eyes</p>
+				<p><input type="radio" id="eyesGreen" name="eyes" onclick="document.getElementById('productLogo').src='dist/img/DPW_Skull_Logo_Mask_Green.jpg'">Green eyes</p>
+				<p><input type="radio" id="eyesGrey" name="eyes" onclick="document.getElementById('productLogo').src='dist/img/DPW_Skull_Logo_Mask_Grey.jpg'">Grey eyes</p>
+
+				<div id="appButton"></div>
+				<script src="main.js"></script>
+			</div>
+
+			<div style="width: 50%">
+				<img class="zoom" id="productLogo" src="dist/img/DPW_Skull_Logo_Mask.jpg" height="200" width="200">
+				<p style="text-align: center;">Hover over image to zoom</p>
+			</div>
+		</div>
+
+		<h2>Logo configurator</h2>
+
+		<p>Change logo colours based on options chosen</p>
+
+		<p>In this case JavaScript changes the value of the src (source) attribute of an image.</p>
+
+		<div style="display: inline-flex;">
+
+			<div style="width: 50%">
+				<p><input type="radio" id="logoRed" name="logo" onclick="document.getElementById('bmLogo').src='dist/img/Beach-Mountain-logo-red.png'">Change logo to red</p>
+				<p><input type="radio" id="logoGreen" name="logo" onclick="document.getElementById('bmLogo').src='dist/img/Beach-Mountain-logo-green.png'">Change logo to green</p>
+
+				<p><button onclick="
+				document.getElementById('bmLogo').src='dist/img/Beach-Mountain-logo-blue.png';
+				document.getElementById('logoGreen').checked = false;
+				document.getElementById('logoRed').checked = false;"
+				>Reset to original</button></p>
+
+			</div>
+
+			<div style="width: 50%">
+				<img class="zoom" id="bmLogo" src="dist/img/Beach-Mountain-logo-blue.png" height="227" width="397">
+				<p style="text-align: center;">Hover over image to zoom</p>
+			</div>
+		</div>
+
+		<!-- Footer start -->
+			<div w3-include-html="footer.html"></div> 
+        <!-- Footer end -->
+
+		<script>
+       		includeHTML();
+    	</script>
+
+		<script>
+		document.getElementById("eyesGreen").addEventListener("click", function()
+		{
+		    document.getElementById("eyesBlue").checked = false;
+		    document.getElementById("eyesGrey").checked = false;
+		}, false);
+		document.getElementById("eyesBlue").addEventListener("click", function()
+		{
+		    document.getElementById("eyesGreen").checked = false;
+		    document.getElementById("eyesGrey").checked = false;
+		}, false);
+		document.getElementById("eyesGrey").addEventListener("click", function()
+		{
+		    document.getElementById("eyesGreen").checked = false;
+		    document.getElementById("eyesBlue").checked = false;
+		}, false);
+
+		document.getElementById("logoGreen").addEventListener("click", function()
+		{
+		    document.getElementById("logoRed").checked = false;
+		}, false);
+		document.getElementById("logoRed").addEventListener("click", function()
+		{
+		    document.getElementById("logoGreen").checked = false;
+		}, false);
+
+		</script>
+	</body>
+</html>

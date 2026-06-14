@@ -3,6 +3,9 @@
 	<head>
 		<title>Beach Mountain | Home page</title>
 		<link rel="stylesheet" href="src/main.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
         <script>
             function includeHTML() {
             var z, i, elmnt, file, xhttp;
@@ -37,19 +40,18 @@
         <!-- Header start -->
 		<div w3-include-html="header.html"></div> 
         <!-- Header end -->
+        <div class="margin-left-16">
+		    <h1>h1 heading</h1>
 
-		<hr>
+		    <p>paragraph content goes here</p>
 
-		<h2>Home</h2>
+		    <h2>h2 heading</h2>
 
-		<p><a href="dist/product-configurator.html" class="zoom">Product Configurator</a></p>
-
-		<h2>Email</h2>
-
-		<p><a href="mailto:4beachmountain@gmail.com" class="zoom">4beachmountain@gmail.com</a></p>
+		    <p>paragraph content goes here</p>
+        </div>
     <!-- Footer start -->
 		<div w3-include-html="footer.html"></div> 
-        <!-- Footer end -->
+    <!-- Footer end -->
     <script>
         includeHTML();
     </script>

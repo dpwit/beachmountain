@@ -9,12 +9,32 @@
 }
 
 body {
-  font-family: arial;
+  font-family: "Inter", sans-serif;
   }
 
-h1 {
+.logo-text {
   font-family: techniqo;
   font-size: 32px;
+}
+
+h1 {
+  font-family: "Inter", sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+h2 {
+  font-family: "Inter", sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+
+.inter-bold {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
 }
 
 .bm-logo {
@@ -32,8 +52,38 @@ h1 {
   margin: 0;
 }
 
+.margin-left-16 {
+  margin-left: 16px;
+}
+
+.margin-left-16 {
+  margin-left: 16px;
+}
+
 .margin-top-16 {
   margin-top: 16px;
+}
+
+.parent {
+  display: flex;
+  justify-content: center; /* Options: center, space-between, space-around, space-evenly, flex-start, flex-end */
+}
+
+/*
+Source - https://stackoverflow.com/a/31078418
+Posted by E. Serrano, modified by community. See post 'Timeline' for change history
+Retrieved 2026-06-14, License - CC BY-SA 4.0
+*/
+
+.align-center {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    align-items: center;
 }
 
 .zoom {
