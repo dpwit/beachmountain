@@ -12,6 +12,26 @@ body {
   font-family: "Inter", sans-serif;
   }
 
+.header-background {
+  background-image: url("../dist/img/mountain-scenery-background.webp");
+  background-size: cover;
+  background-position: center;
+  height: 200px; /* Adjust the height as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-background {
+  background-image: url("../dist/img/beach-scenery-background.webp");
+  background-size: cover;
+  background-position: center;
+  height: 200px; /* Adjust the height as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .logo-text {
   font-family: techniqo;
   font-size: 32px;
