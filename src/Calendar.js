@@ -9,4 +9,4 @@ const calendar = new Calendar(calendarEl, {
 });
 calendar.render();
 
-export default calendar;
+export default Calendar;
