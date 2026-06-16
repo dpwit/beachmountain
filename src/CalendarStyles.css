@@ -1,0 +1,65 @@
+/* CalendarStyles.css */
+
+:root {
+  /* Theme Colors */
+  --fc-border-color: #e2e8f0;
+  --fc-daygrid-event-dot-width: 8px;
+  --fc-page-bg-color: #ffffff;
+  --fc-today-bg-color: #90D5FF; /* Light blue */
+  
+  /* Event Style Overrides */
+  --fc-event-bg-color: #3b82f6;       /* Tailwind Blue 500 */
+  --fc-event-border-color: #2563eb;   /* Tailwind Blue 600 */
+  --fc-event-text-color: #ffffff;
+}
+
+/* Container Frame */
+.calendar-container {
+  max-width: 100px;
+  margin: 40px auto;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Customise Header Toolbar Buttons */
+.fc .fc-button-primary {
+  background-color: #90D5FF;
+  border-color: #90D5FF;
+  font-weight: 500;
+  text-transform: capitalize;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.fc .fc-button-primary:hover {
+  background-color: #4338ca; /* Indigo 700 */
+  border-color: #4338ca;
+}
+
+.fc .fc-button-primary:disabled {
+  background-color: #9ca3af;
+  border-color: #9ca3af;
+}
+
+/* Style Today's Highlighted Cell */
+.fc .fc-day-today {
+  background-color: --fc-today-bg-color;
+}
+
+/* Grid Cell Headers (Dates) */
+.fc .fc-col-header-cell-cushion {
+  padding: 10px 0;
+  color: #374151;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Individual Event Blocks */
+.fc-v-event, .fc-h-event {
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
