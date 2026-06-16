@@ -15,12 +15,18 @@
 
 /* Container Frame */
 .calendar-container {
-  max-width: 100px;
+  max-width: 1100px;
   margin: 40px auto;
   padding: 24px;
   background: #ffffff;
   border-radius: 12px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.calendar-container-width {
+  width: 95%;
+  padding:16px 0;
+  overflow-x: auto;
 }
 
 /* Customise Header Toolbar Buttons */
