@@ -42,7 +42,7 @@
         <script>
         document.addEventListener('DOMContentLoaded', function() {
             const calendarEl = document.getElementById('calendar');
-            new FullCalendar.Calendar(calendarEl, { initialView: 'dayGridMonth' }).render();
+            new FullCalendar.Calendar(calendarEl, { initialView: 'timeGridWeek' }).render();
         });
         </script>
 	</head>
@@ -78,7 +78,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const calendarEl = document.getElementById('calendar');
             const calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'dayGridMonth'
+            initialView: 'timeGridWeek'
             });
             calendar.render();
         });

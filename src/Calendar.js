@@ -1,5 +1,6 @@
 import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -9,8 +10,8 @@ import { getAnalytics } from "firebase/analytics";
 
 const calendarEl = document.getElementById('calendar');
 const calendar = new Calendar(calendarEl, {
-  plugins: [ dayGridPlugin, interactionPlugin ],
-  initialView: 'dayGridMonth'
+  plugins: [ dayGridPlugin, timeGridPlugin, interactionPlugin ],
+  initialView: 'timeGridWeek',
 });
 calendar.render();
 
