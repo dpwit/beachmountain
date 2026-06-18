@@ -40,13 +40,18 @@
 }
 
 .fc .fc-button-primary:hover {
-  background-color: #089cff; /* Indigo 700 */
+  background-color: #089cff;
   border-color: #089cff;
 }
 
 .fc .fc-button-primary:disabled {
   background-color: #9ca3af;
   border-color: #9ca3af;
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active {
+  background-color: #089cff;
+  border-color: #089cff;
 }
 
 /* Style Today's Highlighted Cell */
