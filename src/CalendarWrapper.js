@@ -118,7 +118,7 @@ export default function CalendarWrapper() {
   }
 
   return (
-    <div className="calendar-container">
+    <div id="calendar">
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
         initialView="dayGridMonth"
@@ -142,3 +142,5 @@ export default function CalendarWrapper() {
     </div>
   );
 }
+
+export default CalendarWrapper;
