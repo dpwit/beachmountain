@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         select: async function(info) {
 
             const customerName =
-                prompt("Enter your name");
+                prompt("Please enter your name and service required for the appointment:");
 
             if (!customerName) return;
 
