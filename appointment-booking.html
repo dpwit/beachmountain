@@ -1,19 +1,78 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Appointment Booking</title>
-
+    <title>Beach Mountain | Appointment Booking</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Beach Mountain ski servicing booking calendar.">
+	<link rel="stylesheet" href="src/main.css">
     <link rel="stylesheet" href="src/CalendarStyles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <script>
+        function includeHTML() {
+        var z, i, elmnt, file, xhttp;
+        /*loop through a collection of all HTML elements:*/
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+            elmnt = z[i];
+            /*search for elements with a certain attribute:*/
+            file = elmnt.getAttribute("w3-include-html");
+            if (file) {
+            /*make an HTTP request using the attribute value as the file name:*/
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4) {
+                if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+                if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                /*remove the attribute, and call this function once more:*/
+                elmnt.removeAttribute("w3-include-html");
+                includeHTML();
+                }
+            }      
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            /*exit the function:*/
+            return;
+            }
+        }
+        };
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
 
-<script type="module" src="src/firebase.js"></script>
-<script type="module" src="src/app.js"></script>
+    <script type="module" src="src/firebase.js"></script>
+    <script type="module" src="src/app.js"></script>
 </head>
 <body>
+    <!-- Header start -->
+	<div w3-include-html="header.html"></div> 
+    <!-- Header end -->
+    <div class="margin-left-16">
+        <p>Booking calendar functionality
+            <ul>
+                <li>calendar to show available slots that can be booked by a client</li>
+                <li>calendar to show booked / unavailable slots</li>
+                <li>client can add new booking to calendar</li>
+                <li>me / client can view existing bookings</li>
+                <li>client can edit existing bookings</li>
+                <li>delete existing bookings</li>
+                <li>email booking details to client</li>
+                <li>email booking details to me</li>
+                <li>abilit for me to block out unavailable dates in calendar</li>
+            </ul>
+        </p>
 
-<h2>Appointment Booking Calendar</h2>
-
-<div id="calendar-new"></div>
-
+        <h2>h2 heading</h2>
+            
+        <div class="calendar-container">
+            <div id="calendar-new"></div>
+        </div>
+    </div>
+    <!-- Footer start -->
+	<div w3-include-html="footer.html"></div> 
+    <!-- Footer end -->
+    <script>
+        includeHTML();
+    </script>
 </body>
 </html>
