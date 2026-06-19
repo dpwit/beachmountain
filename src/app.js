@@ -31,6 +31,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     const calendar = new FullCalendar.Calendar(calendarEl, {
 
         initialView: 'timeGridWeek',
+        headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
 
         selectable: true,
 
