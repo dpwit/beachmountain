@@ -158,8 +158,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 serviceRequired,
                                 customerNotes,
 
-                                start: selectedStart,
-                                end: selectedEnd,
+                                start: info.startStr,
+                                end: info.endStr,
 
                                 createdAt: serverTimestamp()
                             }
