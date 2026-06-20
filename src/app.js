@@ -33,6 +33,18 @@ document.addEventListener('DOMContentLoaded', async () => {
         collection(db, "appointments")
     );
 
+    const modal =
+    document.getElementById("bookingModal");
+
+    const closeModal =
+        document.getElementById("closeModal");
+
+    const bookingForm =
+        document.getElementById("bookingForm");
+
+    let selectedStart = null;
+    let selectedEnd = null;
+
     querySnapshot.forEach((doc) => {
 
         const data = doc.data();

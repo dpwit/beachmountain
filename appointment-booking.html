@@ -67,6 +67,42 @@
             
         <div class="calendar-container">
             <div id="calendar-new"></div>
+            
+            <!-- Booking Modal -->
+            <div id="bookingModal" class="modal">
+
+                <div class="modal-content">
+
+                    <span id="closeModal" class="close">&times;</span>
+
+                    <h2>Book Appointment</h2>
+
+                    <form id="bookingForm">
+
+                        <label>Name</label>
+                        <input type="text" id="customerName" required>
+
+                        <label>Email</label>
+                        <input type="email" id="customerEmail" required>
+
+                        <label>Phone</label>
+                        <input type="tel" id="customerPhone">
+
+                        <label>Service Required</label>
+                        <input type="text" id="serviceRequired" required>
+
+                        <label>Notes</label>
+                        <textarea id="customerNotes"></textarea>
+
+                        <button type="submit">
+                            Book Appointment
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
         </div>
     </div>
     <!-- Footer start -->
