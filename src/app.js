@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 start: selectedStart,
                                 end: selectedEnd,
 
-                                createdAt: Date.now()
+                                createdAt: serverTimestamp()
                             }
                         );
 
