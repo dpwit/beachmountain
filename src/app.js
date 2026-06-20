@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         appointments.push({
             id: doc.id,
-            title: data.name,
+            title: data.customerName,
             start: data.start,
             end: data.end
         });
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
 
             const customerName =
-                prompt("Please enter your name and service required for the appointment:");
+                modal.style.display = "block";
 
             if (!customerName) return;
 
@@ -110,7 +110,90 @@ document.addEventListener('DOMContentLoaded', async () => {
                     end: info.endStr
                 });
 
-                alert("Appointment booked");
+                closeModal.addEventListener("click", () => {
+
+                    modal.style.display = "none";
+
+                });
+
+                window.addEventListener("click", (e) => {
+
+                    if (e.target === modal) {
+
+                        modal.style.display = "none";
+
+                    }
+
+                });
+
+                bookingForm.addEventListener("submit", async (e) => {
+
+                    e.preventDefault();
+
+                    const customerName =
+                        document.getElementById("customerName").value;
+
+                    const customerEmail =
+                        document.getElementById("customerEmail").value;
+
+                    const customerPhone =
+                        document.getElementById("customerPhone").value;
+
+                    const serviceRequired =
+                        document.getElementById("serviceRequired").value;
+
+                    const customerNotes =
+                        document.getElementById("customerNotes").value;
+
+                    try {
+
+                        await addDoc(
+                            collection(db, "appointments"),
+                            {
+                                customerName,
+                                customerEmail,
+                                customerPhone,
+                                serviceRequired,
+                                customerNotes,
+
+                                start: selectedStart,
+                                end: selectedEnd,
+
+                                createdAt: Date.now()
+                            }
+                        );
+
+                        calendar.addEvent({
+
+                            title:
+                                customerName +
+                                " - " +
+                                serviceRequired,
+
+                            start: selectedStart,
+                            end: selectedEnd
+
+                        });
+
+                        modal.style.display = "none";
+
+                        bookingForm.reset();
+
+                        alert("Appointment booked");
+
+                    } catch(error) {
+
+                        console.error(error);
+
+                        alert(
+                            "Booking failed: " +
+                            error.message
+                        );
+
+                    }
+
+                });
+
 
             } catch(error) {
 
