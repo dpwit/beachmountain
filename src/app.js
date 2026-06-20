@@ -90,8 +90,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             const customerName =
                 modal.style.display = "block";
-                document.getElementById("selectedTime").textContent =
-                    new Date(selectedStart).toLocaleString();
+                document.getElementById("selectedTime").textContent = 
+                `Selected Time: ${info.startStr} - ${info.endStr} 
+                `;
             if (!customerName) return;
 
             try {
