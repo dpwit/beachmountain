@@ -124,12 +124,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                 //     }
                 // );
 
-                calendar.addEvent({
-                    title: customerName,
-                    serviceRequired: info.serviceRequired,
-                    start: info.startStr,
-                    end: info.endStr
-                });
+                // calendar.addEvent({
+                //     title: customerName,
+                //     serviceRequired: info.serviceRequired,
+                //     start: info.startStr,
+                //     end: info.endStr
+                // });
 
                 closeModal.addEventListener("click", () => {
 
