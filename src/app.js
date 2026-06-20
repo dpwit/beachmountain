@@ -91,8 +91,24 @@ document.addEventListener('DOMContentLoaded', async () => {
             const customerName =
                 modal.style.display = "block";
                 document.getElementById("selectedTime").textContent = 
-                `Selected Time: ${info.startStr} - ${info.endStr} 
-                `;
+                `Selected Time: ${info.start.toLocaleString('en-GB', {
+                    weekday: 'short',
+                    day: 'numeric',
+                    month: 'short',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: false
+                })} - ${info.end.toLocaleString('en-GB', {
+                    weekday: 'short',
+                    day: 'numeric',
+                    month: 'short',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: false
+                })}`;
+                
             if (!customerName) return;
 
             try {
