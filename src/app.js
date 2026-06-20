@@ -6,6 +6,11 @@ import {
   addDoc
 } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
 
+import {
+  getAuth,
+  signInAnonymously
+} from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
+
 document.addEventListener('DOMContentLoaded', async () => {
 
     const calendarEl = document.getElementById('calendar-new');
@@ -75,6 +80,15 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         }
     });
+
+    const auth = getAuth();
+
+        try {
+        await signInAnonymously(auth);
+        console.log("Anonymous user signed in");
+        } catch(error) {
+        console.error(error);
+        }
 
     calendar.render();
 });
