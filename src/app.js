@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         appointments.push({
             id: doc.id,
-            title: data.customerName,
+            title: data.customerName + " - " + data.serviceRequired,
             start: data.start,
             end: data.end,
             serviceRequired: data.serviceRequired
