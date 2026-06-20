@@ -11,7 +11,19 @@ import {
   signInAnonymously
 } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
 
+import {
+    serverTimestamp
+} from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
+
 document.addEventListener('DOMContentLoaded', async () => {
+    const auth = getAuth();
+
+        try {
+        await signInAnonymously(auth);
+        console.log("Anonymous user signed in");
+        } catch(error) {
+        console.error(error);
+        }
 
     const calendarEl = document.getElementById('calendar-new');
 
@@ -47,6 +59,21 @@ document.addEventListener('DOMContentLoaded', async () => {
         events: appointments,
 
         select: async function(info) {
+            const conflict = calendar.getEvents().some(event => {
+
+                return (
+                    info.start < event.end &&
+                    info.end > event.start
+                );
+
+            });
+
+            if (conflict) {
+
+                alert("This time slot is already booked.");
+                return;
+
+            }
 
             const customerName =
                 prompt("Please enter your name and service required for the appointment:");
@@ -61,7 +88,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         name: customerName,
                         start: info.startStr,
                         end: info.endStr,
-                        createdAt: Date.now()
+                        createdAt: serverTimestamp()
                     }
                 );
 
@@ -80,15 +107,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         }
     });
-
-    const auth = getAuth();
-
-        try {
-        await signInAnonymously(auth);
-        console.log("Anonymous user signed in");
-        } catch(error) {
-        console.error(error);
-        }
 
     calendar.render();
 });
