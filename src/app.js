@@ -96,15 +96,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             try {
 
-                await addDoc(
-                    collection(db, "appointments"),
-                    {
-                        name: customerName,
-                        start: info.startStr,
-                        end: info.endStr,
-                        createdAt: serverTimestamp()
-                    }
-                );
+                // await addDoc(
+                //     collection(db, "appointments"),
+                //     {
+                //         name: customerName,
+                //         start: info.startStr,
+                //         end: info.endStr,
+                //         createdAt: serverTimestamp()
+                        
+                //     }
+                // );
 
                 calendar.addEvent({
                     title: customerName,
