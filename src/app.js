@@ -53,7 +53,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             id: doc.id,
             title: data.customerName,
             start: data.start,
-            end: data.end
+            end: data.end,
+            serviceRequired: data.serviceRequired
         });
     });
 
@@ -91,7 +92,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 modal.style.display = "block";
                 document.getElementById("selectedTime").textContent =
                     new Date(selectedStart).toLocaleString();
-
             if (!customerName) return;
 
             try {
@@ -109,6 +109,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                 calendar.addEvent({
                     title: customerName,
+                    serviceRequired: info.serviceRequired,
                     start: info.startStr,
                     end: info.endStr
                 });
@@ -168,13 +169,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                         calendar.addEvent({
 
-                            title:
-                                customerName +
-                                " - " +
-                                serviceRequired,
-
-                            start: selectedStart,
-                            end: selectedEnd
+                            title: customerName + " - " + serviceRequired,
+                            start: info.startStr,
+                            end: info.endStr
 
                         });
 
