@@ -2,24 +2,23 @@ import { authenticate } from "./auth.js";
 import { loadBookings } from "./booking.js";
 import { createCalendar } from "./calendar.js";
 
-document.addEventListener('DOMContentLoaded', async () => {
-    const auth = getAuth();
+document.addEventListener("DOMContentLoaded", async () => {
 
-        try {
-        await signInAnonymously(auth);
-        console.log("Anonymous user signed in");
-        } catch(error) {
-        console.error(error);
-        }
+    try {
 
-    // Load bookings from Firestore
-    const bookings = await loadBookings();
-    
-    // Create the calendar
-    const calendarElement =
-        document.getElementById("calendar-new");
+        await authenticate();
 
-    const calendar =
+        const bookings = await loadBookings();
+
+        const calendarElement =
+            document.getElementById("calendar-new");
+
         createCalendar(calendarElement, bookings);
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
 
 });
