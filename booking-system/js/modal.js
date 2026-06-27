@@ -7,6 +7,7 @@
  * Controls the booking modal.
  **************************************************/
 import { createBooking } from "./services/bookingService.js";
+import { Timestamp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
 
 let modal;
 let bookingForm;
@@ -144,9 +145,9 @@ async function handleBookingSubmit(event) {
 
         customerNotes: customerNotes.value.trim(),
 
-        start: selectedStart.toISOString(),
-
-        end: selectedEnd.toISOString()
+        start: Timestamp.fromDate(selectedStart),
+        
+        end: Timestamp.fromDate(selectedEnd)
 
     };
 

@@ -15,9 +15,8 @@ export function createCalendar(calendarElement, bookings) {
 
         title: formatBookingTitle(booking),
 
-        start: booking.start,
-
-        end: booking.end
+        start: convertToDate(booking.start),
+        end: convertToDate(booking.end)
 
     }));
 
@@ -55,4 +54,17 @@ export function createCalendar(calendarElement, bookings) {
 
     return calendar;
 
+}
+
+function convertToDate(value) {
+
+    if (!value) return null;
+
+    // Firestore Timestamp
+    if (typeof value.toDate === "function") {
+        return value.toDate();
+    }
+
+    // ISO string or already valid date string
+    return new Date(value);
 }
