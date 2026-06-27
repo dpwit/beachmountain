@@ -3,6 +3,8 @@
  *
  * Handles all FullCalendar functionality.
  **************************************************/
+import { APP_CONFIG } from "./config.js";
+import { formatBookingTitle } from "./utils.js";
 
 export function createCalendar(calendarElement, bookings) {
 
@@ -10,10 +12,7 @@ export function createCalendar(calendarElement, bookings) {
 
         id: booking.id,
 
-        title:
-            booking.customerName +
-            " - " +
-            booking.serviceRequired,
+        title: formatBookingTitle(booking),
 
         start: booking.start,
 
@@ -25,14 +24,17 @@ export function createCalendar(calendarElement, bookings) {
         calendarElement,
         {
 
-            initialView: 'timeGridWeek',
-            headerToolbar: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'dayGridMonth,timeGridWeek,timeGridDay'
-            },
+            initialView: APP_CONFIG.calendar.initialView,
+            firstDay: APP_CONFIG.calendar.firstDay,
 
-            selectable: true,
+            weekends: APP_CONFIG.calendar.weekends,
+            headerToolbar: APP_CONFIG.calendar.headerToolbar,
+
+            selectable: APP_CONFIG.calendar.selectable,
+            nowIndicator: APP_CONFIG.calendar.nowIndicator,
+            slotDuration: APP_CONFIG.calendar.slotDuration,
+            slotMinTime: APP_CONFIG.calendar.slotMinTime,
+            slotMaxTime: APP_CONFIG.calendar.slotMaxTime,   
 
             events: events
 

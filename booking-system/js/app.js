@@ -1,6 +1,7 @@
 import { authenticate } from "./auth.js";
 import { loadBookings } from "./booking.js";
 import { createCalendar } from "./calendar.js";
+import { initialiseModal } from "./modal.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
 
@@ -13,7 +14,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         const calendarElement =
             document.getElementById("calendar-new");
 
-        createCalendar(calendarElement, bookings);
+        const calendar =
+            createCalendar(
+                calendarElement,
+                bookings
+            );
+
+        initialiseModal();
 
     } catch (error) {
 
