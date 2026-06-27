@@ -21,6 +21,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                 bookings
             );
 
+        document.addEventListener(
+            "bookingCreated",
+            (event) => {
+
+                console.log("Booking created:", event.detail);
+
+            }
+        );
+
         initialiseModal();
         
         // temporary notification to show that the notification system is working

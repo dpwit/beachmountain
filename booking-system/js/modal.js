@@ -6,6 +6,7 @@
  * Purpose:
  * Controls the booking modal.
  **************************************************/
+import { createBooking } from "./services/bookingService.js";
 
 let modal;
 let bookingForm;
@@ -14,6 +15,12 @@ let closeButton;
 let selectedStart = null;
 let selectedEnd = null;
 let selectedTime;
+
+let customerName;
+let customerEmail;
+let customerPhone;
+let serviceRequired;
+let customerNotes;
 
 /**************************************************
  * Initialise the booking modal
@@ -34,6 +41,29 @@ export function initialiseModal() {
     closeButton.addEventListener(
         "click",
         closeBookingModal
+    );
+
+    selectedTime =
+        document.getElementById("selectedTime");
+
+    customerName =
+        document.getElementById("customerName");
+
+    customerEmail =
+        document.getElementById("customerEmail");
+
+    customerPhone =
+        document.getElementById("customerPhone");
+
+    serviceRequired =
+        document.getElementById("serviceRequired");
+
+    customerNotes =
+        document.getElementById("customerNotes");
+
+    bookingForm.addEventListener(
+        "submit",
+        handleBookingSubmit
     );
 
 }
@@ -73,6 +103,8 @@ export function closeBookingModal() {
 
     bookingForm.reset();
 
+    selectedTime.textContent = "";
+
     selectedStart = null;
     selectedEnd = null;
 
@@ -90,5 +122,41 @@ export function getSelectedStart() {
 export function getSelectedEnd() {
 
     return selectedEnd;
+
+}
+
+/**************************************************
+ * Handle booking form submission
+ **************************************************/
+async function handleBookingSubmit(event) {
+
+    event.preventDefault();
+
+    const booking = {
+
+        customerName: customerName.value.trim(),
+
+        customerEmail: customerEmail.value.trim(),
+
+        customerPhone: customerPhone.value.trim(),
+
+        serviceRequired: serviceRequired.value.trim(),
+
+        customerNotes: customerNotes.value.trim(),
+
+        start: selectedStart.toISOString(),
+
+        end: selectedEnd.toISOString()
+
+    };
+
+    const result =
+        await createBooking(booking);
+
+    if (result.success) {
+
+        closeBookingModal();
+
+    }
 
 }
