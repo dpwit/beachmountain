@@ -19,21 +19,12 @@ export async function createBooking(booking) {
 
         const docRef = await saveBooking(booking);
 
-        showSuccess("Booking confirmed!");
-
-        return {
-            success: true,
-            booking: {
-                ...booking,
-                id: docRef.id
-            }
-        };
-
         const newBooking = {
             ...booking,
             id: docRef.id
         };
 
+        // Dispatch event FIRST (before returning)
         document.dispatchEvent(
             new CustomEvent("bookingCreated", {
                 detail: newBooking
@@ -41,6 +32,11 @@ export async function createBooking(booking) {
         );
 
         showSuccess("Booking confirmed!");
+
+        return {
+            success: true,
+            booking: newBooking
+        };
 
     } catch (error) {
 

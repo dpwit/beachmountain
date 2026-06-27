@@ -18,29 +18,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             document.getElementById("calendar-new");
 
         calendar =
-        createCalendar(calendarElement, bookings);
-
-        document.addEventListener("bookingCreated", (event) => {
-
-            const booking = event.detail;
-
-            if (!calendar) {
-                console.warn("Calendar not ready yet");
-                return;
-            }
-
-            calendar.addEvent({
-                id: booking.id,
-                title: `${booking.customerName} - ${booking.serviceRequired}`,
-                start: booking.start,
-                end: booking.end
-            });
-
-        });
+            createCalendar(calendarElement, bookings);
 
         initialiseModal();
-        
-        // temporary notification to show that the notification system is working
+
         showSuccess("Notification system is working!");
 
     } catch (error) {
@@ -48,5 +29,23 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.error(error);
 
     }
+
+});
+
+document.addEventListener("bookingCreated", (event) => {
+
+    const booking = event.detail;
+
+    if (!calendar) {
+        console.warn("Calendar not ready yet");
+        return;
+    }
+
+    calendar.addEvent({
+        id: booking.id,
+        title: `${booking.customerName} - ${booking.serviceRequired}`,
+        start: booking.start,
+        end: booking.end
+    });
 
 });
