@@ -31,7 +31,7 @@ export async function createBooking(booking) {
             })
         );
 
-        showSuccess("Booking confirmed!");
+        showSuccess("Booking confirmed. Please refresh the page to see the entry in the calendar.");
 
         return {
             success: true,
