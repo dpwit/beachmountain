@@ -13,12 +13,15 @@ let closeButton;
 
 let selectedStart = null;
 let selectedEnd = null;
-
+let selectedTime;
 
 /**************************************************
  * Initialise the booking modal
  **************************************************/
 export function initialiseModal() {
+
+    selectedTime =
+    document.getElementById("selectedTime");
 
     modal = document.getElementById("bookingModal");
 
@@ -42,6 +45,20 @@ export function openBookingModal(start, end) {
 
     selectedStart = start;
     selectedEnd = end;
+
+    const selectedTime =
+        document.getElementById("selectedTime");
+
+    selectedTime.textContent =
+        `${start.toLocaleDateString("en-GB", {
+            weekday: "long",
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+        })} at ${start.toLocaleTimeString("en-GB", {
+            hour: "2-digit",
+            minute: "2-digit"
+        })}`;
 
     modal.style.display = "flex";
 

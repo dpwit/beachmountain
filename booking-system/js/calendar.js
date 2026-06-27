@@ -5,6 +5,7 @@
  **************************************************/
 import { APP_CONFIG } from "./config.js";
 import { formatBookingTitle } from "./utils.js";
+import { openBookingModal } from "./modal.js";
 
 export function createCalendar(calendarElement, bookings) {
 
@@ -36,7 +37,16 @@ export function createCalendar(calendarElement, bookings) {
             slotMinTime: APP_CONFIG.calendar.slotMinTime,
             slotMaxTime: APP_CONFIG.calendar.slotMaxTime,   
 
-            events: events
+            events: events,
+
+            select(info) {
+
+            openBookingModal(
+                info.start,
+                info.end
+            );
+
+}
 
         }
     );
