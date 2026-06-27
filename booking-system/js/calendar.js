@@ -1,70 +1,54 @@
-/**************************************************
- * calendar.js
- *
- * Handles all FullCalendar functionality.
- **************************************************/
 import { APP_CONFIG } from "./config.js";
 import { formatBookingTitle } from "./utils.js";
 import { openBookingModal } from "./modal.js";
 
 export function createCalendar(calendarElement, bookings) {
 
-    const events = bookings.map((booking) => ({
+    const calendar = new FullCalendar.Calendar(calendarElement, {
 
-        id: booking.id,
+        initialView: APP_CONFIG.calendar.initialView,
+        firstDay: APP_CONFIG.calendar.firstDay,
 
-        title: formatBookingTitle(booking),
+        weekends: APP_CONFIG.calendar.weekends,
+        headerToolbar: APP_CONFIG.calendar.headerToolbar,
 
-        start: convertToDate(booking.start),
-        end: convertToDate(booking.end)
+        selectable: APP_CONFIG.calendar.selectable,
+        nowIndicator: APP_CONFIG.calendar.nowIndicator,
+        slotDuration: APP_CONFIG.calendar.slotDuration,
+        slotMinTime: APP_CONFIG.calendar.slotMinTime,
+        slotMaxTime: APP_CONFIG.calendar.slotMaxTime,
 
-    }));
+        select(info) {
 
-    const calendar = new FullCalendar.Calendar(
-        calendarElement,
-        {
-
-            initialView: APP_CONFIG.calendar.initialView,
-            firstDay: APP_CONFIG.calendar.firstDay,
-
-            weekends: APP_CONFIG.calendar.weekends,
-            headerToolbar: APP_CONFIG.calendar.headerToolbar,
-
-            selectable: APP_CONFIG.calendar.selectable,
-            nowIndicator: APP_CONFIG.calendar.nowIndicator,
-            slotDuration: APP_CONFIG.calendar.slotDuration,
-            slotMinTime: APP_CONFIG.calendar.slotMinTime,
-            slotMaxTime: APP_CONFIG.calendar.slotMaxTime,   
-
-            events: events,
-
-            select(info) {
-
-            openBookingModal(
-                info.start,
-                info.end
-            );
-
-}
+            openBookingModal(info.start, info.end);
 
         }
-    );
+
+    });
 
     calendar.render();
 
-    return calendar;
+    bookings.forEach((booking) => {
 
+        calendar.addEvent({
+            id: booking.id,
+            title: formatBookingTitle(booking),
+            start: convertToDate(booking.start),
+            end: convertToDate(booking.end)
+        });
+
+    });
+
+    return calendar;
 }
 
 function convertToDate(value) {
 
     if (!value) return null;
 
-    // Firestore Timestamp
     if (typeof value.toDate === "function") {
         return value.toDate();
     }
 
-    // ISO string or already valid date string
     return new Date(value);
 }

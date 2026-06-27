@@ -22,24 +22,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         initialiseModal();
 
-        showSuccess("Notification system is working!");
+        // IMPORTANT: attach listener AFTER calendar exists
+        document.addEventListener("bookingCreated", (event) => {
 
-    } catch (error) {
-
-        console.error(error);
-
-    }
-
-});
-
-document.addEventListener("bookingCreated", (event) => {
+    console.log("bookingCreated received:", event.detail);
 
     const booking = event.detail;
-
-    if (!calendar) {
-        console.warn("Calendar not ready yet");
-        return;
-    }
 
     calendar.addEvent({
         id: booking.id,
@@ -47,5 +35,18 @@ document.addEventListener("bookingCreated", (event) => {
         start: booking.start,
         end: booking.end
     });
+
+    // FORCE redraw (this is the missing piece)
+    calendar.refetchEvents?.();
+
+});
+
+        showSuccess("Notification system is working!");
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
 
 });
