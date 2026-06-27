@@ -122,3 +122,54 @@ Retrieved 2026-06-14, License - CC BY-SA 4.0
 .zoom:hover {
   transform: scale(1.5);
 }
+
+/* Notification Styles */
+#notificationContainer {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+
+    z-index: 9999;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.notification {
+
+    min-width: 320px;
+
+    padding: 16px;
+
+    border-radius: 8px;
+
+    background: white;
+
+    box-shadow: 0 6px 20px rgba(0,0,0,.2);
+
+    transform: translateX(400px);
+
+    transition: .4s;
+
+    font-family: Arial, sans-serif;
+}
+
+.notification.show {
+
+    transform: translateX(0);
+
+}
+
+.notification.success {
+
+    border-left: 6px solid #28a745;
+
+}
+
+.notification.error {
+
+    border-left: 6px solid #dc3545;
+
+}
