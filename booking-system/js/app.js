@@ -4,6 +4,8 @@ import { createCalendar } from "./calendar.js";
 import { initialiseModal } from "./modal.js";
 import { showSuccess } from "./notifications.js";
 
+let calendar;
+
 document.addEventListener("DOMContentLoaded", async () => {
 
     try {
@@ -15,20 +17,26 @@ document.addEventListener("DOMContentLoaded", async () => {
         const calendarElement =
             document.getElementById("calendar-new");
 
-        const calendar =
-            createCalendar(
-                calendarElement,
-                bookings
-            );
+        calendar =
+        createCalendar(calendarElement, bookings);
 
-        document.addEventListener(
-            "bookingCreated",
-            (event) => {
+        document.addEventListener("bookingCreated", (event) => {
 
-                console.log("Booking created:", event.detail);
+            const booking = event.detail;
 
+            if (!calendar) {
+                console.warn("Calendar not ready yet");
+                return;
             }
-        );
+
+            calendar.addEvent({
+                id: booking.id,
+                title: `${booking.customerName} - ${booking.serviceRequired}`,
+                start: booking.start,
+                end: booking.end
+            });
+
+        });
 
         initialiseModal();
         

@@ -29,6 +29,19 @@ export async function createBooking(booking) {
             }
         };
 
+        const newBooking = {
+            ...booking,
+            id: docRef.id
+        };
+
+        document.dispatchEvent(
+            new CustomEvent("bookingCreated", {
+                detail: newBooking
+            })
+        );
+
+        showSuccess("Booking confirmed!");
+
     } catch (error) {
 
         console.error(error);
