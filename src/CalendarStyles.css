@@ -144,3 +144,7 @@ textarea,
 button {
     padding: 10px;
 }
+
+.select-height {
+  height: 48px;
+}

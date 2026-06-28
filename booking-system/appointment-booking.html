@@ -92,7 +92,15 @@
                         <input type="tel" id="customerPhone">
 
                         <label>Service Required</label>
-                        <input type="text" id="serviceRequired" required>
+                        <!-- <input type="text" id="serviceRequired" required> -->
+                        <select name="service" id="serviceRequired" class="select-height">
+                            <option value="Please choose">Please choose...</option>
+                            <option value="Wax only">Wax only</option>
+                            <option value="Edges only">Edges only</option>
+                            <option value="Wax and edges">Wax and edges</option>
+                            <option value="Base repair">Base repair</option>
+                            <option value="Full service">Full service</option>
+                        </select>
 
                         <label>Notes</label>
                         <textarea id="customerNotes"></textarea>
