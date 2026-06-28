@@ -41,7 +41,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 });
 
-        showSuccess("Notification system is working!");
+       // use for testing purposes
+       showSuccess("Please refresh the page to ensure you're seeing the lastest appointments booked!");
 
     } catch (error) {
 

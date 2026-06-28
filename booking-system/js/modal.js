@@ -81,7 +81,7 @@ export function openBookingModal(start, end) {
         document.getElementById("selectedTime");
 
     selectedTime.textContent =
-        `${start.toLocaleDateString("en-GB", {
+        `Selected time: ${start.toLocaleDateString("en-GB", {
             weekday: "long",
             day: "numeric",
             month: "long",

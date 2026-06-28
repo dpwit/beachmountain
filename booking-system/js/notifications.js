@@ -36,7 +36,7 @@ export function showNotification(message, type = "success") {
 
         }, 400);
 
-    }, 4000);
+    }, 5000);
 
 }
 
