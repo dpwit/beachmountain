@@ -28,7 +28,9 @@
   padding:16px 0;
   overflow-x: auto;
 }
-
+.fc {
+  height:485px;
+}
 /* Customise Header Toolbar Buttons */
 .fc .fc-button-primary {
   background-color: #90D5FF;
@@ -71,6 +73,16 @@
   color: #374151;
   font-weight: 600;
   text-decoration: none;
+}
+
+/* Row height */
+.fc .fc-timegrid-slot {
+    height: 4em;
+}
+
+.fc-timegrid-event-harness {
+    position: absolute;
+    height: 4em;
 }
 
 /* Individual Event Blocks */
