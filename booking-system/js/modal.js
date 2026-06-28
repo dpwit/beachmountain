@@ -89,6 +89,9 @@ export function openBookingModal(start, end) {
         })} at ${start.toLocaleTimeString("en-GB", {
             hour: "2-digit",
             minute: "2-digit"
+        })} to ${end.toLocaleTimeString("en-GB", {
+            hour: "2-digit",
+            minute: "2-digit"
         })}`;
 
     modal.style.display = "flex";
