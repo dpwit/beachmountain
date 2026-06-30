@@ -7,7 +7,7 @@
  * Handles the complete booking workflow.
  **************************************************/
 
-import { saveBooking } from "../booking.js";
+import { saveBooking, hasBookingConflict } from "../booking.js";
 import { showSuccess, showError } from "../notifications.js";
 
 /**************************************************
@@ -16,6 +16,24 @@ import { showSuccess, showError } from "../notifications.js";
 export async function createBooking(booking) {
 
     try {
+        // Check for overlapping bookings
+        const conflict = await hasBookingConflict(
+            booking.start,
+            booking.end
+        );
+
+        if (conflict) {
+
+            showError(
+                "Sorry, this time slot has already been booked. Please choose another appointment."
+            );
+
+            return {
+                success: false,
+                conflict: true
+            };
+
+        }
 
         const docRef = await saveBooking(booking);
 

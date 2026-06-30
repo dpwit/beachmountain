@@ -13,7 +13,9 @@ import {
     doc,
     deleteDoc,
     updateDoc,
-    serverTimestamp
+    serverTimestamp,
+    query,
+    where
 } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
 
 const COLLECTION_NAME = "appointments";
@@ -39,6 +41,56 @@ export async function loadBookings() {
     });
 
     return bookings;
+
+}
+
+/**************************************************
+ * Check whether a booking overlaps
+ **************************************************/
+function convertToDate(value) {
+
+    if (!value) return null;
+
+    if (typeof value.toDate === "function") {
+        return value.toDate();
+    }
+
+    return new Date(value);
+
+}
+
+export async function hasBookingConflict(start, end) {
+
+    const snapshot = await getDocs(
+        collection(db, COLLECTION_NAME)
+    );
+
+    const newStart = convertToDate(start);
+    const newEnd = convertToDate(end);
+
+    for (const doc of snapshot.docs) {
+
+        const booking = doc.data();
+
+        const existingStart = convertToDate(booking.start);
+        const existingEnd = convertToDate(booking.end);
+
+        // Ignore malformed records
+        if (!existingStart || !existingEnd) {
+            continue;
+        }
+
+        // Overlap test
+        if (newStart < existingEnd &&
+            newEnd > existingStart) {
+
+            return true;
+
+        }
+
+    }
+
+    return false;
 
 }
 
