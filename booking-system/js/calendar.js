@@ -1,6 +1,9 @@
 import { APP_CONFIG } from "./config.js";
 import { formatBookingTitle } from "./utils.js";
 import { openBookingModal } from "./modal.js";
+import { hasBookingConflict } from "./booking.js";
+import { Timestamp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
+import { showError } from "./notifications.js";
 
 export function createCalendar(calendarElement, bookings) {
 
@@ -18,9 +21,26 @@ export function createCalendar(calendarElement, bookings) {
         slotMinTime: APP_CONFIG.calendar.slotMinTime,
         slotMaxTime: APP_CONFIG.calendar.slotMaxTime,
 
-        select(info) {
+        select: async function(info) {
 
-            openBookingModal(info.start, info.end);
+            const conflict = await hasBookingConflict(
+                Timestamp.fromDate(info.start),
+                Timestamp.fromDate(info.end)
+            );
+
+            if (conflict) {
+
+                showError(
+                    "Sorry, that time slot is already booked. Please choose another slot. Thanks"
+                );
+                        return;
+
+            }
+
+            openBookingModal(
+                info.start,
+                info.end
+            );
 
         }
 
