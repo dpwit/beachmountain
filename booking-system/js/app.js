@@ -1,6 +1,6 @@
 import { authenticate } from "./auth.js";
 import { loadBookings } from "./booking.js";
-import { createCalendar } from "./calendar.js";
+import { createCalendar, convertToDate } from "./calendar.js";
 import { initialiseModal } from "./modal.js";
 import { showSuccess } from "./notifications.js";
 
@@ -25,24 +25,30 @@ document.addEventListener("DOMContentLoaded", async () => {
         // IMPORTANT: attach listener AFTER calendar exists
         document.addEventListener("bookingCreated", (event) => {
 
-    console.log("bookingCreated received:", event.detail);
+            const booking = event.detail;
 
-    const booking = event.detail;
+            console.log("Booking received:", booking);
 
-    calendar.addEvent({
-        id: booking.id,
-        title: `${booking.customerName} - ${booking.serviceRequired}`,
-        start: booking.start,
-        end: booking.end
-    });
+            const start = convertToDate(booking.start);
+            const end = convertToDate(booking.end);
 
-    // FORCE redraw (this is the missing piece)
-    calendar.refetchEvents?.();
+            console.log("Start:", start);
+            console.log("End:", end);
 
-});
+            const addedEvent = calendar.addEvent({
+                id: booking.id,
+                title: `${booking.customerName} - ${booking.serviceRequired}`,
+                start: start,
+                end: end
+            });
+
+            console.log("Added event:", addedEvent);
+            console.log("Calendar now has", calendar.getEvents().length, "events");
+
+        });
 
        // use for testing purposes
-       showSuccess("Please refresh the page to ensure you're seeing the lastest appointments booked!");
+       showSuccess("You may need to refresh the page to ensure you're seeing the lastest appointments booked!");
 
     } catch (error) {
 

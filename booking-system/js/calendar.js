@@ -42,7 +42,7 @@ export function createCalendar(calendarElement, bookings) {
     return calendar;
 }
 
-function convertToDate(value) {
+export function convertToDate(value) {
 
     if (!value) return null;
 
