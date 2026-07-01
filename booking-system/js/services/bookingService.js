@@ -131,7 +131,7 @@ export async function deleteExistingBooking(id) {
         );
 
         showSuccess(
-            "Booking deleted."
+            "Your booking has been successfully deleted. Thanks."
         );
 
         return {

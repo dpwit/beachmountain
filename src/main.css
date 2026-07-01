@@ -181,6 +181,13 @@ Retrieved 2026-06-14, License - CC BY-SA 4.0
   margin-top: 16px;
 }
 
+.btnBrandDelete {
+  border: #ff080e;
+  background-color: #ff080e;
+  color: white;
+  cursor: pointer;
+}
+
 /* Target specifically inside a form using attribute selectors */
 .bookingForm button, 
 .bookingForm input[type="submit"] {
