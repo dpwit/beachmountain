@@ -6,7 +6,7 @@
  * Purpose:
  * Controls the booking modal.
  **************************************************/
-import { createBooking } from "./services/bookingService.js";
+import { createBooking, updateExistingBooking } from "./services/bookingService.js";
 import { Timestamp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
 
 let modal;
@@ -194,8 +194,22 @@ async function handleBookingSubmit(event) {
 
     };
 
-    const result =
-        await createBooking(booking);
+    let result;
+
+    if (editMode) {
+
+        result =
+            await updateExistingBooking(
+                editingBookingId,
+                booking
+            );
+
+    } else {
+
+        result =
+            await createBooking(booking);
+
+    }
 
     if (result.success) {
 

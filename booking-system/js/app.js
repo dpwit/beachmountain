@@ -47,6 +47,53 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         });
 
+        document.addEventListener("bookingUpdated", (event) => {
+
+    const booking = event.detail;
+
+    const calendarEvent =
+        calendar.getEventById(booking.id);
+
+    if (!calendarEvent) {
+        return;
+    }
+
+    calendarEvent.setProp(
+        "title",
+        `${booking.customerName} - ${booking.serviceRequired}`
+    );
+
+    calendarEvent.setStart(booking.start.toDate());
+
+    calendarEvent.setEnd(booking.end.toDate());
+
+    calendarEvent.setExtendedProp(
+        "customerName",
+        booking.customerName
+    );
+
+    calendarEvent.setExtendedProp(
+        "customerEmail",
+        booking.customerEmail
+    );
+
+    calendarEvent.setExtendedProp(
+        "customerPhone",
+        booking.customerPhone
+    );
+
+    calendarEvent.setExtendedProp(
+        "serviceRequired",
+        booking.serviceRequired
+    );
+
+    calendarEvent.setExtendedProp(
+        "customerNotes",
+        booking.customerNotes
+    );
+
+});
+
        // use for testing purposes
        showSuccess("You may need to refresh the page to ensure you're seeing the lastest appointments booked!");
 
