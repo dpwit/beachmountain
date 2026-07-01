@@ -42,7 +42,17 @@ export function createCalendar(calendarElement, bookings) {
                 info.end
             );
 
-        }
+        },
+
+        eventClick: async function(info) {
+
+        openBookingModal(
+            info.event.start,
+            info.event.end,
+            info.event
+        );
+
+    }
 
     });
 
@@ -54,7 +64,16 @@ export function createCalendar(calendarElement, bookings) {
             id: booking.id,
             title: formatBookingTitle(booking),
             start: convertToDate(booking.start),
-            end: convertToDate(booking.end)
+            end: convertToDate(booking.end),
+            extendedProps: {
+
+                customerName: booking.customerName,
+                customerEmail: booking.customerEmail,
+                customerPhone: booking.customerPhone,
+                serviceRequired: booking.serviceRequired,
+                customerNotes: booking.customerNotes
+
+            }
         });
 
     });

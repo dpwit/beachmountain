@@ -72,7 +72,7 @@ export function initialiseModal() {
 /**************************************************
  * Open booking modal
  **************************************************/
-export function openBookingModal(start, end) {
+export function openBookingModal(start, end, event = null) {
 
     selectedStart = start;
     selectedEnd = end;
@@ -93,6 +93,25 @@ export function openBookingModal(start, end) {
             hour: "2-digit",
             minute: "2-digit"
         })}`;
+
+        if (event) {
+
+            customerName.value =
+                event.extendedProps.customerName;
+
+            customerEmail.value =
+                event.extendedProps.customerEmail;
+
+            customerPhone.value =
+                event.extendedProps.customerPhone;
+
+            serviceRequired.value =
+                event.extendedProps.serviceRequired;
+
+            customerNotes.value =
+                event.extendedProps.customerNotes;
+
+        }
 
     modal.style.display = "flex";
 
