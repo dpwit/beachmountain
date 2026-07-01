@@ -6,7 +6,7 @@
  * Purpose:
  * Controls the booking modal.
  **************************************************/
-import { createBooking, updateExistingBooking } from "./services/bookingService.js";
+import { createBooking, updateExistingBooking, deleteExistingBooking } from "./services/bookingService.js";
 import { Timestamp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
 
 let modal;
@@ -26,6 +26,8 @@ let customerNotes;
 let editMode = false;
 let editingBookingId = null;
 
+let deleteButton;
+
 /**************************************************
  * Initialise the booking modal
  **************************************************/
@@ -41,6 +43,9 @@ export function initialiseModal() {
 
     closeButton =
         document.getElementById("closeModal");
+    
+    deleteButton =
+        document.getElementById("deleteBooking");
 
     closeButton.addEventListener(
         "click",
@@ -69,6 +74,11 @@ export function initialiseModal() {
         "submit",
         handleBookingSubmit
     );
+
+    deleteButton.addEventListener(
+    "click",
+    handleDeleteBooking
+);
 
 }
 
@@ -121,6 +131,8 @@ export function openBookingModal(start, end, event = null) {
             "#bookingForm button[type='submit']"
             ).textContent = "Save your changes";
 
+            deleteButton.style.display = "inline-block";
+
                 }
 
         else {
@@ -131,6 +143,8 @@ export function openBookingModal(start, end, event = null) {
             document.querySelector(
             "#bookingForm button[type='submit']"
             ).textContent = "Book new appointment";
+
+            deleteButton.style.display = "none";
 
         }
 
@@ -210,6 +224,33 @@ async function handleBookingSubmit(event) {
             await createBooking(booking);
 
     }
+
+    if (result.success) {
+
+        closeBookingModal();
+
+    }
+
+}
+
+/**************************************************
+ * Handle booking deletion
+ **************************************************/
+
+async function handleDeleteBooking() {
+
+    if (!confirm(
+        "Are you sure you want to delete this appointment?"
+    )) {
+
+        return;
+
+    }
+
+    const result =
+        await deleteExistingBooking(
+            editingBookingId
+        );
 
     if (result.success) {
 

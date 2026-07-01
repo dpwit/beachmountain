@@ -7,7 +7,7 @@
  * Handles the complete booking workflow.
  **************************************************/
 
-import { saveBooking, updateBooking, hasBookingConflict } from "../booking.js";
+import { saveBooking, updateBooking, hasBookingConflict, deleteBooking } from "../booking.js";
 import { showSuccess, showError } from "../notifications.js";
 
 /**************************************************
@@ -100,6 +100,51 @@ export async function updateExistingBooking(id, booking) {
         console.error(error);
 
         showError("Unable to update booking.");
+
+        return {
+            success: false,
+            error
+        };
+
+    }
+
+}
+
+/**************************************************
+ * Delete booking
+ **************************************************/
+export async function deleteExistingBooking(id) {
+
+    try {
+
+        await deleteBooking(id);
+
+        document.dispatchEvent(
+            new CustomEvent(
+                "bookingDeleted",
+                {
+                    detail: {
+                        id
+                    }
+                }
+            )
+        );
+
+        showSuccess(
+            "Booking deleted."
+        );
+
+        return {
+            success: true
+        };
+
+    } catch (error) {
+
+        console.error(error);
+
+        showError(
+            "Unable to delete booking."
+        );
 
         return {
             success: false,

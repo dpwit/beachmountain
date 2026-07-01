@@ -94,6 +94,24 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 });
 
+document.addEventListener(
+    "bookingDeleted",
+    (event) => {
+
+        const calendarEvent =
+            calendar.getEventById(
+                event.detail.id
+            );
+
+        if (calendarEvent) {
+
+            calendarEvent.remove();
+
+        }
+
+    }
+);
+
        // use for testing purposes
        showSuccess("You may need to refresh the page to ensure you're seeing the lastest appointments booked!");
 
