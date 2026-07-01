@@ -23,6 +23,9 @@ let customerPhone;
 let serviceRequired;
 let customerNotes;
 
+let editMode = false;
+let editingBookingId = null;
+
 /**************************************************
  * Initialise the booking modal
  **************************************************/
@@ -96,6 +99,9 @@ export function openBookingModal(start, end, event = null) {
 
         if (event) {
 
+            editMode = true;
+            editingBookingId = event.id;
+
             customerName.value =
                 event.extendedProps.customerName;
 
@@ -110,6 +116,21 @@ export function openBookingModal(start, end, event = null) {
 
             customerNotes.value =
                 event.extendedProps.customerNotes;
+
+            document.querySelector(
+            "#bookingForm button[type='submit']"
+            ).textContent = "Save your changes";
+
+                }
+
+        else {
+
+            editMode = false;
+            editingBookingId = null;
+
+            document.querySelector(
+            "#bookingForm button[type='submit']"
+            ).textContent = "Book new appointment";
 
         }
 
