@@ -52,7 +52,15 @@ export async function createBooking(booking) {
 
         try {
 
-            await sendBookingEmails(newBooking);
+            await sendBookingEmails({
+
+    ...newBooking,
+
+    start: newBooking.start.toISOString(),
+
+    end: newBooking.end.toISOString()
+
+});
 
         }
         catch (error) {
