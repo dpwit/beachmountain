@@ -9,6 +9,7 @@
 
 import { saveBooking, updateBooking, hasBookingConflict, deleteBooking } from "../booking.js";
 import { showSuccess, showError } from "../notifications.js";
+import { sendBookingEmails } from "./emailService.js";
 
 /**************************************************
  * Create a booking
@@ -48,6 +49,20 @@ export async function createBooking(booking) {
                 detail: newBooking
             })
         );
+
+        try {
+
+            await sendBookingEmails(newBooking);
+
+        }
+        catch (error) {
+
+            console.warn(
+                "Booking saved but email failed.",
+                error
+            );
+
+        }
 
         showSuccess("Your booking has been confirmed. You may need to refresh the page to see the entry in the calendar.");
 
