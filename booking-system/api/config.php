@@ -31,9 +31,9 @@ return [
      **********************************************/
     'smtpHost' => 'smtp.gmail.com',
 
-    'smtpPort' => 587,
+    'smtpPort' => 465,
 
-    'smtpEncryption' => 'tls',
+    'smtpEncryption' => 'ssl',
 
     'smtpUsername' => '4beachmountain@gmail.com',
 
@@ -49,7 +49,7 @@ return [
      * → 2-Step Verification
      * → App Passwords
      */
-    'smtpPassword' => 'wpebiwvtlezsrnbl',
+    'smtpPassword' => 'zeypqwurbcogsbws',
 
 
     /**********************************************

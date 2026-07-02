@@ -40,12 +40,23 @@ function createMailer()
         $mail->Port       = $config['smtpPort'];
 
         /**********************************************
+         * Gmail SSL Fix (TEMP DEBUG)
+         **********************************************/
+        $mail->SMTPOptions = [
+            'ssl' => [
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+            ]
+        ];
+
+        /**********************************************
          * Encoding
          **********************************************/
         $mail->CharSet = 'UTF-8';
 
         /**********************************************
-         * Sender Info
+         * Sender
          **********************************************/
         $mail->setFrom(
             $config['businessEmail'],
@@ -61,8 +72,10 @@ function createMailer()
          * Debug Mode
          **********************************************/
         if ($config['debugMode']) {
-            $mail->SMTPDebug = 2;
-            $mail->Debugoutput = 'error_log';
+            $mail->SMTPDebug = 3;
+            $mail->Debugoutput = function($str, $level) {
+                echo "SMTP[$level]: $str<br>";
+            };
         }
 
         return $mail;
