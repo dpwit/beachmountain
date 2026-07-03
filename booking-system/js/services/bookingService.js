@@ -52,8 +52,22 @@ export async function createBooking(booking) {
 
         try {
 
-    const emailResult =
-        await sendBookingEmails(newBooking);
+    const bookingForEmail = {
+    ...newBooking,
+
+    start: newBooking.start.toDate().toISOString(),
+
+    end: newBooking.end.toDate().toISOString()
+};
+
+const emailResult =
+
+console.log(
+        "Booking being sent to PHP:",
+        newBooking
+    );
+
+    await sendBookingEmails(bookingForEmail);
 
     console.log(
         "Email service:",

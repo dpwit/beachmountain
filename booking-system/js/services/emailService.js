@@ -10,7 +10,7 @@
 export async function sendBookingEmails(booking) {
 
     const response = await fetch(
-        "../api/send-booking-email.php",
+        "/booking-system/api/send-booking-email.php",
         {
             method: "POST",
 
