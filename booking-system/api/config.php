@@ -17,6 +17,8 @@ return [
     /**********************************************
      * Business Details
      **********************************************/
+    'businessLogo' => 'http://localhost:8000/dist/img/Beach-Mountain-logo-black-image.png',
+    
     'businessName' => 'Beach Mountain',
 
     'businessEmail' => '4beachmountain@gmail.com',

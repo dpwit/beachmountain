@@ -90,7 +90,7 @@ td{
 
 <div class="header">
 
-<h1><?= htmlspecialchars($config['businessName']) ?></h1>
+<img src="<?= htmlspecialchars($config['businessLogo']) ?>" alt="Logo"><h1><?= htmlspecialchars($config['businessName']) ?></h1>
 
 </div>
 
