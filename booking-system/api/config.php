@@ -17,13 +17,13 @@ return [
     /**********************************************
      * Business Details
      **********************************************/
-    'businessName' => 'Beach Mountain Appointment Booking System',
+    'businessName' => 'Beach Mountain',
 
     'businessEmail' => '4beachmountain@gmail.com',
 
     'replyToEmail' => '4beachmountain@gmail.com',
 
-    'replyToName' => 'Beach Mountain Appointment Booking System',
+    'replyToName' => 'Beach Mountain',
 
 
     /**********************************************

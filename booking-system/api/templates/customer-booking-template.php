@@ -75,7 +75,7 @@ Your appointment has been successfully confirmed.
 
 <p>
 
-If you need to amend or cancel your appointment, please contact us quoting your booking reference.
+If you need to amend or cancel your appointment, please contact us quoting your booking reference. Alternatively, you can use the appointment booking calendar to manage this.
 
 </p>
 
