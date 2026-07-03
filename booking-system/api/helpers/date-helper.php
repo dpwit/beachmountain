@@ -6,14 +6,44 @@
  * Professional Appointment Booking System (PABS)
  *
  * Purpose:
- * Provides consistent appointment formatting.
+ * Provides consistent appointment formatting
+ * using the business timezone.
+ **************************************************/
+
+/**************************************************
+ * Business Timezone
+ **************************************************/
+
+const BUSINESS_TIMEZONE = 'Europe/London';
+
+/**************************************************
+ * Convert date to business timezone
+ **************************************************/
+
+function bookingDateTime(string $date): DateTime
+{
+    $dateTime = new DateTime($date);
+
+    $dateTime->setTimezone(
+        new DateTimeZone(BUSINESS_TIMEZONE)
+    );
+
+    return $dateTime;
+}
+
+/**************************************************
+ * Appointment Date
  **************************************************/
 
 function formatAppointmentDate(string $date): string
 {
-    return (new DateTime($date))
+    return bookingDateTime($date)
         ->format('l j F Y');
 }
+
+/**************************************************
+ * Appointment Time
+ **************************************************/
 
 function formatAppointmentTime(
     string $start,
@@ -21,8 +51,8 @@ function formatAppointmentTime(
 ): string {
 
     return
-        (new DateTime($start))->format('g:i A')
+        bookingDateTime($start)->format('g:i A')
         . ' – ' .
-        (new DateTime($end))->format('g:i A');
+        bookingDateTime($end)->format('g:i A');
 
 }
