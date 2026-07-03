@@ -21,7 +21,7 @@ $config = require __DIR__ . '/../config.php';
 body{
 
     margin:0;
-    padding:40px;
+    padding:16px;
     background:#f4f4f4;
     font-family:Arial, Helvetica, sans-serif;
 
@@ -29,7 +29,8 @@ body{
 
 .container{
 
-    max-width:700px;
+    /* max-width:700px; */
+    width:100%;
     margin:auto;
     background:#ffffff;
     border-radius:10px;
@@ -54,7 +55,7 @@ body{
 
 .content{
 
-    padding:30px;
+    padding:16px;
 
 }
 
