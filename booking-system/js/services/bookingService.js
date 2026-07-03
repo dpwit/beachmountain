@@ -52,25 +52,57 @@ export async function createBooking(booking) {
 
         try {
 
-            await sendBookingEmails({
+    const emailResult =
+        await sendBookingEmails(newBooking);
 
-    ...newBooking,
+    console.log(
+        "Email service:",
+        emailResult
+    );
 
-    start: newBooking.start.toISOString(),
+    if (!emailResult.success) {
 
-    end: newBooking.end.toISOString()
+        console.warn(
+            "Email service returned an error.",
+            emailResult
+        );
 
-});
+    }
 
-        }
-        catch (error) {
+    if (!emailResult.businessEmailSent) {
 
-            console.warn(
-                "Booking saved but email failed.",
-                error
-            );
+        console.warn(
+            "Business notification email was not sent."
+        );
 
-        }
+    }
+
+    if (!emailResult.customerEmailSent) {
+
+        console.warn(
+            "Customer confirmation email was not sent."
+        );
+
+    }
+
+    if (emailResult.bookingReference) {
+
+        console.log(
+            "Booking Reference:",
+            emailResult.bookingReference
+        );
+
+    }
+
+}
+catch (error) {
+
+    console.warn(
+        "Booking saved but email service could not be reached.",
+        error
+    );
+
+}
 
         showSuccess("Your booking has been confirmed. You may need to refresh the page to see the entry in the calendar.");
 

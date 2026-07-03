@@ -12,7 +12,6 @@ export async function sendBookingEmails(booking) {
     const response = await fetch(
         "../api/send-booking-email.php",
         {
-
             method: "POST",
 
             headers: {
@@ -20,9 +19,16 @@ export async function sendBookingEmails(booking) {
             },
 
             body: JSON.stringify(booking)
-
         }
     );
+
+    if (!response.ok) {
+
+        throw new Error(
+            `Email service returned HTTP ${response.status}`
+        );
+
+    }
 
     return await response.json();
 

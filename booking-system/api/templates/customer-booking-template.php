@@ -1,24 +1,6 @@
 <?php
 
-/**************************************************
- * customer-booking-template.php
- *
- * Professional Appointment Booking System (PABS)
- *
- * Purpose:
- * Creates the confirmation email sent
- * to the customer.
- **************************************************/
-
-$startDate = new DateTime($booking['start']);
-$endDate = new DateTime($booking['end']);
-
-$date = $startDate->format('l j F Y');
-
-$time =
-    $startDate->format('g:i A') .
-    ' - ' .
-    $endDate->format('g:i A');
+require_once __DIR__ . '/../helpers/date-helper.php';
 
 require __DIR__ . '/email-header.php';
 
@@ -37,11 +19,24 @@ Hello
 
 Thank you for your booking.
 
-Your appointment has been confirmed.
+Your appointment has been successfully confirmed.
 
 </p>
 
 <table>
+
+<tr>
+<td class="label">Booking Reference</td>
+<td>
+
+<strong>
+
+<?= htmlspecialchars($booking['bookingReference']) ?>
+
+</strong>
+
+</td>
+</tr>
 
 <tr>
 <td class="label">Service</td>
@@ -50,17 +45,28 @@ Your appointment has been confirmed.
 
 <tr>
 <td class="label">Date</td>
-<td><?= $date ?></td>
+<td><?= formatAppointmentDate($booking['start']) ?></td>
 </tr>
 
 <tr>
 <td class="label">Time</td>
-<td><?= $time ?></td>
+<td><?= formatAppointmentTime(
+    $booking['start'],
+    $booking['end']
+) ?></td>
 </tr>
 
 <tr>
 <td class="label">Notes</td>
-<td><?= nl2br(htmlspecialchars($booking['customerNotes'])) ?></td>
+<td>
+
+<?= nl2br(
+    htmlspecialchars(
+        $booking['customerNotes'] ?? ''
+    )
+) ?>
+
+</td>
 </tr>
 
 </table>
@@ -69,13 +75,13 @@ Your appointment has been confirmed.
 
 <p>
 
-If you need to change or cancel your appointment, please contact us as soon as possible.
+If you need to amend or cancel your appointment, please contact us quoting your booking reference.
 
 </p>
 
 <p>
 
-We look forward to seeing you.
+We look forward to welcoming you.
 
 </p>
 
