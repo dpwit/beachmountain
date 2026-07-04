@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Beach Mountain | Appointment Booking</title>
+    <title>Beach Mountain | Ski Servicing Appointment Booking</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Beach Mountain ski servicing booking calendar.">
+    <meta name="description" content="Beach Mountain ski servicing appointment booking calendar.">
 	<link rel="stylesheet" href="../src/main.css">
     <link rel="stylesheet" href="../src/CalendarStyles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,7 +39,6 @@
         };
     </script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
-
     <script type="module" src="/booking-system/js/firebase.js"></script>
     <script type="module" src="/booking-system/js/app.js"></script>
 </head>
@@ -51,20 +50,16 @@
         <h1>Appointment Booking</h1>
         <p>Booking calendar functionality
             <ul>
-                <li>Calendar to show available slots that can be booked by a client - DONE</li>
-                <li>Calendar to show booked / unavailable slots - DONE</li>
-                <li>Client can add new booking to calendar - DONE</li>
-                <li>Me / client can view existing bookings - DONE</li>
-                <li>Client can edit existing bookings</li>
-                <li>Client can delete existing bookings</li>
-                <li>email booking details to client</li>
-                <li>email booking details to me</li>
                 <li>Ability for me to block out unavailable dates in calendar</li>
             </ul>
         </p>
 
-        <h2>h2 heading</h2>
-            
+        <h2>Services and prices</h2>
+
+        <p>Professional ski servicing, including base grinding, edge sharpening, hot waxing and reairs. Keeps your equipment performing optimally and prolongs its lifespan. Typically prices range from £30 for a simple wax to £60+ for a full service. See prices blah blah blah (link to a pricing page).</p>
+        
+        <h2>Appointment booking calendar</h2>
+        
         <div class="calendar-container">
             <div id="calendar-new"></div>
 
@@ -82,17 +77,16 @@
                         <strong id="selectedTime"></strong>
                         </p>
 
-                        <label>Name</label>
+                        <label>Name:</label>
                         <input type="text" id="customerName" required>
 
-                        <label>Email</label>
+                        <label>Email:</label>
                         <input type="email" id="customerEmail" required>
 
-                        <label>Phone</label>
+                        <label>Phone:</label>
                         <input type="tel" id="customerPhone">
 
-                        <label>Service Required</label>
-                        <!-- <input type="text" id="serviceRequired" required> -->
+                        <label>Service Required:</label>
                         <select name="service" id="serviceRequired" class="select-height">
                             <option value="Please choose">Please choose...</option>
                             <option value="Wax only">Wax only</option>
@@ -102,11 +96,11 @@
                             <option value="Full service">Full service</option>
                         </select>
 
-                        <label>Notes</label>
-                        <textarea id="customerNotes"></textarea>
+                        <label>Notes:</label>
+                        <textarea id="customerNotes" placeholder="In your own words, add anything you think might be relevant here..."></textarea>
 
                         <button class="btnBrand" type="submit">
-                            Book Appointment
+                            Book your appointment
                         </button>
                         <button
                             type="button"
