@@ -10,6 +10,7 @@
 import { saveBooking, updateBooking, hasBookingConflict, deleteBooking } from "../booking.js";
 import { showSuccess, showError } from "../notifications.js";
 import { sendBookingEmails } from "./emailService.js";
+import { getCurrentUser } from "../userSession.js";
 
 /**************************************************
  * Create a booking
@@ -38,12 +39,17 @@ export async function createBooking(booking) {
 
         const docRef = await saveBooking(booking);
 
+        const user = getCurrentUser();
+
         const newBooking = {
             ...booking,
-            id: docRef.id
+            id: docRef.id,
+            userId: user?.uid
         };
 
         // Dispatch event FIRST (before returning)
+        console.log("booking.userId =", booking.userId);
+
         document.dispatchEvent(
             new CustomEvent("bookingCreated", {
                 detail: newBooking

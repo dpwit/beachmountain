@@ -8,6 +8,26 @@
  * FullCalendar events.
  **************************************************/
 
+import { getCurrentUser } from "./userSession.js";
+
+function getBookingTitle(booking) {
+
+    const user = getCurrentUser();
+
+    // Nobody logged in
+    if (!user) {
+        return "Booked";
+    }
+
+    // Owner of this booking
+    if (booking.userId === user.uid) {
+        return "My Appointment";
+    }
+
+    // Everyone else's booking
+    return "Booked";
+}
+
 /**************************************************
  * Convert Firebase Timestamp to Date
  **************************************************/
@@ -32,7 +52,7 @@ export function bookingToCalendarEvent(booking) {
 
         id: booking.id,
 
-        title: "Booked",
+        title: getBookingTitle(booking),
 
         start: convertToDate(booking.start),
 
