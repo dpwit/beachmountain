@@ -176,13 +176,14 @@ Retrieved 2026-06-14, License - CC BY-SA 4.0
 
 .btnBrand {
   border: #90D5FF;
+  border-radius: 8px;
   background-color: #90D5FF;
   cursor: pointer;
-  margin-top: 16px;
 }
 
 .btnBrandDelete {
   border: #ff080e;
+  border-radius: 8px;
   background-color: #ff080e;
   color: white;
   cursor: pointer;
@@ -192,4 +193,11 @@ Retrieved 2026-06-14, License - CC BY-SA 4.0
 .bookingForm button, 
 .bookingForm input[type="submit"] {
   border-radius: 30px;
+}
+
+.auth-logo {
+  width: 24px;
+  height: 21.43px;
+  /* margin: 1em; */
+  vertical-align: middle;
 }
