@@ -9,11 +9,6 @@
  * Author: <Your Name>
  **************************************************/
 
-import {
-    getAuth,
-    signInAnonymously
-} from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
-
 import { auth } from "./firebase.js";
 
 import {
@@ -31,34 +26,6 @@ import {
     updateProfile
 
 } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
-
-/**************************************************
- * Authenticate user anonymously
- **************************************************/
-export async function authenticate() {
-
-    const auth = getAuth();
-
-    try {
-
-        await signInAnonymously(auth);
-
-        console.log("✓ Anonymous user signed in");
-
-        return auth.currentUser;
-
-    } catch (error) {
-
-        console.error(
-            "Authentication failed:",
-            error
-        );
-
-        throw error;
-
-    }
-
-}
 
 /**************************************************
  * Register

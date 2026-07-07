@@ -62,7 +62,7 @@ function showLoggedIn(user) {
     userPanel.innerHTML = `
 
         <p>
-            Welcome ${user.displayName || user.email}
+            Welcome ${user.displayName ?? user.email ?? "Account"}
         </p>
 
         <button

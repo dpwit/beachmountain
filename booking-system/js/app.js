@@ -1,4 +1,3 @@
-import { authenticate } from "./auth.js";
 import { loadBookings } from "./booking.js";
 import { createCalendar, convertToDate } from "./calendar.js";
 import { initialiseModal } from "./modal.js";
@@ -13,8 +12,6 @@ let calendar;
 document.addEventListener("DOMContentLoaded", async () => {
 
     try {
-
-        await authenticate();
 
         initialiseAuthentication();
 
