@@ -1,9 +1,9 @@
 import { APP_CONFIG } from "./config.js";
-import { formatBookingTitle } from "./utils.js";
 import { openBookingModal } from "./modal.js";
 import { hasBookingConflict } from "./booking.js";
 import { Timestamp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
 import { showError } from "./notifications.js";
+import { bookingToCalendarEvent } from "./bookingEventMapper.js";
 
 export function createCalendar(calendarElement, bookings) {
 
@@ -60,21 +60,9 @@ export function createCalendar(calendarElement, bookings) {
 
     bookings.forEach((booking) => {
 
-        calendar.addEvent({
-            id: booking.id,
-            title: formatBookingTitle(booking),
-            start: convertToDate(booking.start),
-            end: convertToDate(booking.end),
-            extendedProps: {
-
-                customerName: booking.customerName,
-                customerEmail: booking.customerEmail,
-                customerPhone: booking.customerPhone,
-                serviceRequired: booking.serviceRequired,
-                customerNotes: booking.customerNotes
-
-            }
-        });
+        calendar.addEvent(
+            bookingToCalendarEvent(booking)
+        );
 
     });
 

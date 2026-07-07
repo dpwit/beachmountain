@@ -3,6 +3,7 @@ import { loadBookings } from "./booking.js";
 import { createCalendar, convertToDate } from "./calendar.js";
 import { initialiseModal } from "./modal.js";
 import { showSuccess } from "./notifications.js";
+import { bookingToCalendarEvent } from "./bookingEventMapper.js";
 
 let calendar;
 
@@ -29,18 +30,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             console.log("Booking received:", booking);
 
-            const start = convertToDate(booking.start);
-            const end = convertToDate(booking.end);
-
-            console.log("Start:", start);
-            console.log("End:", end);
-
-            const addedEvent = calendar.addEvent({
-                id: booking.id,
-                title: `${booking.customerName} - ${booking.serviceRequired}`,
-                start: start,
-                end: end
-            });
+            const addedEvent = calendar.addEvent(
+                bookingToCalendarEvent(booking)
+            );
 
             console.log("Added event:", addedEvent);
             console.log("Calendar now has", calendar.getEvents().length, "events");
