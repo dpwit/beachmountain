@@ -115,6 +115,115 @@
                 </div>
 
             </div>
+
+            <!-- Authentication Modal -->
+            <div id="authModal" class="modal">
+
+                <div class="modal-content">
+
+                    <span id="closeAuthModal" class="close">&times;</span>
+
+                    <div class="auth-header">
+
+                        <img
+                            src="/dist/img/Beach-Mountain-logo-black-image.png"
+                            alt="Beach Mountain"
+                            class="auth-logo">
+
+                        <h2 id="authTitle">
+                            Sign In
+                        </h2>
+
+                        <p id="authSubtitle">
+                            Sign in to manage your appointments.
+                        </p>
+
+                    </div>
+
+                    <form id="authForm">
+
+                        <div id="nameGroup" style="display:none;">
+
+                            <label>Name</label>
+
+                            <input
+                                type="text"
+                                id="authName">
+
+                        </div>
+
+                        <label>Email</label>
+
+                        <input
+                            type="email"
+                            id="authEmail"
+                            required>
+
+                        <div id="passwordGroup">
+
+                            <label>Password</label>
+
+                            <input
+                                type="password"
+                                id="authPassword">
+
+                        </div>
+
+                        <div
+                            id="confirmPasswordGroup"
+                            style="display:none;">
+
+                            <label>Confirm Password</label>
+
+                            <input
+                                type="password"
+                                id="authConfirmPassword">
+
+                        </div>
+
+                        <button
+                            class="btnBrand"
+                            id="authSubmitButton"
+                            type="submit">
+
+                            Sign In
+
+                        </button>
+
+                    </form>
+
+                    <div class="auth-links">
+
+                        <button
+                            id="showRegister"
+                            class="linkButton">
+
+                            Create Account
+
+                        </button>
+
+                        <button
+                            id="showLogin"
+                            class="linkButton"
+                            style="display:none;">
+
+                            Back to Sign In
+
+                        </button>
+
+                        <button
+                            id="showForgotPassword"
+                            class="linkButton">
+
+                            Forgot Password?
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
         </div>
     </div>
     <!-- Footer start -->

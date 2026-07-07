@@ -4,6 +4,8 @@ import { createCalendar, convertToDate } from "./calendar.js";
 import { initialiseModal } from "./modal.js";
 import { showSuccess } from "./notifications.js";
 import { bookingToCalendarEvent } from "./bookingEventMapper.js";
+import { initialiseAuthModal, openAuthModal } from "./services/authModal.js";
+import { initialiseAuthentication } from "./services/authService.js";
 
 let calendar;
 
@@ -12,6 +14,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
 
         await authenticate();
+
+        initialiseAuthentication();
 
         const bookings = await loadBookings();
 
@@ -22,6 +26,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             createCalendar(calendarElement, bookings);
 
         initialiseModal();
+
+        initialiseAuthModal();
 
         // IMPORTANT: attach listener AFTER calendar exists
         document.addEventListener("bookingCreated", (event) => {
@@ -112,5 +118,19 @@ document.addEventListener(
         console.error(error);
 
     }
+
+    openAuthModal();
+
+    document.addEventListener(
+    "userLoggedIn",
+    (event)=>{
+
+        console.log(
+            "Logged in user:",
+            event.detail
+        );
+
+    }
+);
 
 });

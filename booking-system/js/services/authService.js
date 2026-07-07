@@ -15,54 +15,207 @@ import {
 
     logoutUser,
 
+    resetPassword,
+
     listenForAuthChanges
 
 } from "../auth.js";
 
+import {
+    showSuccess,
+    showError
+} from "../notifications.js";
+
+import {
+
+    setCurrentUser,
+    clearCurrentUser
+
+} from "../userSession.js";
+
+
 /**************************************************
- * Initialise Authentication
+ * Register
+ **************************************************/
+
+export async function registerAccount(
+    name,
+    email,
+    password
+) {
+
+    try {
+
+        const user =
+            await registerUser(
+                name,
+                email,
+                password
+            );
+
+
+        showSuccess(
+            "Account created successfully."
+        );
+
+
+        return user;
+
+
+    }
+    catch(error) {
+
+        console.error(error);
+
+        showError(
+            error.message
+        );
+
+        throw error;
+
+    }
+
+}
+
+
+/**************************************************
+ * Login
+ **************************************************/
+
+export async function signIn(
+    email,
+    password
+) {
+
+    try {
+
+        const user =
+            await loginUser(
+                email,
+                password
+            );
+
+
+        showSuccess(
+            "Welcome back."
+        );
+
+
+        return user;
+
+
+    }
+    catch(error) {
+
+        console.error(error);
+
+        showError(
+            error.message
+        );
+
+        throw error;
+
+    }
+
+}
+
+
+/**************************************************
+ * Logout
+ **************************************************/
+
+export async function signOutAccount() {
+
+    await logoutUser();
+
+}
+
+
+/**************************************************
+ * Password Reset
+ **************************************************/
+
+export async function sendPasswordReset(
+    email
+) {
+
+    try {
+
+        await resetPassword(
+            email
+        );
+
+
+        showSuccess(
+            "Password reset email sent."
+        );
+
+
+    }
+    catch(error) {
+
+        console.error(error);
+
+        showError(
+            error.message
+        );
+
+    }
+
+}
+
+
+/**************************************************
+ * Authentication listener
  **************************************************/
 
 export function initialiseAuthentication() {
 
-    listenForAuthChanges((user) => {
 
-        if (user) {
+    listenForAuthChanges(
 
-            document.dispatchEvent(
+        (user) => {
 
-                new CustomEvent(
-                    "userLoggedIn",
-                    {
-                        detail: user
-                    }
-                )
 
-            );
+            if(user) {
+
+
+                setCurrentUser(user);
+
+
+                document.dispatchEvent(
+
+                    new CustomEvent(
+                        "userLoggedIn",
+                        {
+                            detail:user
+                        }
+                    )
+
+                );
+
+
+            }
+            else {
+
+
+                clearCurrentUser();
+
+
+                document.dispatchEvent(
+
+                    new CustomEvent(
+                        "userLoggedOut"
+                    )
+
+                );
+
+
+            }
+
 
         }
-        else {
 
-            document.dispatchEvent(
-
-                new CustomEvent(
-                    "userLoggedOut"
-                )
-
-            );
-
-        }
-
-    });
+    );
 
 }
-
-export {
-
-    registerUser,
-
-    loginUser,
-
-    logoutUser
-
-};
