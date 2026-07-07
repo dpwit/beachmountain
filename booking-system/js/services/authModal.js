@@ -92,7 +92,7 @@ export function showLogin() {
 
 
     authSubtitle.textContent =
-        "Sign in to manage your appointments.";
+        "Please sign in to manage your appointments. If you don't have an account, please create one.";
 
 
     nameGroup.style.display =
