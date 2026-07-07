@@ -148,3 +148,9 @@ button {
 .select-height {
   height: 48px;
 }
+
+#userPanel p {
+
+    margin-right:16px;
+
+}

@@ -6,6 +6,7 @@ import { showSuccess } from "./notifications.js";
 import { bookingToCalendarEvent } from "./bookingEventMapper.js";
 import { initialiseAuthModal, openAuthModal } from "./services/authModal.js";
 import { initialiseAuthentication } from "./services/authService.js";
+import { initialiseAuthUI } from "./ui/authUI.js";
 
 let calendar;
 
@@ -16,6 +17,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         await authenticate();
 
         initialiseAuthentication();
+
+        initialiseAuthUI();
 
         const bookings = await loadBookings();
 
@@ -119,7 +122,7 @@ document.addEventListener(
 
     }
 
-    openAuthModal();
+    // openAuthModal();
 
     document.addEventListener(
     "userLoggedIn",
