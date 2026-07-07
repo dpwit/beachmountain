@@ -18,6 +18,8 @@ import {
     where
 } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
 
+import { getCurrentUser } from "./userSession.js";
+
 const COLLECTION_NAME = "appointments";
 
 /**************************************************
@@ -99,11 +101,30 @@ export async function hasBookingConflict(start, end) {
  **************************************************/
 export async function saveBooking(booking) {
 
+
+    const user =
+        getCurrentUser();
+
+
+    if (!user) {
+
+        throw new Error(
+            "User must be signed in before creating a booking."
+        );
+
+    }
+
+
     return await addDoc(
         collection(db, COLLECTION_NAME),
         {
+
             ...booking,
+
+            userId: user.uid,
+
             createdAt: serverTimestamp()
+
         }
     );
 
