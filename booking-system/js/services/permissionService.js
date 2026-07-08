@@ -37,3 +37,42 @@ export function isBookingOwner(
     return booking.userId === user.uid;
 
 }
+
+/**************************************************
+ * Can user edit booking?
+ **************************************************/
+export function canEditBooking(
+    booking
+) {
+
+    return isBookingOwner(
+        booking
+    );
+
+}
+
+/**************************************************
+ * Can user delete booking?
+ **************************************************/
+export function canDeleteBooking(
+    booking
+) {
+
+    return isBookingOwner(
+        booking
+    );
+
+}
+
+/**************************************************
+ * Can user view booking details?
+ **************************************************/
+export function canViewBookingDetails(
+    booking
+) {
+
+    return isBookingOwner(
+        booking
+    );
+
+}   
