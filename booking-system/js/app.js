@@ -9,6 +9,33 @@ import { initialiseAuthUI } from "./ui/authUI.js";
 
 let calendar;
 
+function refreshCalendarTitles() {
+
+    calendar.getEvents().forEach((event) => {
+
+        const booking = {
+
+            id: event.id,
+
+            start: event.start,
+            end: event.end,
+
+            ...event.extendedProps
+
+        };
+
+        const updated =
+            bookingToCalendarEvent(booking);
+
+        event.setProp(
+            "title",
+            updated.title
+        );
+
+    });
+
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
 
     try {
@@ -24,6 +51,16 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         calendar =
             createCalendar(calendarElement, bookings);
+
+        document.addEventListener(
+    "userLoggedIn",
+    refreshCalendarTitles
+);
+
+document.addEventListener(
+    "userLoggedOut",
+    refreshCalendarTitles
+);
 
         initialiseModal();
 

@@ -56,7 +56,18 @@ export function bookingToCalendarEvent(booking) {
 
         start: convertToDate(booking.start),
 
-        end: convertToDate(booking.end)
+        end: convertToDate(booking.end),
+
+        extendedProps: {
+
+            customerName: booking.customerName,
+            customerEmail: booking.customerEmail,
+            customerPhone: booking.customerPhone,
+            customerNotes: booking.customerNotes,
+            serviceRequired: booking.serviceRequired,
+            userId: booking.userId
+
+        }
 
     };
 
