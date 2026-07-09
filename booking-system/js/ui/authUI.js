@@ -35,7 +35,7 @@ function showLoggedOut() {
             id="signInButton"
             class="btnBrand">
 
-            Sign In
+            Sign In/Create Account
 
         </button>
 
