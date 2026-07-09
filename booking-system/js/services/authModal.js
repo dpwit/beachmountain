@@ -119,7 +119,7 @@ export function showLogin() {
         "block";
 
     passwordGroup.style.display =
-    "block";
+    "inline-flex";
 
 }
 
@@ -142,11 +142,11 @@ export function showRegister() {
 
 
     nameGroup.style.display =
-        "block";
+        "inline-flex";
 
 
     confirmPasswordGroup.style.display =
-        "block";
+        "inline-flex";
 
 
     authSubmitButton.textContent =
@@ -165,7 +165,7 @@ export function showRegister() {
         "none";
     
     passwordGroup.style.display =
-    "block";
+    "inline-flex";
 
 }
 

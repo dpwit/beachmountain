@@ -201,3 +201,15 @@ Retrieved 2026-06-14, License - CC BY-SA 4.0
   /* margin: 1em; */
   vertical-align: middle;
 }
+
+.width25 {
+  width: 25%;
+}
+
+.width50 {
+  width: 50%;
+}
+
+.width75 {
+  width: 75%;
+}
