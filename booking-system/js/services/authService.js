@@ -7,32 +7,10 @@
  * Handles authentication workflow.
  **************************************************/
 
-import {
-
-    registerUser,
-
-    loginUser,
-
-    logoutUser,
-
-    resetPassword,
-
-    listenForAuthChanges
-
-} from "../auth.js";
-
-import {
-    showSuccess,
-    showError
-} from "../notifications.js";
-
-import {
-
-    setCurrentUser,
-    clearCurrentUser
-
-} from "../userSession.js";
-
+import { registerUser, loginUser, logoutUser, resetPassword, listenForAuthChanges } from "../auth.js";
+import { showSuccess, showError } from "../notifications.js";
+import { setCurrentUser, clearCurrentUser } from "../userSession.js";
+import { createUserProfile } from "./userService.js";
 
 /**************************************************
  * Register
@@ -52,7 +30,8 @@ export async function registerAccount(
                 email,
                 password
             );
-
+        
+        await createUserProfile(user);
 
         showSuccess(
             "Account created successfully."
