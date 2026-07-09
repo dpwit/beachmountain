@@ -8,20 +8,36 @@
  * FullCalendar events.
  **************************************************/
 
-import { isBookingOwner } from "./services/permissionService.js";
+import { isBookingOwner, isAdmin } from "./services/permissionService.js";
+import { getCurrentUser } from "./userSession.js";
 
-function getBookingTitle(
-    booking
-) {
+function getBookingTitle(booking) {
 
-    if (
-        isBookingOwner(booking)
-    ) {
+    const user =
+        getCurrentUser();
+
+    // Nobody logged in
+    if (!user) {
+
+        return "Booked";
+
+    }
+
+    // Admin sees everything
+    if (isAdmin()) {
+
+        return `${booking.customerName} - ${booking.serviceRequired}`;
+
+    }
+
+    // Owner
+    if (booking.userId === user.uid) {
 
         return "My Appointment";
 
     }
 
+    // Other customers
     return "Booked";
 
 }

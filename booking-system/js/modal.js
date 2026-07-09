@@ -8,6 +8,7 @@
  **************************************************/
 import { createBooking, updateExistingBooking, deleteExistingBooking } from "./services/bookingService.js";
 import { Timestamp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
+import { canViewBookingDetails } from "./services/permissionService.js";
 
 let modal;
 let bookingForm;
@@ -166,6 +167,24 @@ function populateBookingForm(event) {
  * Configure edit mode
  **************************************************/
 function enableEditMode(event) {
+
+    const booking = {
+
+        id: event.id,
+
+        ...event.extendedProps
+
+    };
+
+     if (
+        !canViewBookingDetails(
+            booking
+        )
+    ) {
+
+        return;
+
+    }
 
     editMode = true;
 
