@@ -17,6 +17,12 @@ import { db } from "../firebase.js";
 
 export async function createUserProfile(user) {
 
+    console.log(
+        "Creating user profile:",
+        user.uid,
+        user.email
+    );
+
     const userRef = doc(
         db,
         "users",
@@ -27,21 +33,26 @@ export async function createUserProfile(user) {
         await getDoc(userRef);
 
     if (snapshot.exists()) {
+
+        console.log(
+            "User profile already exists"
+        );
+
         return;
+
     }
 
     await setDoc(
         userRef,
         {
-            name:
-                user.displayName,
-
-            email:
-                user.email,
-
-            role:
-                "customer"
+            name: user.displayName,
+            email: user.email,
+            role: "customer"
         }
+    );
+
+    console.log(
+        "User profile created successfully"
     );
 
 }
