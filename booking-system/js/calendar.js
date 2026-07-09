@@ -4,6 +4,7 @@ import { hasBookingConflict } from "./booking.js";
 import { Timestamp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
 import { showError } from "./notifications.js";
 import { bookingToCalendarEvent } from "./bookingEventMapper.js";
+import { canViewBookingDetails } from "./services/permissionService.js";
 
 export function createCalendar(calendarElement, bookings) {
 
@@ -46,6 +47,20 @@ export function createCalendar(calendarElement, bookings) {
 
         eventClick: async function(info) {
 
+    const booking = {
+
+        id: info.event.id,
+
+        ...info.event.extendedProps
+
+    };
+
+    if (
+        canViewBookingDetails(
+            booking
+        )
+    ) {
+
         openBookingModal(
             info.event.start,
             info.event.end,
@@ -53,6 +68,15 @@ export function createCalendar(calendarElement, bookings) {
         );
 
     }
+    else {
+
+        showError(
+            "You can only view your own appointments."
+        );
+
+    }
+
+}
 
     });
 

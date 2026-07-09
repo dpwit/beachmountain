@@ -58,14 +58,13 @@ export function bookingToCalendarEvent(booking) {
 
         extendedProps: {
 
-            customerName: booking.customerName,
-            customerEmail: booking.customerEmail,
-            customerPhone: booking.customerPhone,
-            customerNotes: booking.customerNotes,
-            serviceRequired: booking.serviceRequired,
-            userId: booking.userId
-
-        }
+        userId: booking.userId,
+        customerName: booking.customerName,
+        customerEmail: booking.customerEmail,
+        customerPhone: booking.customerPhone,
+        serviceRequired: booking.serviceRequired,
+        customerNotes: booking.customerNotes
+    }
 
     };
 

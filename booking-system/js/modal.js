@@ -109,44 +109,16 @@ export function openBookingModal(start, end, event = null) {
 
         if (event) {
 
-            editMode = true;
-            editingBookingId = event.id;
+    enableEditMode(event);
 
-            customerName.value =
-                event.extendedProps.customerName;
+}
+else {
 
-            customerEmail.value =
-                event.extendedProps.customerEmail;
+    enableCreateMode();
 
-            customerPhone.value =
-                event.extendedProps.customerPhone;
+}
 
-            serviceRequired.value =
-                event.extendedProps.serviceRequired;
-
-            customerNotes.value =
-                event.extendedProps.customerNotes;
-
-            document.querySelector(
-            "#bookingForm button[type='submit']"
-            ).textContent = "Save your changes";
-
-            deleteButton.style.display = "inline-block";
-
-                }
-
-        else {
-
-            editMode = false;
-            editingBookingId = null;
-
-            document.querySelector(
-            "#bookingForm button[type='submit']"
-            ).textContent = "Book new appointment";
-
-            deleteButton.style.display = "none";
-
-        }
+        
 
     modal.style.display = "flex";
 
@@ -165,6 +137,70 @@ export function closeBookingModal() {
 
     selectedStart = null;
     selectedEnd = null;
+
+}
+
+/**************************************************
+ * Populate booking form
+ **************************************************/
+function populateBookingForm(event) {
+
+    customerName.value =
+        event.extendedProps.customerName;
+
+    customerEmail.value =
+        event.extendedProps.customerEmail;
+
+    customerPhone.value =
+        event.extendedProps.customerPhone;
+
+    serviceRequired.value =
+        event.extendedProps.serviceRequired;
+
+    customerNotes.value =
+        event.extendedProps.customerNotes;
+
+}
+
+/**************************************************
+ * Configure edit mode
+ **************************************************/
+function enableEditMode(event) {
+
+    editMode = true;
+
+    editingBookingId = event.id;
+
+    populateBookingForm(event);
+
+    document.querySelector(
+        "#bookingForm button[type='submit']"
+    ).textContent =
+        "Save your changes";
+
+    deleteButton.style.display =
+        "inline-block";
+
+}
+
+/**************************************************
+ * Configure create mode
+ **************************************************/
+function enableCreateMode() {
+
+    editMode = false;
+
+    editingBookingId = null;
+
+    bookingForm.reset();
+
+    document.querySelector(
+        "#bookingForm button[type='submit']"
+    ).textContent =
+        "Book new appointment";
+
+    deleteButton.style.display =
+        "none";
 
 }
 
