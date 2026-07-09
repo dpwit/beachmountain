@@ -56,3 +56,36 @@ export async function createUserProfile(user) {
     );
 
 }
+
+/**************************************************
+ * Get user profile
+ **************************************************/
+export async function getUserProfile(uid) {
+
+    const userRef =
+        doc(
+            db,
+            "users",
+            uid
+        );
+
+    const snapshot =
+        await getDoc(userRef);
+
+
+    if (!snapshot.exists()) {
+
+        return null;
+
+    }
+
+
+    return {
+
+        uid: uid,
+
+        ...snapshot.data()
+
+    };
+
+}

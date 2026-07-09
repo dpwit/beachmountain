@@ -45,8 +45,10 @@ export function canEditBooking(
     booking
 ) {
 
-    return isBookingOwner(
-        booking
+    return (
+        isAdmin()
+        ||
+        isBookingOwner(booking)
     );
 
 }
@@ -58,8 +60,10 @@ export function canDeleteBooking(
     booking
 ) {
 
-    return isBookingOwner(
-        booking
+    return (
+        isAdmin()
+        ||
+        isBookingOwner(booking)
     );
 
 }
@@ -71,8 +75,26 @@ export function canViewBookingDetails(
     booking
 ) {
 
-    return isBookingOwner(
-        booking
+    return (
+        isAdmin()
+        ||
+        isBookingOwner(booking)
     );
 
-}   
+} 
+
+/**************************************************
+ * Check if current user is admin
+ **************************************************/
+export function isAdmin() {
+
+    const user =
+        getCurrentUser();
+
+
+    return (
+        user &&
+        user.role === "admin"
+    );
+
+}

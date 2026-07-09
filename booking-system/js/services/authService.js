@@ -9,8 +9,8 @@
 
 import { registerUser, loginUser, logoutUser, resetPassword, listenForAuthChanges } from "../auth.js";
 import { showSuccess, showError } from "../notifications.js";
-import { setCurrentUser, clearCurrentUser } from "../userSession.js";
-import { createUserProfile } from "./userService.js";
+import { setCurrentUser, clearCurrentUser,  } from "../userSession.js";
+import { createUserProfile, getUserProfile } from "./userService.js";
 
 /**************************************************
  * Register
@@ -153,28 +153,46 @@ export function initialiseAuthentication() {
 
     listenForAuthChanges(
 
-        (user) => {
+        async (user) => {
 
 
             if(user) {
 
 
-                setCurrentUser(user);
+    const profile =
+        await getUserProfile(
+            user.uid
+        );
 
 
-                document.dispatchEvent(
+    const userWithProfile = {
 
-                    new CustomEvent(
-                        "userLoggedIn",
-                        {
-                            detail:user
-                        }
-                    )
+        ...user,
 
-                );
+        role:
+            profile.role
+
+    };
 
 
+    setCurrentUser(
+        userWithProfile
+    );
+
+
+    document.dispatchEvent(
+
+        new CustomEvent(
+            "userLoggedIn",
+            {
+                detail:userWithProfile
             }
+        )
+
+    );
+
+
+}
             else {
 
 
