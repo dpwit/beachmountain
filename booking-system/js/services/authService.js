@@ -169,8 +169,7 @@ export function initialiseAuthentication() {
 
         ...user,
 
-        role:
-            profile.role
+        role: profile?.role ?? "customer"
 
     };
 
