@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<title>Beach Mountain | Product Configurator</title>
-		<link rel="stylesheet" href="../src/main.css">
+		<link rel="preload" href="../src/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 		<script>
             function includeHTML() {
             var z, i, elmnt, file, xhttp;
@@ -34,67 +34,71 @@
         </script>
 	</head>
 	<body>
-		<!-- Header start -->
+		<header>
 			<div w3-include-html="header.html"></div> 
-        <!-- Header end -->
+		</header>
 
-		<h1>Product configurator</h1>
+		<main>
+			<div class="margin-left-16">
+				<h1>Product configurator</h1>
 
-		<!-- Root element -->
-		<div id="app"></div>
+				<!-- Root element -->
+				<div id="app"></div>
 
-		<h2>Choose how the Product looks</h2>
+				<h2>Choose how the Product looks</h2>
 
-		<p>Change product colours based on options chosen</p>
+				<p>Change product colours based on options chosen</p>
 
-		<p>In this case JavaScript changes the value of the src (source) attribute of an image.</p>
+				<p>In this case JavaScript changes the value of the src (source) attribute of an image.</p>
 
-		<div style="display: inline-flex;">
+				<div style="display: inline-flex;">
 
-			<div style="width: 50%">
-				<p><input type="radio" id="eyesBlue" name="eyes" onclick="document.getElementById('productLogo').src='dist/img/DPW_Skull_Logo_Mask_Blue.jpg'">Blue eyes</p>
-				<p><input type="radio" id="eyesGreen" name="eyes" onclick="document.getElementById('productLogo').src='dist/img/DPW_Skull_Logo_Mask_Green.jpg'">Green eyes</p>
-				<p><input type="radio" id="eyesGrey" name="eyes" onclick="document.getElementById('productLogo').src='dist/img/DPW_Skull_Logo_Mask_Grey.jpg'">Grey eyes</p>
+					<div class="width50">
+						<p><input type="radio" id="eyesBlue" name="eyes" onclick="document.getElementById('productLogo').src='dist/img/DPW_Skull_Logo_Mask_Blue.jpg'">Blue eyes</p>
+						<p><input type="radio" id="eyesGreen" name="eyes" onclick="document.getElementById('productLogo').src='dist/img/DPW_Skull_Logo_Mask_Green.jpg'">Green eyes</p>
+						<p><input type="radio" id="eyesGrey" name="eyes" onclick="document.getElementById('productLogo').src='dist/img/DPW_Skull_Logo_Mask_Grey.jpg'">Grey eyes</p>
 
-				<div id="appButton"></div>
-				<script src="dist/main.js"></script>
+						<div id="appButton"></div>
+						<script src="dist/main.js"></script>
+					</div>
+
+					<div class="width50">
+						<img class="zoom" id="productLogo" src="dist/img/DPW_Skull_Logo_Mask.jpg" height="200" width="200">
+						<p style="text-align: center;">Hover over image to zoom</p>
+					</div>
+				</div>
+
+				<h2>Logo configurator</h2>
+
+				<p>Change logo colours based on options chosen</p>
+
+				<p>In this case JavaScript changes the value of the src (source) attribute of an image.</p>
+
+				<div style="display: inline-flex;">
+
+					<div class="width50">
+						<p><input type="radio" id="logoRed" name="logo" onclick="document.getElementById('bmLogo').src='dist/img/Beach-Mountain-logo-red.png'">Change logo to red</p>
+						<p><input type="radio" id="logoGreen" name="logo" onclick="document.getElementById('bmLogo').src='dist/img/Beach-Mountain-logo-green.png'">Change logo to green</p>
+
+						<p><button onclick="
+						document.getElementById('bmLogo').src='dist/img/Beach-Mountain-logo-blue.png';
+						document.getElementById('logoGreen').checked = false;
+						document.getElementById('logoRed').checked = false;"
+						>Reset to original</button></p>
+
+					</div>
+
+					<div class="width50">
+						<img class="zoom" id="bmLogo" src="dist/img/Beach-Mountain-logo-blue.png" height="227" width="397">
+						<p style="text-align: center;">Hover over image to zoom</p>
+					</div>
+				</div>
 			</div>
+		</main>
 
-			<div style="width: 50%">
-				<img class="zoom" id="productLogo" src="dist/img/DPW_Skull_Logo_Mask.jpg" height="200" width="200">
-				<p style="text-align: center;">Hover over image to zoom</p>
-			</div>
-		</div>
-
-		<h2>Logo configurator</h2>
-
-		<p>Change logo colours based on options chosen</p>
-
-		<p>In this case JavaScript changes the value of the src (source) attribute of an image.</p>
-
-		<div style="display: inline-flex;">
-
-			<div style="width: 50%">
-				<p><input type="radio" id="logoRed" name="logo" onclick="document.getElementById('bmLogo').src='dist/img/Beach-Mountain-logo-red.png'">Change logo to red</p>
-				<p><input type="radio" id="logoGreen" name="logo" onclick="document.getElementById('bmLogo').src='dist/img/Beach-Mountain-logo-green.png'">Change logo to green</p>
-
-				<p><button onclick="
-				document.getElementById('bmLogo').src='dist/img/Beach-Mountain-logo-blue.png';
-				document.getElementById('logoGreen').checked = false;
-				document.getElementById('logoRed').checked = false;"
-				>Reset to original</button></p>
-
-			</div>
-
-			<div style="width: 50%">
-				<img class="zoom" id="bmLogo" src="dist/img/Beach-Mountain-logo-blue.png" height="227" width="397">
-				<p style="text-align: center;">Hover over image to zoom</p>
-			</div>
-		</div>
-
-		<!-- Footer start -->
+		<footer>
 			<div w3-include-html="footer.html"></div> 
-        <!-- Footer end -->
+		</footer>
 
 		<script>
        		includeHTML();
