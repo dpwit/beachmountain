@@ -58,8 +58,15 @@
 						<p><input type="radio" id="eyesGreen" name="eyes" onclick="document.getElementById('productLogo').src='dist/img/DPW_Skull_Logo_Mask_Green.jpg'">Green eyes</p>
 						<p><input type="radio" id="eyesGrey" name="eyes" onclick="document.getElementById('productLogo').src='dist/img/DPW_Skull_Logo_Mask_Grey.jpg'">Grey eyes</p>
 
-						<div id="appButton"></div>
-						<script src="dist/main.js"></script>
+						<p>
+							<button onclick="
+							document.getElementById('productLogo').src='dist/img/DPW_Skull_Logo_Mask.jpg';
+							document.getElementById('eyesBlue').checked = false;
+							document.getElementById('eyesGreen').checked = false;
+							document.getElementById('eyesGrey').checked = false;"
+							class="btnBrand padding16">Reset to original
+							</button>
+						</p>
 					</div>
 
 					<div class="width50">
@@ -82,10 +89,10 @@
 
 						<p>
 							<button onclick="
-						document.getElementById('bmLogo').src='dist/img/Beach-Mountain-logo-blue.png';
-						document.getElementById('logoGreen').checked = false;
-						document.getElementById('logoRed').checked = false;"
-						class="btnBrand">Reset to original
+							document.getElementById('bmLogo').src='dist/img/Beach-Mountain-logo-blue.png';
+							document.getElementById('logoGreen').checked = false;
+							document.getElementById('logoRed').checked = false;"
+							class="btnBrand padding16">Reset to original
 							</button>
 						</p>
 						
