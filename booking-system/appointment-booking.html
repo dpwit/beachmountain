@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Beach Mountain | Ski Servicing Appointment Booking</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Beach Mountain ski servicing appointment booking calendar.">
-	<link rel="stylesheet" href="../src/main.css">
-    <link rel="stylesheet" href="../src/CalendarStyles.css">
+	<link rel="preload" href="../src/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="../src/CalendarStyles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
@@ -43,203 +43,205 @@
     <script type="module" src="/booking-system/js/app.js"></script>
 </head>
 <body>
-    <!-- Header start -->
-	<div w3-include-html="../header.html"></div> 
-    <!-- Header end -->
-    <div class="margin-left-16">
-        <h1>Ski service appointment booking</h1>
-        <p>Booking calendar functionality
-            <ul>
-                <li>Ability for me to block out unavailable dates in calendar</li>
-            </ul>
-        </p>
+    <header>
+        <div w3-include-html="../header.html"></div>
+    </header>
+    <main>
+        <div class="margin-left-16">
+            <h1>Ski service appointment booking</h1>
+            <p>Booking calendar functionality
+                <ul>
+                    <li>Ability for me to block out unavailable dates in calendar</li>
+                </ul>
+            </p>
 
-        <h2>Services and prices</h2>
+            <h2>Services and prices</h2>
 
-        <p>Professional ski servicing, including base grinding, edge sharpening, hot waxing and reairs. Keeps your equipment performing optimally and prolongs its lifespan. Typically prices range from £30 for a simple wax to £60+ for a full service. See prices blah blah blah (link to a pricing page).</p>
-        
-        <h2>Ski service appointment booking calendar</h2>
-        
-        <div class="calendar-container">
-            <div id="calendar-new"></div>
+            <p>Professional ski servicing, including base grinding, edge sharpening, hot waxing and reairs. Keeps your equipment performing optimally and prolongs its lifespan. Typically prices range from £30 for a simple wax to £60+ for a full service. See prices blah blah blah (link to a pricing page).</p>
+            
+            <h2>Ski service appointment booking calendar</h2>
+            
+            <div class="calendar-container">
+                <div id="calendar-new"></div>
 
-            <!-- Booking Modal -->
-            <div id="bookingModal" class="modal">
+                <!-- Booking Modal -->
+                <div id="bookingModal" class="modal">
 
-                <div class="modal-content">
+                    <div class="modal-content">
 
-                    <span id="closeModal" class="close">&times;</span>
+                        <span id="closeModal" class="close">&times;</span>
 
-                    <h2>Book Appointment</h2>
+                        <h2>Book Appointment</h2>
 
-                    <form id="bookingForm" class="bookingForm">
-                        <p>You are booking a time slot from:<br>
-                        <strong id="selectedTime"></strong>
-                        </p>
+                        <form id="bookingForm" class="bookingForm">
+                            <p>You are booking a time slot from:<br>
+                            <strong id="selectedTime"></strong>
+                            </p>
 
-                        <label>Name:</label>
-                        <input type="text" id="customerName" required>
+                            <label>Name:</label>
+                            <input type="text" id="customerName" required>
 
-                        <label>Email:</label>
-                        <input type="email" id="customerEmail" required>
+                            <label>Email:</label>
+                            <input type="email" id="customerEmail" required>
 
-                        <label>Phone:</label>
-                        <input type="tel" id="customerPhone">
+                            <label>Phone:</label>
+                            <input type="tel" id="customerPhone">
 
-                        <label>Service Required:</label>
-                        <select name="service" id="serviceRequired" class="select-height">
-                            <option value="Please choose">Please choose...</option>
-                            <option value="Wax only">Wax only</option>
-                            <option value="Edges only">Edges only</option>
-                            <option value="Wax and edges">Wax and edges</option>
-                            <option value="Base repair">Base repair</option>
-                            <option value="Full service">Full service</option>
-                        </select>
+                            <label>Service Required:</label>
+                            <select name="service" id="serviceRequired" class="select-height">
+                                <option value="Please choose">Please choose...</option>
+                                <option value="Wax only">Wax only</option>
+                                <option value="Edges only">Edges only</option>
+                                <option value="Wax and edges">Wax and edges</option>
+                                <option value="Base repair">Base repair</option>
+                                <option value="Full service">Full service</option>
+                            </select>
 
-                        <label>Notes:</label>
-                        <textarea id="customerNotes" placeholder="In your own words, add anything you think might be relevant here..."></textarea>
+                            <label>Notes:</label>
+                            <textarea id="customerNotes" placeholder="In your own words, add anything you think might be relevant here..."></textarea>
 
-                        <button class="btnBrand margin-top-16" type="submit">
-                            Book your appointment
-                        </button>
-                        <button
-                            type="button"
-                            id="deleteBooking"
-                            class="btnBrandDelete"
-                            style="display:none;">
-                            Delete your appointment
-                        </button>
+                            <button class="btnBrand margin-top-16" type="submit">
+                                Book your appointment
+                            </button>
+                            <button
+                                type="button"
+                                id="deleteBooking"
+                                class="btnBrandDelete"
+                                style="display:none;">
+                                Delete your appointment
+                            </button>
 
-                    </form>
-
-                </div>
-
-            </div>
-
-            <!-- Authentication Modal -->
-            <div id="authModal" class="modal">
-
-                <div class="modal-content">
-
-                    <span id="closeAuthModal" class="close">&times;</span>
-
-                    <div class="auth-header">
-
-                        <div class="display-inline-flex align-center auth-header-logo">
-                            <img
-                            src="/dist/img/Beach-Mountain-logo-black-image.png"
-                            alt="Beach Mountain"
-                            class="auth-logo">
-                            <h1 class="logo-text margin-left-16">beach mountain</h1>
-                        </div>
-
-                        <h2 id="authTitle">
-                            Sign In
-                        </h2>
-
-                        <p id="authSubtitle">
-                            Please sign in to manage your appointments.
-                        </p>
+                        </form>
 
                     </div>
 
-                    <form id="authForm">
+                </div>
 
-                        <div id="nameGroup" class="display-inline-flex align-center" style="display:none;">
+                <!-- Authentication Modal -->
+                <div id="authModal" class="modal">
 
-                            <label class="width25">Name</label>
+                    <div class="modal-content">
 
-                            <input
-                                type="text"
-                                id="authName"
-                                class="width75">
+                        <span id="closeAuthModal" class="close">&times;</span>
+
+                        <div class="auth-header">
+
+                            <div class="display-inline-flex align-center auth-header-logo">
+                                <img
+                                src="/dist/img/Beach-Mountain-logo-black-image.png"
+                                alt="Beach Mountain"
+                                class="auth-logo">
+                                <h1 class="logo-text margin-left-16">beach mountain</h1>
+                            </div>
+
+                            <h2 id="authTitle">
+                                Sign In
+                            </h2>
+
+                            <p id="authSubtitle">
+                                Please sign in to manage your appointments.
+                            </p>
 
                         </div>
 
-                        <div class="display-inline-flex align-center">
-                            <label class="width25">Email</label>
-                        
+                        <form id="authForm">
 
-                        <input
-                            type="email"
-                            id="authEmail"
-                            class="width75"
-                            required></div>
+                            <div id="nameGroup" class="display-inline-flex align-center" style="display:none;">
 
-                        <div id="passwordGroup" class="display-inline-flex align-center">
+                                <label class="width25">Name</label>
 
-                            <label class="width25">Password</label>
+                                <input
+                                    type="text"
+                                    id="authName"
+                                    class="width75">
+
+                            </div>
+
+                            <div class="display-inline-flex align-center">
+                                <label class="width25">Email</label>
+                            
 
                             <input
-                                type="password"
-                                id="authPassword"
+                                type="email"
+                                id="authEmail"
                                 class="width75"
-                                required>
+                                required></div>
+
+                            <div id="passwordGroup" class="display-inline-flex align-center">
+
+                                <label class="width25">Password</label>
+
+                                <input
+                                    type="password"
+                                    id="authPassword"
+                                    class="width75"
+                                    required>
+
+                            </div>
+
+                            <div
+                                id="confirmPasswordGroup"
+                                class="display-inline-flex align-center"
+                                style="display:none;">
+
+                                <label class="width25">Confirm Password</label>
+
+                                <input
+                                    type="password"
+                                    id="authConfirmPassword"
+                                    class="width75 ">
+
+                            </div>
+
+                            <button
+                                class="btnBrand"
+                                id="authSubmitButton"
+                                type="submit">
+
+                                Sign In
+
+                            </button>
+
+                        </form>
+
+                        <div class="auth-links">
+
+                            <button
+                                id="showRegister"
+                                class="btnBrand margin-top-16">
+
+                                Create Account
+
+                            </button>
+
+                            <button
+                                id="showLogin"
+                                class="btnBrand margin-top-16"
+                                style="display:none;">
+
+                                Back to Sign In
+
+                            </button>
+
+                            <button
+                                id="showForgotPassword"
+                                class="btnBrandDelete margin-top-16">
+
+                                Forgot Password?
+
+                            </button>
 
                         </div>
-
-                        <div
-                            id="confirmPasswordGroup"
-                            class="display-inline-flex align-center"
-                            style="display:none;">
-
-                            <label class="width25">Confirm Password</label>
-
-                            <input
-                                type="password"
-                                id="authConfirmPassword"
-                                class="width75 ">
-
-                        </div>
-
-                        <button
-                            class="btnBrand"
-                            id="authSubmitButton"
-                            type="submit">
-
-                            Sign In
-
-                        </button>
-
-                    </form>
-
-                    <div class="auth-links">
-
-                        <button
-                            id="showRegister"
-                            class="btnBrand margin-top-16">
-
-                            Create Account
-
-                        </button>
-
-                        <button
-                            id="showLogin"
-                            class="btnBrand margin-top-16"
-                            style="display:none;">
-
-                            Back to Sign In
-
-                        </button>
-
-                        <button
-                            id="showForgotPassword"
-                            class="btnBrandDelete margin-top-16">
-
-                            Forgot Password?
-
-                        </button>
 
                     </div>
 
                 </div>
-
             </div>
         </div>
-    </div>
-    <!-- Footer start -->
-	<div w3-include-html="../footer.html"></div> 
-    <!-- Footer end -->
+    </main>
+    <footer>
+        <div w3-include-html="../footer.html"></div>
+    </footer>
     <script>
         includeHTML();
     </script>
