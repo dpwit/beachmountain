@@ -51,7 +51,7 @@
 
 				<p>In this case JavaScript changes the value of the src (source) attribute of an image.</p>
 
-				<div style="display: inline-flex;">
+				<div style="display: inline-flex; width: 100%;">
 
 					<div class="width50">
 						<p><input type="radio" id="eyesBlue" name="eyes" onclick="document.getElementById('productLogo').src='dist/img/DPW_Skull_Logo_Mask_Blue.jpg'">Blue eyes</p>
@@ -64,7 +64,7 @@
 
 					<div class="width50">
 						<img class="zoom" id="productLogo" src="dist/img/DPW_Skull_Logo_Mask.jpg" height="200" width="200">
-						<p style="text-align: center;">Hover over image to zoom</p>
+						<p>Hover over image to zoom</p>
 					</div>
 				</div>
 
@@ -74,23 +74,27 @@
 
 				<p>In this case JavaScript changes the value of the src (source) attribute of an image.</p>
 
-				<div style="display: inline-flex;">
+				<div style="display: inline-flex; width: 100%;">
 
 					<div class="width50">
 						<p><input type="radio" id="logoRed" name="logo" onclick="document.getElementById('bmLogo').src='dist/img/Beach-Mountain-logo-red.png'">Change logo to red</p>
 						<p><input type="radio" id="logoGreen" name="logo" onclick="document.getElementById('bmLogo').src='dist/img/Beach-Mountain-logo-green.png'">Change logo to green</p>
 
-						<p><button onclick="
+						<p>
+							<button onclick="
 						document.getElementById('bmLogo').src='dist/img/Beach-Mountain-logo-blue.png';
 						document.getElementById('logoGreen').checked = false;
 						document.getElementById('logoRed').checked = false;"
-						>Reset to original</button></p>
+						class="btnBrand">Reset to original
+							</button>
+						</p>
+						
 
 					</div>
 
 					<div class="width50">
 						<img class="zoom" id="bmLogo" src="dist/img/Beach-Mountain-logo-blue.png" height="227" width="397">
-						<p style="text-align: center;">Hover over image to zoom</p>
+						<p>Hover over image to zoom</p>
 					</div>
 				</div>
 			</div>
