@@ -75,6 +75,35 @@
 					</div>
 				</div>
 
+				<!-- Update this section with ski images start-->
+				<h2>Update to ski images here</h2>
+
+				<p>Change ski images based on options chosen</p>
+					<div style="display: inline-flex; width: 100%;">
+						<div class="width25">
+							<p><input type="radio" id="cartoon" name="me" onclick="document.getElementById('imageMe').src='dist/img/cartoon.jpg'">Cartoon view</p>
+							<p><input type="radio" id="side" name="me" onclick="document.getElementById('imageMe').src='dist/img/side.jpeg'">Side view</p>
+							<p><input type="radio" id="ski" name="me" onclick="document.getElementById('imageMe').src='dist/img/IMG_8358.jpeg'">Ski view</p>
+
+							<p>
+								<button onclick="
+								document.getElementById('imageMe').src='dist/img/cartoon.jpg';
+								document.getElementById('cartoon').checked = false;
+								document.getElementById('side').checked = false;
+								document.getElementById('ski').checked = false;"
+								class="btnBrand padding16">Reset to original
+								</button>
+							</p>
+							<p>Hover over image to zoom</p>
+						</div>
+
+						<div class="width75 align-center">
+							<img class="zoom" id="imageMe" src="dist/img/cartoon.jpg" height="200" width="200">
+						</div>
+					</div>
+					<!-- Update this section with ski images end-->
+				</div>
+
 				<h2>Logo configurator</h2>
 
 				<p>Change logo colours based on options chosen</p>
@@ -128,6 +157,21 @@
 		{
 		    document.getElementById("eyesGreen").checked = false;
 		    document.getElementById("eyesBlue").checked = false;
+		}, false);
+		document.getElementById("cartoon").addEventListener("click", function()
+		{
+		    document.getElementById("side").checked = false;
+		    document.getElementById("ski").checked = false;
+		}, false);
+		document.getElementById("side").addEventListener("click", function()
+		{
+		    document.getElementById("cartoon").checked = false;
+		    document.getElementById("ski").checked = false;
+		}, false);
+		document.getElementById("ski").addEventListener("click", function()
+		{
+		    document.getElementById("cartoon").checked = false;
+		    document.getElementById("side").checked = false;
 		}, false);
 
 		document.getElementById("logoGreen").addEventListener("click", function()
