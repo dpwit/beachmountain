@@ -141,48 +141,8 @@
 		<script>
        		includeHTML();
     	</script>
-
-		<script>
-		document.getElementById("eyesGreen").addEventListener("click", function()
-		{
-		    document.getElementById("eyesBlue").checked = false;
-		    document.getElementById("eyesGrey").checked = false;
-		}, false);
-		document.getElementById("eyesBlue").addEventListener("click", function()
-		{
-		    document.getElementById("eyesGreen").checked = false;
-		    document.getElementById("eyesGrey").checked = false;
-		}, false);
-		document.getElementById("eyesGrey").addEventListener("click", function()
-		{
-		    document.getElementById("eyesGreen").checked = false;
-		    document.getElementById("eyesBlue").checked = false;
-		}, false);
-		document.getElementById("cartoon").addEventListener("click", function()
-		{
-		    document.getElementById("side").checked = false;
-		    document.getElementById("ski").checked = false;
-		}, false);
-		document.getElementById("side").addEventListener("click", function()
-		{
-		    document.getElementById("cartoon").checked = false;
-		    document.getElementById("ski").checked = false;
-		}, false);
-		document.getElementById("ski").addEventListener("click", function()
-		{
-		    document.getElementById("cartoon").checked = false;
-		    document.getElementById("side").checked = false;
-		}, false);
-
-		document.getElementById("logoGreen").addEventListener("click", function()
-		{
-		    document.getElementById("logoRed").checked = false;
-		}, false);
-		document.getElementById("logoRed").addEventListener("click", function()
-		{
-		    document.getElementById("logoGreen").checked = false;
-		}, false);
-
-		</script>
+		<script src="../src/dpwSelector.js" type="module"></script>
+		<script src="../src/skiSelector.js" type="module"></script>
+		<script src="../src/logoSelector.js" type="module"></script>
 	</body>
 </html>
