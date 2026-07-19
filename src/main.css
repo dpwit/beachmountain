@@ -124,10 +124,9 @@ h2 {
 .navigation-list a {
     position: relative;
     text-decoration: none;
-    /*color: var(--colour-black);
-    font-weight: 600;
-    transition: color var(--transition-speed);*/
-    transition: color 0.3s ease-in-out;
+    color: var(--colour-black);
+    font-weight: bold;
+    transition: color var(--transition-speed);
 }
 
 .navigation-list a::after {
