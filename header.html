@@ -6,22 +6,58 @@
 				<h1 class="logo-text">beach mountain</h1>
 			</span>
 		</a>
-	
-		<div class="display-inline-flex margin-left-16">
-			<p>
-				<a href="/booking-system/appointment-booking.html" class="href-header-footer">Book an Appointment</a>
-			</p>
-		</div>
-		<div class="display-inline-flex margin-left-16">
-			<p>
-				<a href="/product-configurator.html" class="href-header-footer">Product Configurator</a>
-			</p>
-		</div>
-	
+
+		<!-- desktop navigation -->
+		<nav
+            class="main-navigation"
+            aria-label="Main Navigation"
+        >
+			<ul class="navigation-list">
+				<li>
+					<a href="/booking-system/appointment-booking.html" class="href-header-footer">Book</a>
+				</li>
+				<li>
+					<a href="/product-configurator.html" class="href-header-footer">Configurator</a>
+				</li>
+				<li>
+					<a href="/contact.html" class="href-header-footer">Contact</a>
+				</li>
+			</ul>
+		</nav>
+		
+		<!-- Future Account Area -->
 		<div
 			id="userPanel"
-			class="display-inline-flex href-header-footer margin-left-16">
-
+			class="header-actions">
 		</div>
+
+		<!-- Mobile Menu Button -->
+
+        <button
+            class="hamburger-button"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="mobile-navigation"
+        >
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
 	</div>
 </header>
+
+<!-- Mobile Navigation -->
+<nav
+    id="mobile-navigation"
+    class="mobile-navigation"
+    aria-label="Mobile Navigation"
+>
+    <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/booking-system/appointment-booking.html">Book</a></li>
+		<li><a href="/product-configurator.html">Configurator</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+    </ul>
+</nav>
