@@ -12,14 +12,44 @@ body {
   font-family: "Inter", sans-serif;
   }
 
-.header-background {
+.site-header {
+  /*background: var(--colour-white);*/
   background-image: url("../dist/img/mountain-scenery-background.webp");
   background-size: cover;
   background-position: center;
-  height: 200px; /* Adjust the height as needed */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*height: var(--header-height);*/
+    height: 200px; /* Adjust the height as needed */
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.site-logo {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.site-logo img {
+    height: 48px;
+    width: auto;
+}
+
+.bm-logo {
+  width: 48px;
+  height: 42px;
+  margin: 1em;
 }
 
 .footer-background {
@@ -62,13 +92,6 @@ h2 {
   font-optical-sizing: auto;
   font-weight: 900;
   font-style: normal;
-}
-
-.bm-logo {
-  width: 48px;
-  height: 42px;
-  margin: 1em;
-  vertical-align: middle;
 }
 
 .display-inline-flex {
