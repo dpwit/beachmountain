@@ -21,18 +21,18 @@ export function initialiseNavigation() {
     mobileNavigation =
         document.querySelector(".mobile-navigation");
 
-    if (!hamburgerButton || !mobileNavigation) {
+    if (
+        !hamburgerButton ||
+        !mobileNavigation
+    ) {
 
         return;
 
     }
 
     hamburgerButton.addEventListener(
-
         "click",
-
         toggleNavigation
-
     );
 
 }
@@ -42,12 +42,18 @@ export function initialiseNavigation() {
  **************************************************/
 function toggleNavigation() {
 
-    hamburgerButton.classList.toggle(
-        "is-open"
-    );
+    const isOpen =
+        hamburgerButton.classList.toggle(
+            "is-open"
+        );
 
     mobileNavigation.classList.toggle(
         "is-open"
+    );
+
+    hamburgerButton.setAttribute(
+        "aria-expanded",
+        isOpen
     );
 
 }
