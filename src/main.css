@@ -22,6 +22,10 @@ body {
     font-family: "Inter", sans-serif;
 }
 
+body.menu-open {
+    overflow: hidden;
+}
+
 @font-face {
   font-family: mexcellent;
   src: url(fonts/mexcellent.ttf);
@@ -184,9 +188,15 @@ h2 {
 }
 
 .mobile-navigation {
-    display: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .35s ease;
     background: white;
     border-top: 1px solid #e5e5e5;
+}
+
+.mobile-navigation.is-open {
+    max-height: 400px;
 }
 
 .mobile-navigation ul {
