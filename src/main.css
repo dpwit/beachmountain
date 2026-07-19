@@ -46,7 +46,26 @@ body.menu-open {
   z-index: 1000;
 }
 
+.site-footer {
+  background-image: url("../dist/img/beach-scenery-background.webp");
+  background-size: cover;
+  background-position: center;
+  top: 0;
+  z-index: 1000;
+}
+
 .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /*height: var(--header-height);*/
+    height: 200px; /* Adjust the height as needed */
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.footer-container {
     display: flex;
     align-items: center;
     justify-content: space-between;

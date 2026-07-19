@@ -1,28 +1,49 @@
-<div class="display-inline-flex align-center footer-background">
-	<div class="display-inline-flex margin-right-16">
-		<a href="/index.html">
-			<img src="../dist/img/Beach-Mountain-logo-black-image.png" alt="beach mountain" class="bm-logo display-inline-flex">
+<header class="site-footer">
+	<div class="footer-container">
+		<a href="/index.html" class="site-logo" aria-label="Beach Mountain Home">
+			<img src="../dist/img/Beach-Mountain-logo-black-image.png" fetchpriority="high" alt="beach mountain">
+			<span class="logo-text">
+				beach mountain
+			</span>
 		</a>
-		<h1 class="logo-text">beach mountain</h1>
+
+		<!-- desktop navigation -->
+		<nav
+            class="main-navigation"
+            aria-label="Main Navigation"
+        >
+			<ul class="navigation-list">
+				<li>
+					<a href="/booking-system/appointment-booking.html">Book</a>
+				</li>
+				<li>
+					<a href="/product-configurator.html">Configurator</a>
+				</li>
+				<li>
+					<a href="/contact.html">Contact</a>
+				</li>
+			</ul>
+		</nav>
+		
+		<!-- Future Account Area -->
+		<div
+			id="userPanel"
+			class="header-actions">
+		</div>
+
 	</div>
-	<div class="display-inline-flex margin-left-16">
-		<p>
-			<a href="/booking-system/appointment-booking.html" class="href-header-footer">Book an Appointment</a>
-		</p>
-	</div>
-	<div class="display-inline-flex margin-left-16">
-		<p>
-			<a href="/product-configurator.html" class="href-header-footer">Product Configurator</a>
-		</p>
-	</div>
-	<div class="display-inline-flex margin-left-16">
-		<p>
-			<a href="mailto:4beachmountain@gmail.com" class="href-header-footer">4beachmountain@gmail.com</a>
-		</p>
-	</div>
-	<div class="display-inline-flex margin-left-16">
-		<p>
-			<a href="tel:+447780977704" class="href-header-footer">07780 977704</a>
-		</p>
-	</div>
-</div>
+</header>
+
+<!-- Mobile Navigation -->
+<nav
+    id="mobile-navigation"
+    class="mobile-navigation"
+    aria-label="Mobile Navigation"
+>
+    <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/booking-system/appointment-booking.html">Book</a></li>
+		<li><a href="/product-configurator.html">Configurator</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+    </ul>
+</nav>
