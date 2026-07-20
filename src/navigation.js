@@ -45,6 +45,11 @@ export function initialiseNavigation() {
         handleOutsideClick
     );
 
+    document.addEventListener(
+        "keydown",
+        handleEscape
+    );
+
     const navigationLinks =
     mobileNavigation.querySelectorAll("a");
 
@@ -135,6 +140,23 @@ function handleOutsideClick(event) {
 
         !clickedInsideNavigation &&
         !clickedHamburger
+
+    ) {
+
+        closeNavigation();
+
+    }
+
+}
+
+/**************************************************
+ * Close navigation using Escape key
+ **************************************************/
+function handleEscape(event) {
+
+    if (
+
+        event.key === "Escape"
 
     ) {
 
