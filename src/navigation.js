@@ -77,6 +77,10 @@ function closeNavigation() {
         "false"
     );
 
+    document.body.classList.remove(
+    "menu-open"
+);
+
 }
 
 /**************************************************
@@ -114,5 +118,10 @@ function toggleNavigation() {
         "aria-expanded",
         isOpen
     );
+
+    document.body.classList.toggle(
+    "menu-open",
+    isOpen
+);
 
 }
