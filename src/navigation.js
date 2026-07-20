@@ -40,6 +40,11 @@ export function initialiseNavigation() {
         handleResize
     );
 
+    document.addEventListener(
+        "click",
+        handleOutsideClick
+    );
+
     const navigationLinks =
     mobileNavigation.querySelectorAll("a");
 
@@ -91,6 +96,45 @@ function handleResize() {
     if (
 
         window.innerWidth >= 1024
+
+    ) {
+
+        closeNavigation();
+
+    }
+
+}
+
+/**************************************************
+ * Close navigation when clicking outside
+ **************************************************/
+function handleOutsideClick(event) {
+
+    const navigationIsOpen =
+        hamburgerButton.classList.contains(
+            "is-open"
+        );
+
+    if (!navigationIsOpen) {
+
+        return;
+
+    }
+
+    const clickedInsideNavigation =
+        mobileNavigation.contains(
+            event.target
+        );
+
+    const clickedHamburger =
+        hamburgerButton.contains(
+            event.target
+        );
+
+    if (
+
+        !clickedInsideNavigation &&
+        !clickedHamburger
 
     ) {
 
