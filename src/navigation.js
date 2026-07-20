@@ -40,6 +40,23 @@ export function initialiseNavigation() {
         handleResize
     );
 
+    const navigationLinks =
+    mobileNavigation.querySelectorAll("a");
+
+    navigationLinks.forEach(
+
+        (link) =>
+
+            link.addEventListener(
+
+                "click",
+
+                closeNavigation
+
+            )
+
+    );
+
 }
 
 /**************************************************
