@@ -43,9 +43,9 @@
     <script type="module" src="/booking-system/js/app.js"></script>
 </head>
 <body>
-    <header>
-        <div w3-include-html="../header.html"></div>
-    </header>
+
+    <div w3-include-html="../header.html"></div>
+    
     <main>
         <div class="margin-left-16">
             <h1>Ski service appointment booking</h1>
@@ -240,10 +240,14 @@
         </div>
     </main>
     <footer>
-        <div w3-include-html="../footer.html"></div>
+        <div id="footer"></div>
     </footer>
     <script>
         includeHTML();
+    </script>
+    <script
+        type="module"
+        src="../src/app.js">
     </script>
 
     <div id="notificationContainer"></div>

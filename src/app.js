@@ -14,12 +14,12 @@ async function initialiseWebsite() {
 
     await loadComponent(
         "#header",
-        "header.html"
+        "/header.html"
     );
 
     await loadComponent(
         "#footer",
-        "footer.html"
+        "/footer.html"
     );
 
     initialiseNavigation();
