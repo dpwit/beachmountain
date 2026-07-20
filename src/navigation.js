@@ -35,6 +35,48 @@ export function initialiseNavigation() {
         toggleNavigation
     );
 
+    window.addEventListener(
+        "resize",
+        handleResize
+    );
+
+}
+
+/**************************************************
+ * Close navigation
+ **************************************************/
+function closeNavigation() {
+
+    hamburgerButton.classList.remove(
+        "is-open"
+    );
+
+    mobileNavigation.classList.remove(
+        "is-open"
+    );
+
+    hamburgerButton.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+}
+
+/**************************************************
+ * Handle window resize
+ **************************************************/
+function handleResize() {
+
+    if (
+
+        window.innerWidth >= 1024
+
+    ) {
+
+        closeNavigation();
+
+    }
+
 }
 
 /**************************************************
