@@ -205,6 +205,12 @@ h2 {
     }
 }
 
+@media (max-width: 482px) {
+    .logo-text{
+        display: none;
+    }
+}
+
 .navigation-list {
     display: flex;
     align-items: center;
