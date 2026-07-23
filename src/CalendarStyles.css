@@ -149,6 +149,10 @@ button {
   height: 48px;
 }
 
+#userPanel {
+  margin: 0 16px;
+}
+
 #userPanel p {
 
     margin-right:16px;

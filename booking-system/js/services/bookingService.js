@@ -135,7 +135,7 @@ catch (error) {
 
         console.error(error);
 
-        showError("Booking failed. Pleae make sure you are signed in and try again.");
+        showError("Appointment booking failed. Pleae make sure you are logged in and try again.");
 
         return {
             success: false,
