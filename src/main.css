@@ -23,7 +23,7 @@ body {
 }
 
 main {
-    margin: 0 16px;
+    margin: 0 32px;
 }
 
 body.menu-open {
@@ -78,7 +78,7 @@ body.menu-open {
     height: 200px; /* Adjust the height as needed */
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 16px;
 }
 
 .footer-container {
@@ -88,7 +88,7 @@ body.menu-open {
     z-index: 1;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 4rem 2rem;
+    padding: 4rem 1rem;
 }
 
 .site-logo {
