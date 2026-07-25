@@ -22,6 +22,10 @@ body {
     font-family: "Inter", sans-serif;
 }
 
+main {
+    margin: 0 16px;
+}
+
 body.menu-open {
     overflow: hidden;
 }
