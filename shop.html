@@ -23,6 +23,43 @@
                 <p>To do: use configurator for different images</p>
                 <p>To do: Use links to ebay/Vinted to sell equipment</p>
 
+                <!-- Update this section with ski product images -->
+                <div style="display: inline-flex; width: 100%;">
+
+					<div class="width25">
+						<p>
+							<label>
+								<input type="radio" id="skisTop" name="skis" onclick="document.getElementById('productSkis').src='dist/img/DPW_Skull_Logo_Mask_Blue.jpg'">Skis Top
+							</label>
+						</p>
+						<p>
+							<label>
+								<input type="radio" id="skisSide" name="skis" onclick="document.getElementById('productSkis').src='dist/img/DPW_Skull_Logo_Mask_Green.jpg'">Skis Side
+							</label>
+						</p>
+						<p>
+							<label>
+								<input type="radio" id="skisBase" name="skis" onclick="document.getElementById('productSkis').src='dist/img/DPW_Skull_Logo_Mask_Grey.jpg'">Skis Base
+							</label>
+						</p>
+
+						<p>
+							<button onclick="
+							document.getElementById('productSkis').src='dist/img/DPW_Skull_Logo_Mask.jpg';
+							document.getElementById('skisTop').checked = false;
+							document.getElementById('skisSide').checked = false;
+							document.getElementById('skisBase').checked = false;"
+							class="btnBrand padding16">Reset to original
+							</button>
+						</p>
+						<p>Hover over image to zoom</p>
+					</div>
+
+					<div class="width75 align-center">
+						<img class="zoom" id="productSkis" src="dist/img/DPW_Skull_Logo_Mask.jpg" alt="DPW Skull Logo" height="200" width="200">
+					</div>
+				</div>
+
                 <h2>Shop</h2>
 
                 <p>Paragraph content about selling equipment goes here</p>
