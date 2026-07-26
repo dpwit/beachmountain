@@ -207,6 +207,12 @@ h2 {
         gap: 2rem;
         text-align: center;
     }
+
+    .oneDisplay {
+        display: block !important;
+        float: none;
+        width: 100%;
+    }
 }
 
 @media (max-width: 482px) {
@@ -486,6 +492,10 @@ Retrieved 2026-06-14, License - CC BY-SA 4.0
 
 .width75 {
   width: 75%;
+}
+
+.width100 {
+    width: 100%;
 }
 
 .padding16 {
