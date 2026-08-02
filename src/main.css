@@ -403,6 +403,10 @@ Retrieved 2026-06-14, License - CC BY-SA 4.0
   transform: scale(2);
 }
 
+.zoom175:hover {
+  transform: scale(1.5);
+}
+
 /* Notification Styles */
 #notificationContainer {
     position: fixed;
