@@ -213,6 +213,11 @@ h2 {
         float: none;
         width: 100%;
     }
+
+    .box {
+        width: 100% !important;
+        margin-bottom: 1rem !important;
+    }
 }
 
 @media (max-width: 482px) {
@@ -508,4 +513,22 @@ Retrieved 2026-06-14, License - CC BY-SA 4.0
 
 .padding32 {
   padding: 32px;
+}
+
+.box {
+      flex: 1;
+      display: inline-block;
+      background-color: #90D5FF;
+      border-radius: 16px;   
+      padding: 1rem;
+      margin-right: 1rem;
+      height: 280px;
+      text-align: justify;
+      box-sizing: border-box;
+      width: 30%;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+.align-center {
+    margin: 0 auto;
 }
