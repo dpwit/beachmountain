@@ -22,6 +22,11 @@ async function initialiseWebsite() {
         "/footer.html"
     );
 
+    await loadComponent(
+        "#prices",
+        "/prices.html"
+    );
+
     initialiseNavigation();
 
 }
