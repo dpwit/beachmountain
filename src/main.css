@@ -556,3 +556,7 @@ Retrieved 2026-06-14, License - CC BY-SA 4.0
 .align-center {
     margin: 0 auto;
 }
+
+.border-radius-16 {
+    border-radius: 16px;
+}
