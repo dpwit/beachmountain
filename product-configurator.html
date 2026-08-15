@@ -21,7 +21,7 @@
 
 				<p>Change product colours based on options chosen</p>
 
-				<p>In this case JavaScript changes the value of the src (source) attribute of an image.</p>
+				<!--In this case JavaScript changes the value of the src (source) attribute of an image.-->
 
 				<div class="oneDisplay display-inline-flex width100">
 
@@ -59,51 +59,47 @@
 					</div>
 				</div>
 
-				<!-- Update this section with ski images start-->
-				<h2>Update to ski images here</h2>
-
 				<p>Change ski images based on options chosen</p>
 					<div class="oneDisplay display-inline-flex width100">
 						<div class="width50">
 							<p>
-								<label>
-									<input type="radio" id="cartoon" name="me" onclick="document.getElementById('imageMe').src='dist/img/cartoon.jpg'">Cartoon view
-								</label>
-							</p>
-							<p>
-								<label>
-									<input type="radio" id="side" name="me" onclick="document.getElementById('imageMe').src='dist/img/side.jpeg'">Side view
-								</label>
-							</p>
-							<p>
-								<label>
-									<input type="radio" id="ski" name="me" onclick="document.getElementById('imageMe').src='dist/img/IMG_8358.jpeg'">Ski view
-								</label>
-							</p>
+							<label>
+								<input type="radio" id="Rossignol9sTop" name="Rossignol9s" onclick="document.getElementById('rossignolSkis').src='dist/img/rossignol-9s-top.jpeg'">Rossignol 9s Top
+							</label>
+						</p>
+						<p>
+							<label>
+								<input type="radio" id="Rossignol9sSide" name="Rossignol9s" onclick="document.getElementById('rossignolSkis').src='dist/img/rossignol-9s-side.jpeg'">Rossignol 9s Side
+							</label>
+						</p>
+						<p>
+							<label>
+								<input type="radio" id="Rossignol9sBase" name="Rossignol9s" onclick="document.getElementById('rossignolSkis').src='dist/img/rossignol-9s-base.jpeg'">Rossignol 9s Base
+							</label>
+						</p>
 
-							<p>
-								<button onclick="
-								document.getElementById('imageMe').src='dist/img/cartoon.jpg';
-								document.getElementById('cartoon').checked = false;
-								document.getElementById('side').checked = false;
-								document.getElementById('ski').checked = false;"
-								class="btnBrand padding16">Reset to original
-								</button>
-							</p>
+						<p>
+							<button onclick="
+							document.getElementById('rossignolSkis').src='dist/img/rossignol-9s-top.jpeg';
+							document.getElementById('Rossignol9sTop').checked = false;
+							document.getElementById('Rossignol9sSide').checked = false;
+							document.getElementById('Rossignol9sBase').checked = false;"
+							class="btnBrand padding16">Reset to original
+							</button>
+						</p>
 							<p>Hover over image to zoom</p>
 						</div>
 
 						<div class="align-center width50">
-							<img class="zoom" id="imageMe" src="dist/img/cartoon.jpg" alt="Image of me" height="200" width="200">
+							<img class="zoom zoom175" id="rossignolSkis" src="dist/img/rossignol-9s-top.jpeg" alt="Rossignol 9s" height="522" width="200">
 						</div>
 					</div>
-					<!-- Update this section with ski images end-->
 
 				<h2>Logo configurator</h2>
 
 				<p>Change logo colours based on options chosen</p>
 
-				<p>In this case JavaScript changes the value of the src (source) attribute of an image.</p>
+				<!-- In this case JavaScript changes the value of the src (source) attribute of an image.-->
 
 				<div class="oneDisplay display-inline-flex width100">
 
