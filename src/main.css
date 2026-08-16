@@ -376,6 +376,10 @@ h2 {
   margin-top: 16px;
 }
 
+.margin-bottom-16 {
+  margin-bottom: 16px;
+}
+
 .parent {
   display: flex;
   justify-content: center; /* Options: center, space-between, space-around, space-evenly, flex-start, flex-end */
