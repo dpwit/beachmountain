@@ -11,6 +11,8 @@ export function createCalendar(calendarElement, bookings) {
     const calendar = new FullCalendar.Calendar(calendarElement, {
 
         initialView: APP_CONFIG.calendar.initialView,
+        /* remove hiddenDays to display ALL days */
+        hiddenDays: APP_CONFIG.calendar.hiddenDays,
         firstDay: APP_CONFIG.calendar.firstDay,
 
         weekends: APP_CONFIG.calendar.weekends,

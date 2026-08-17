@@ -24,6 +24,8 @@ export const APP_CONFIG = {
     calendar: {
 
         initialView: 'timeGridWeek',
+        /* remove hiddenDays to display ALL days */
+        hiddenDays: [1,2,3,4,5],
         headerToolbar: {
             left: 'prev,next today',
             center: 'title',
