@@ -57,7 +57,7 @@ export const resorts = [
         liftsOpen: 49,
         liftsTotal: 65,
 
-        status: "Open",
+        status: "Partially Open",
 
         updated: "20 minutes ago"
     },
@@ -117,7 +117,7 @@ export const resorts = [
         liftsOpen: 74,
         liftsTotal: 88,
 
-        status: "Open",
+        status: "Closed",
 
         updated: "18 minutes ago"
     }

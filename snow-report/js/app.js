@@ -9,22 +9,68 @@ const resortsContainer =
 const searchInput =
     document.querySelector("#resort-search");
 
+const countryFilter =
+    document.querySelector("#country-filter");
+
+const resultsCount =
+    document.querySelector(".results-count");
+
+
 
 function renderResorts(resortsToRender) {
 
-    resortsContainer.innerHTML =
-        resortsToRender
-            .map(createResortCard)
-            .join("");
+    if (resortsToRender.length === 0) {
+
+        resortsContainer.innerHTML = `
+
+            <div class="no-results">
+
+                <span>🏔️</span>
+
+                <h3>
+                    No resorts found
+                </h3>
+
+                <p>
+                    Try searching for another resort or country.
+                </p>
+
+            </div>
+
+        `;
+
+    } else {
+
+        resortsContainer.innerHTML =
+            resortsToRender
+                .map(createResortCard)
+                .join("");
+
+    }
+
+
+    updateResultsCount(
+        resortsToRender.length
+    );
 
 }
 
 
+
 function createResortCard(resort) {
+
+    const statusClass =
+        resort.status
+            .toLowerCase()
+            .replaceAll(" ", "-");
+
 
     return `
 
-        <article class="resort-card">
+        <article
+            class="resort-card"
+            data-resort="${resort.id}"
+        >
 
             <div class="resort-card-header">
 
@@ -43,15 +89,13 @@ function createResortCard(resort) {
 
 
                 <span
-                    class="status status-open"
+                    class="status status-${statusClass}"
                 >
                     ${resort.status}
                 </span>
 
             </div>
 
-
-            <!-- MAIN SNOW DEPTH -->
 
             <div class="snow-depth">
 
@@ -74,15 +118,11 @@ function createResortCard(resort) {
             </div>
 
 
-            <!-- STATS -->
-
             <div class="resort-stats">
 
                 <div class="stat">
 
-                    <span>
-                        🌨
-                    </span>
+                    <span>🌨</span>
 
                     <div>
 
@@ -101,9 +141,7 @@ function createResortCard(resort) {
 
                 <div class="stat">
 
-                    <span>
-                        📅
-                    </span>
+                    <span>📅</span>
 
                     <div>
 
@@ -122,9 +160,7 @@ function createResortCard(resort) {
 
                 <div class="stat">
 
-                    <span>
-                        🌡
-                    </span>
+                    <span>🌡</span>
 
                     <div>
 
@@ -143,9 +179,7 @@ function createResortCard(resort) {
 
                 <div class="stat">
 
-                    <span>
-                        🚡
-                    </span>
+                    <span>🚡</span>
 
                     <div>
 
@@ -165,8 +199,6 @@ function createResortCard(resort) {
 
             </div>
 
-
-            <!-- FOOTER -->
 
             <div class="resort-card-footer">
 
@@ -190,7 +222,23 @@ function createResortCard(resort) {
 }
 
 
-function searchResorts() {
+
+function updateResultsCount(count) {
+
+    const resortText =
+        count === 1
+            ? "resort"
+            : "resorts";
+
+
+    resultsCount.textContent =
+        `Showing ${count} ${resortText}`;
+
+}
+
+
+
+function filterResorts() {
 
     const searchTerm =
         searchInput.value
@@ -198,10 +246,14 @@ function searchResorts() {
             .trim();
 
 
+    const selectedCountry =
+        countryFilter.value;
+
+
     const filteredResorts =
         resorts.filter(resort => {
 
-            return (
+            const matchesSearch =
 
                 resort.name
                     .toLowerCase()
@@ -211,8 +263,23 @@ function searchResorts() {
 
                 resort.country
                     .toLowerCase()
-                    .includes(searchTerm)
+                    .includes(searchTerm);
 
+
+            const matchesCountry =
+
+                selectedCountry === "all"
+
+                ||
+
+                resort.country ===
+                selectedCountry;
+
+
+            return (
+                matchesSearch
+                &&
+                matchesCountry
             );
 
         });
@@ -223,10 +290,49 @@ function searchResorts() {
 }
 
 
+
 searchInput.addEventListener(
     "input",
-    searchResorts
+    filterResorts
 );
+
+
+countryFilter.addEventListener(
+    "change",
+    filterResorts
+);
+
+
+
+document.addEventListener(
+    "click",
+    event => {
+
+        const button =
+            event.target.closest(
+                ".view-resort"
+            );
+
+
+        if (!button) {
+            return;
+        }
+
+
+        const resortId =
+            button.dataset.resort;
+
+
+        console.log(
+            `View resort: ${resortId}`
+        );
+
+
+        // We'll add individual resort pages later.
+
+    }
+);
+
 
 
 renderResorts(resorts);
