@@ -1,6 +1,7 @@
 // This will take our sample data and dynamically create the resort cards.
 
 import { resorts } from "./resorts.js";
+import { fetchSnowReport } from "./api.js";
 
 
 const resortsContainer =
@@ -336,3 +337,4 @@ document.addEventListener(
 
 
 renderResorts(resorts);
+fetchSnowReport();
