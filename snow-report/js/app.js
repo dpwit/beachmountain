@@ -1,7 +1,7 @@
 // This will take our sample data and dynamically create the resort cards.
 
 import { resorts } from "./resorts.js";
-import { fetchSnowReport } from "./api.js";
+import { fetchSnowReport,fetchResorts } from "./api.js";
 import { mapResort } from "./resortMapper.js";
 
 
@@ -33,6 +33,54 @@ const featuredSnowfall =
     );
 
 let currentResorts = [];
+let resortDirectory = [];
+
+async function loadResortDirectory() {
+
+    try {
+
+        const apiResponse =
+            await fetchResorts();
+
+
+        resortDirectory =
+            apiResponse
+                .data
+                .map(resort => ({
+
+                    ...resort,
+
+                    name:
+                        resort.name?.trim(),
+
+                    country:
+                        resort.country?.trim(),
+
+                    region:
+                        resort.region?.trim()
+
+                }));
+
+
+        console.log(
+            "Resort directory loaded:",
+            resortDirectory
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Resort directory failed:",
+            error
+        );
+
+
+        resortDirectory = [];
+
+    }
+
+}
 
 function updateFeaturedResort(resortsToUse) {
 
@@ -569,3 +617,4 @@ document.addEventListener(
 
 
 loadLiveResorts();
+loadResortDirectory();

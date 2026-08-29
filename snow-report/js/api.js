@@ -8,7 +8,7 @@ export async function fetchSnowReport() {
 
         const response =
             await fetch(
-                `${API_BASE_URL}/snow-report?limit=25`
+                `${API_BASE_URL}/snow-report?limit=12`
             );
 
 
@@ -43,6 +43,51 @@ console.log(
 
         console.error(
             "Unable to fetch snow report:",
+            error
+        );
+
+
+        throw error;
+
+    }
+
+}
+
+export async function fetchResorts() {
+
+    try {
+
+        const response =
+            await fetch(
+                `${API_BASE_URL}/resorts`
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                `Resorts request failed: ${response.status}`
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        console.log(
+            "SnowSure resorts response:",
+            data
+        );
+
+
+        return data;
+
+    } catch (error) {
+
+        console.error(
+            "Unable to fetch resorts:",
             error
         );
 
