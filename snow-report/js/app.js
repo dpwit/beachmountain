@@ -1,7 +1,7 @@
 // This will take our sample data and dynamically create the resort cards.
 
 import { resorts } from "./resorts.js";
-import { fetchSnowReport,fetchResorts } from "./api.js";
+import { fetchSnowReport,fetchResorts, fetchResortBySlug } from "./api.js";
 import { mapResort } from "./resortMapper.js";
 
 
@@ -34,6 +34,9 @@ const featuredSnowfall =
 
 let currentResorts = [];
 let resortDirectory = [];
+
+const resortDetailsCache =
+    new Map();
 
 async function loadResortDirectory() {
 
@@ -79,6 +82,127 @@ async function loadResortDirectory() {
         resortDirectory = [];
 
     }
+
+}
+
+function normaliseSearchText(value) {
+
+    return String(value || "")
+        .toLowerCase()
+        .trim();
+
+}
+
+
+function getResortSearchText(resort) {
+
+    const aliases =
+        Array.isArray(resort.aliases)
+            ? resort.aliases.join(" ")
+            : "";
+
+
+    return [
+
+        resort.name,
+
+        resort.country,
+
+        resort.region,
+
+        resort.slug,
+
+        aliases
+
+    ]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+
+}
+
+
+function resortMatchesSearch(
+    resort,
+    searchTerm
+) {
+
+    if (!searchTerm) {
+
+        return true;
+
+    }
+
+
+    const searchableText =
+        getResortSearchText(resort);
+
+
+    return searchableText.includes(
+        searchTerm
+    );
+
+}
+
+function searchResortDirectory(
+    searchTerm
+) {
+
+    const normalisedSearch =
+        normaliseSearchText(
+            searchTerm
+        );
+
+
+    if (!normalisedSearch) {
+
+        return [];
+
+    }
+
+
+    return resortDirectory.filter(
+        resort =>
+            resortMatchesSearch(
+                resort,
+                normalisedSearch
+            )
+    );
+
+}
+
+async function getResortDetails(
+    slug
+) {
+
+    if (
+        resortDetailsCache.has(slug)
+    ) {
+
+        return resortDetailsCache.get(
+            slug
+        );
+
+    }
+
+
+    const apiResponse =
+        await fetchResortBySlug(
+            slug
+        );
+
+
+    const resort =
+        apiResponse.data;
+
+
+    resortDetailsCache.set(
+        slug,
+        resort
+    );
+
+
+    return resort;
 
 }
 
@@ -453,54 +577,183 @@ function populateCountryFilter(resortsToUse) {
 
 }
 
-function filterResorts() {
+async function filterResorts() {
 
     const searchTerm =
-        searchInput.value
-            .toLowerCase()
-            .trim();
+        normaliseSearchText(
+            searchInput.value
+        );
 
 
     const selectedCountry =
         countryFilter.value;
 
 
-    const filteredResorts =
-        currentResorts.filter(resort => {
+    /*
+    ---------------------------------
+    NO SEARCH TERM
+    ---------------------------------
+    */
 
-            const matchesSearch =
+    if (!searchTerm) {
 
-                resort.name
-                    .toLowerCase()
-                    .includes(searchTerm)
+        const filteredResorts =
+            currentResorts.filter(
+                resort =>
 
-                ||
+                    selectedCountry === "all"
 
-                resort.country
-                    .toLowerCase()
-                    .includes(searchTerm);
+                    ||
+
+                    resort.country ===
+                    selectedCountry
+            );
 
 
-            const matchesCountry =
+        renderResorts(
+            filteredResorts
+        );
+
+
+        return;
+
+    }
+
+
+    /*
+    ---------------------------------
+    SEARCH FULL RESORT DIRECTORY
+    ---------------------------------
+    */
+
+    const directoryMatches =
+        searchResortDirectory(
+            searchTerm
+        );
+
+
+    const countryMatches =
+        directoryMatches.filter(
+            resort =>
 
                 selectedCountry === "all"
 
                 ||
 
                 resort.country ===
-                selectedCountry;
+                selectedCountry
+        );
 
 
-            return (
-                matchesSearch
-                &&
-                matchesCountry
+    /*
+    ---------------------------------
+    NO DIRECTORY MATCHES
+    ---------------------------------
+    */
+
+    if (
+        countryMatches.length === 0
+    ) {
+
+        renderResorts([]);
+
+        return;
+
+    }
+
+
+    /*
+    ---------------------------------
+    SHOW SEARCHING STATE
+    ---------------------------------
+    */
+
+    resultsCount.textContent =
+        "Searching SnowSure...";
+
+
+    /*
+    ---------------------------------
+    LOAD MATCHING RESORT DATA
+    ---------------------------------
+    */
+
+    try {
+
+        const detailedResorts =
+            await Promise.all(
+
+                countryMatches.map(
+                    async directoryResort => {
+
+                        /*
+                        Check whether this resort
+                        already exists in the
+                        live snow report.
+                        */
+
+                        const liveResort =
+                            currentResorts.find(
+                                resort =>
+
+                                    resort.slug ===
+                                    directoryResort.slug
+
+                                    ||
+
+                                    resort.id ===
+                                    directoryResort.slug
+                            );
+
+
+                        /*
+                        Use existing live data
+                        if available.
+                        */
+
+                        if (liveResort) {
+
+                            return liveResort;
+
+                        }
+
+
+                        /*
+                        Otherwise load the
+                        individual resort.
+                        */
+
+                        const detailedResort =
+                            await getResortDetails(
+                                directoryResort.slug
+                            );
+
+
+                        return mapDetailedResort(
+                            detailedResort
+                        );
+
+                    }
+                )
+
             );
 
-        });
+
+        renderResorts(
+            detailedResorts
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Universal resort search failed:",
+            error
+        );
 
 
-    renderResorts(filteredResorts);
+        renderResorts([]);
+
+    }
 
 }
 
@@ -572,9 +825,25 @@ async function loadLiveResorts() {
 
 }
 
+let searchTimeout;
+
+
 searchInput.addEventListener(
     "input",
-    filterResorts
+    () => {
+
+        clearTimeout(
+            searchTimeout
+        );
+
+
+        searchTimeout =
+            setTimeout(
+                filterResorts,
+                300
+            );
+
+    }
 );
 
 
@@ -614,7 +883,21 @@ document.addEventListener(
     }
 );
 
+async function initialiseApp() {
+
+    await Promise.all(
+
+        [
+
+            loadLiveResorts(),
+
+            loadResortDirectory()
+
+        ]
+
+    );
+
+}
 
 
-loadLiveResorts();
-loadResortDirectory();
+initialiseApp();

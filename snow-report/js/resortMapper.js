@@ -27,6 +27,164 @@ function getCountryFlag(country) {
 
 }
 
+export function mapDetailedResort(
+    resort
+) {
+
+    const snowDepth =
+
+        resort.snow?.depthCm
+
+        ??
+
+        resort.snow?.reportedDepth
+
+        ??
+
+        resort.conditions?.data
+            ?.displayDepthCm
+
+        ??
+
+        0;
+
+
+    const temperature =
+
+        resort.currentConditions
+            ?.temperature
+
+        ??
+
+        resort.conditionsByElevation
+            ?.summit
+            ?.temperature
+            ?.celsius
+
+        ??
+
+        null;
+
+
+    const liftsOpen =
+
+        resort.operations
+            ?.liftsOpen
+
+        ??
+
+        resort.conditions
+            ?.data
+            ?.lifts
+            ?.value
+            ?.open
+
+        ??
+
+        0;
+
+
+    const liftsTotal =
+
+        resort.operations
+            ?.liftsTotal
+
+        ??
+
+        resort.stats
+            ?.lifts
+
+        ??
+
+        resort.conditions
+            ?.data
+            ?.lifts
+            ?.value
+            ?.total
+
+        ??
+
+        null;
+
+
+    const snowfall24h =
+
+        resort.snow
+            ?.last24hCm
+
+        ??
+
+        0;
+
+
+    const snowfall7d =
+
+        resort.snow
+            ?.last7dCm
+
+        ??
+
+        0;
+
+
+    return {
+
+        id:
+            resort.slug,
+
+        slug:
+            resort.slug,
+
+        name:
+            resort.name,
+
+        country:
+            resort.country,
+
+        region:
+            resort.region,
+
+        aliases:
+            resort.aliases || [],
+
+        flag:
+    getCountryFlag(
+        resort.country
+    ),
+
+        status:
+            resort.statusLabel
+            ||
+            resort.closure?.label
+            ||
+            "Unknown",
+
+        snowDepth,
+
+        snowfall24h,
+
+        snowfall7d,
+
+        temperature,
+
+        liftsOpen,
+
+        liftsTotal,
+
+        updated:
+            resort.meta?.timestamp
+            ||
+            resort.currentConditions
+                ?.lastUpdated
+            ||
+            "Recently",
+
+        isOpen:
+            resort.isOpen
+
+    };
+
+}
 
 function getResortStatus(resort) {
 
