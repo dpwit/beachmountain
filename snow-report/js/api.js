@@ -26,9 +26,15 @@ export async function fetchSnowReport() {
 
 
         console.log(
-            "SnowSure API response:",
-            data
-        );
+    "SnowSure API response:",
+    data
+);
+
+
+console.log(
+    "First resort:",
+    data.data.resorts[0]
+);
 
 
         return data;
