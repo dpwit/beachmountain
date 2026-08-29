@@ -1192,3 +1192,9 @@ body {
     }
 
 }
+
+.loading-grid {
+
+    grid-column: 1 / -1;
+
+}

@@ -17,7 +17,108 @@ const countryFilter =
 const resultsCount =
     document.querySelector(".results-count");
 
+const featuredTitle =
+    document.querySelector(
+        "#featured-title"
+    );
 
+const featuredDescription =
+    document.querySelector(
+        "#featured-description"
+    );
+
+const featuredSnowfall =
+    document.querySelector(
+        "#featured-snowfall"
+    );
+
+let currentResorts = [];
+
+function updateFeaturedResort(resortsToUse) {
+
+    if (
+        !resortsToUse ||
+        resortsToUse.length === 0
+    ) {
+        return;
+    }
+
+
+    const topResort =
+        resortsToUse.reduce(
+            (
+                currentTop,
+                resort
+            ) => {
+
+                return (
+                    resort.snowfall24h >
+                    currentTop.snowfall24h
+                )
+                    ? resort
+                    : currentTop;
+
+            }
+        );
+
+
+    featuredTitle.textContent =
+        `❄️ ${topResort.name} is leading the way`;
+
+
+    featuredDescription.textContent =
+        `${topResort.name} has received the highest snowfall of our featured resorts in the last 24 hours.`;
+
+
+    featuredSnowfall.textContent =
+        `${topResort.snowfall24h} cm`;
+
+}
+
+function showLoadingState() {
+
+    resultsCount.textContent =
+    "Loading resorts...";
+
+    resortsContainer.innerHTML = `
+
+        <div class="loading-grid">
+
+            ${Array(6)
+                .fill(
+                    `
+                    <div class="skeleton-card">
+
+                        <div
+                            class="skeleton-line short"
+                        ></div>
+
+                        <div
+                            class="skeleton-line medium"
+                        ></div>
+
+                        <div
+                            class="skeleton-block"
+                        ></div>
+
+                        <div
+                            class="skeleton-line"
+                        ></div>
+
+                        <div
+                            class="skeleton-line medium"
+                        ></div>
+
+                    </div>
+                    `
+                )
+                .join("")}
+
+        </div>
+
+    `;
+
+}
 
 function renderResorts(resortsToRender) {
 
@@ -65,6 +166,25 @@ function createResortCard(resort) {
         resort.status
             .toLowerCase()
             .replaceAll(" ", "-");
+
+
+    const temperature =
+        resort.temperature ?? "—";
+
+
+    const liftsOpen =
+        resort.liftsOpen ?? "—";
+
+
+    const liftsTotal =
+        resort.liftsTotal ?? null;
+
+
+    const liftDisplay =
+        liftsTotal
+            ? `${liftsOpen} / ${liftsTotal}`
+            : liftsOpen;
+
 
 
     return `
@@ -171,8 +291,12 @@ function createResortCard(resort) {
                         </small>
 
                         <strong>
-                            ${resort.temperature}°C
-                        </strong>
+    ${
+        temperature === "—"
+            ? "—"
+            : `${temperature}°C`
+    }
+</strong>
 
                     </div>
 
@@ -190,9 +314,7 @@ function createResortCard(resort) {
                         </small>
 
                         <strong>
-                            ${resort.liftsOpen}
-                            /
-                            ${resort.liftsTotal}
+                            ${liftDisplay}
                         </strong>
 
                     </div>
@@ -238,7 +360,50 @@ function updateResultsCount(count) {
 
 }
 
+function populateCountryFilter(resortsToUse) {
 
+    const countries =
+        [
+            ...new Set(
+                resortsToUse.map(
+                    resort => resort.country
+                )
+            )
+        ]
+        .filter(Boolean)
+        .sort();
+
+
+    countryFilter.innerHTML = `
+        <option value="all">
+            All Countries
+        </option>
+    `;
+
+
+    countries.forEach(country => {
+
+        const option =
+            document.createElement(
+                "option"
+            );
+
+
+        option.value =
+            country;
+
+
+        option.textContent =
+            country;
+
+
+        countryFilter.appendChild(
+            option
+        );
+
+    });
+
+}
 
 function filterResorts() {
 
@@ -253,7 +418,7 @@ function filterResorts() {
 
 
     const filteredResorts =
-        resorts.filter(resort => {
+        currentResorts.filter(resort => {
 
             const matchesSearch =
 
@@ -295,11 +460,14 @@ async function loadLiveResorts() {
 
     try {
 
+        showLoadingState();
+
+
         const apiResponse =
             await fetchSnowReport();
 
 
-        const liveResorts =
+        currentResorts =
             apiResponse
                 .data
                 .resorts
@@ -308,12 +476,22 @@ async function loadLiveResorts() {
 
         console.log(
             "Mapped live resorts:",
-            liveResorts
+            currentResorts
+        );
+
+
+        populateCountryFilter(
+            currentResorts
         );
 
 
         renderResorts(
-            liveResorts
+            currentResorts
+        );
+
+
+        updateFeaturedResort(
+            currentResorts
         );
 
     } catch (error) {
@@ -324,8 +502,22 @@ async function loadLiveResorts() {
         );
 
 
+        currentResorts =
+            resorts;
+
+
+        populateCountryFilter(
+            currentResorts
+        );
+
+
         renderResorts(
-            resorts
+            currentResorts
+        );
+
+
+        updateFeaturedResort(
+            currentResorts
         );
 
     }
