@@ -415,17 +415,20 @@ body {
 .resort-card:hover {
 
     transform:
-        translateY(-4px);
+        translateY(-6px);
+
+    border-color:
+        #bfdbfe;
 
     box-shadow:
         0
-        20px
-        40px
+        24px
+        50px
         rgba(
             15,
             23,
             42,
-            0.1
+            0.12
         );
 
 }
@@ -637,6 +640,20 @@ body {
 
     cursor: pointer;
 
+    transition:
+        transform 0.2s ease,
+        color 0.2s ease;
+
+}
+
+
+.resort-card:hover .view-resort {
+
+    color: #1d4ed8;
+
+    transform:
+        translateX(4px);
+
 }
 
 
@@ -729,6 +746,42 @@ body {
         align-items: flex-start;
 
     }
+
+    .featured-section {
+
+    margin-top: -30px;
+
+}
+
+
+.featured-card {
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 28px;
+
+    padding: 28px;
+
+}
+
+
+.featured-stat {
+
+    width: 100%;
+
+    padding-top: 24px;
+
+    padding-left: 0;
+
+    border-top:
+        1px solid
+        #dbeafe;
+
+    border-left: none;
+
+}
 
 }
 
@@ -1012,5 +1065,130 @@ body {
 .featured-stat small {
 
     color: #6b7280;
+
+}
+
+/* =========================
+   LOADING STATE
+========================= */
+
+.loading-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(
+                320px,
+                1fr
+            )
+        );
+
+    gap: 24px;
+
+}
+
+
+.skeleton-card {
+
+    min-height: 430px;
+
+    padding: 24px;
+
+    background: white;
+
+    border:
+        1px solid
+        #e5e7eb;
+
+    border-radius: 16px;
+
+}
+
+
+.skeleton-line {
+
+    margin-bottom: 14px;
+
+    height: 16px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #f3f4f6 25%,
+            #e5e7eb 50%,
+            #f3f4f6 75%
+        );
+
+    background-size:
+        200% 100%;
+
+    border-radius: 6px;
+
+    animation:
+        shimmer
+        1.5s
+        infinite;
+
+}
+
+
+.skeleton-line.short {
+
+    width: 40%;
+
+}
+
+
+.skeleton-line.medium {
+
+    width: 65%;
+
+}
+
+
+.skeleton-block {
+
+    height: 100px;
+
+    margin: 28px 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #f3f4f6 25%,
+            #e5e7eb 50%,
+            #f3f4f6 75%
+        );
+
+    background-size:
+        200% 100%;
+
+    border-radius: 12px;
+
+    animation:
+        shimmer
+        1.5s
+        infinite;
+
+}
+
+
+@keyframes shimmer {
+
+    0% {
+
+        background-position:
+            200% 0;
+
+    }
+
+    100% {
+
+        background-position:
+            -200% 0;
+
+    }
 
 }
