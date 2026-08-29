@@ -2,6 +2,7 @@
 
 import { resorts } from "./resorts.js";
 import { fetchSnowReport } from "./api.js";
+import { mapResort } from "./resortMapper.js";
 
 
 const resortsContainer =
@@ -290,7 +291,46 @@ function filterResorts() {
 
 }
 
+async function loadLiveResorts() {
 
+    try {
+
+        const apiResponse =
+            await fetchSnowReport();
+
+
+        const liveResorts =
+            apiResponse
+                .data
+                .resorts
+                .map(mapResort);
+
+
+        console.log(
+            "Mapped live resorts:",
+            liveResorts
+        );
+
+
+        renderResorts(
+            liveResorts
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Live snow data failed:",
+            error
+        );
+
+
+        renderResorts(
+            resorts
+        );
+
+    }
+
+}
 
 searchInput.addEventListener(
     "input",
@@ -336,5 +376,4 @@ document.addEventListener(
 
 
 
-renderResorts(resorts);
-fetchSnowReport();
+loadLiveResorts();
