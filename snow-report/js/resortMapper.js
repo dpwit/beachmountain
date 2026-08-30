@@ -3,6 +3,7 @@ function getCountryFlag(country) {
     const countryFlags = {
 
         "Argentina": "🇦🇷",
+        "Australia": "🇦🇺",
         "Austria": "🇦🇹",
         "Canada": "🇨🇦",
         "Chile": "🇨🇱",
@@ -10,6 +11,7 @@ function getCountryFlag(country) {
         "Germany": "🇩🇪",
         "Italy": "🇮🇹",
         "Japan": "🇯🇵",
+        "Lesotho": "🇱🇸",
         "New Zealand": "🇳🇿",
         "Norway": "🇳🇴",
         "Spain": "🇪🇸",
