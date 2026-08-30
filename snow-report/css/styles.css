@@ -204,15 +204,9 @@ body {
 
     margin-bottom: 16px;
 
-    padding: 8px 14px;
+    padding: 8px 16px;
 
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            0.1
-        );
+    background:white;
 
     border:
         1px solid
@@ -223,9 +217,9 @@ body {
             0.2
         );
 
-    border-radius: 999px;
+    border-radius: 1rem;
 
-    font-size: 0.75rem;
+    font-size: 1rem;
 
     letter-spacing: 1px;
 
