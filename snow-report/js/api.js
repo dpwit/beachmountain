@@ -8,7 +8,7 @@ export async function fetchSnowReport() {
 
         const response =
             await fetch(
-                `${API_BASE_URL}/snow-report?limit=54`
+                `${API_BASE_URL}/snow-report?limit=15`
             );
 
 

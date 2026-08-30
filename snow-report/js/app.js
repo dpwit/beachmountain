@@ -2,7 +2,7 @@
 
 import { resorts } from "./resorts.js";
 import { fetchSnowReport,fetchResorts, fetchResortBySlug } from "./api.js";
-import { mapResort } from "./resortMapper.js";
+import { mapResort, mapDetailedResort } from "./resortMapper.js";
 
 
 const resortsContainer =
@@ -161,12 +161,110 @@ function searchResortDirectory(
     }
 
 
-    return resortDirectory.filter(
-        resort =>
-            resortMatchesSearch(
-                resort,
-                normalisedSearch
-            )
+    const matches =
+        resortDirectory.filter(
+            resort =>
+                resortMatchesSearch(
+                    resort,
+                    normalisedSearch
+                )
+        );
+
+
+    return matches.sort(
+        (a, b) => {
+
+            const aName =
+                normaliseSearchText(
+                    a.name
+                );
+
+            const bName =
+                normaliseSearchText(
+                    b.name
+                );
+
+
+            const aSlug =
+                normaliseSearchText(
+                    a.slug
+                );
+
+            const bSlug =
+                normaliseSearchText(
+                    b.slug
+                );
+
+
+            const aExact =
+                aName === normalisedSearch
+                ||
+                aSlug === normalisedSearch;
+
+
+            const bExact =
+                bName === normalisedSearch
+                ||
+                bSlug === normalisedSearch;
+
+
+            if (
+                aExact &&
+                !bExact
+            ) {
+
+                return -1;
+
+            }
+
+
+            if (
+                !aExact &&
+                bExact
+            ) {
+
+                return 1;
+
+            }
+
+
+            const aStarts =
+                aName.startsWith(
+                    normalisedSearch
+                );
+
+
+            const bStarts =
+                bName.startsWith(
+                    normalisedSearch
+                );
+
+
+            if (
+                aStarts &&
+                !bStarts
+            ) {
+
+                return -1;
+
+            }
+
+
+            if (
+                !aStarts &&
+                bStarts
+            ) {
+
+                return 1;
+
+            }
+
+
+            return aName.localeCompare(
+                bName
+            );
+
+        }
     );
 
 }
@@ -680,10 +778,17 @@ async function filterResorts() {
 
     try {
 
-        const detailedResorts =
-            await Promise.all(
+        const searchResults =
+    countryMatches.slice(
+        0,
+        20
+    );
 
-                countryMatches.map(
+
+const detailedResorts =
+    await Promise.all(
+
+        searchResults.map(
                     async directoryResort => {
 
                         /*
