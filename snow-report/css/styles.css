@@ -69,15 +69,6 @@ body {
     backdrop-filter:
         blur(12px);
 
-    border-bottom:
-        1px solid
-        rgba(
-            229,
-            231,
-            235,
-            0.8
-        );
-
 }
 
 
@@ -660,16 +651,6 @@ body {
 /* =========================
    FOOTER
 ========================= */
-
-.site-footer {
-
-    padding: 40px 0;
-
-    background: #111827;
-
-    color: #9ca3af;
-
-}
 
 
 .site-footer .container {

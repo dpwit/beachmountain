@@ -11,6 +11,8 @@
     <title>SnowReport | Live Ski Resort Conditions</title>
 
     <link rel="stylesheet" href="/snow-report/css/styles.css">
+    <link rel="preload" href="/src/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
 </head>
 
 <body>
@@ -18,8 +20,11 @@
     <!-- =========================
          HEADER
     ========================== -->
+   <Header class="site-header">
+        <div id="header"></div>
+    </Header>
 
-    <header class="site-header">
+    <!-- <header class="site-header">
 
         <div class="container header-content">
 
@@ -36,7 +41,7 @@
 
         </div>
 
-    </header>
+    </header>-->
 
 
     <!-- =========================
@@ -236,7 +241,7 @@
          FOOTER
     ========================== -->
 
-    <footer
+    <!--<footer
         class="site-footer"
         id="about"
     >
@@ -253,13 +258,19 @@
 
         </div>
 
-    </footer>
+    </footer>-->
 
+    <div id="footer"></div>
 
     <script
         type="module"
         src="/snow-report/js/app.js"
     ></script>
+
+    <script
+        type="module"
+        src="/src/app.js">
+    </script>
 
 </body>
 </html>
