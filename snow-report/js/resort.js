@@ -1,5 +1,5 @@
 import {
-fetchResortBySlug
+fetchResortBySlug, fetchResorts
 } from "./api.js";
 
 import {
@@ -165,6 +165,22 @@ resortPageContent.innerHTML = `
                         ? ` / ${resort.liftsTotal}`
                         : ""
                 }
+            </strong>
+
+        </div>
+
+        <div class="resort-overview-card">
+
+            <span class="overview-icon">
+                🌡
+            </span>
+
+            <span class="overview-label">
+                Temperature
+            </span>
+
+            <strong>
+                ${resort.temperature} °C
             </strong>
 
         </div>
