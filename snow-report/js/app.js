@@ -978,12 +978,8 @@ document.addEventListener(
             button.dataset.resort;
 
 
-        console.log(
-            `View resort: ${resortId}`
-        );
-
-
-        // We'll add individual resort pages later.
+        if (!resortId) { return; } 
+        window.location.href = `/snow-report/resort.html?slug=${encodeURIComponent(resortId)}`;
 
     }
 );
