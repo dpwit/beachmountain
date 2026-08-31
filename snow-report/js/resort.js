@@ -1,5 +1,5 @@
 import {
-fetchResortBySlug, fetchResorts
+fetchResortBySlug
 } from "./api.js";
 
 import {
