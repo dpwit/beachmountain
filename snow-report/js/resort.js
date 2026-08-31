@@ -61,7 +61,7 @@ document.title =
 
 resortPageContent.innerHTML = `
 
-    <div class="resort-hero">
+    <div class="box-resorts">
 
         <div class="resort-hero-content">
 

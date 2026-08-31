@@ -1,95 +1,68 @@
-<!DOCTYPE html>
+<!doctype html>
 
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Live ski resort snow conditions, snowfall, lift status and mountain information."
+    />
 
-<head>
+    <title>Resort | Snow Reports</title>
 
-<meta charset="UTF-8">
+    <link rel="stylesheet" href="/snow-report/css/styles.css" />
+    <link
+      rel="preload"
+      href="/src/main.css"
+      as="style"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
+    />
+  </head>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta name="description" content="Live ski resort snow conditions, snowfall, lift status and mountain information.">
-
-<title>Resort | Snow Reports</title>
-
-<link rel="stylesheet" href="/snow-report/css/styles.css">
-<link rel="preload" href="/src/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-
-</head>
-
-<body>
-
-<!-- =========================
+  <body>
+    <!-- =========================
      HEADER
-========================== -->
+    ========================== -->
 
-<header class="site-header">
+    <header class="site-header">
+      <div id="header"></div>
+    </header>
 
-    <div id="header"></div>
-
-</header>
-
-
-<!-- =========================
+    <!-- =========================
      RESORT PAGE
-========================== -->
+    ========================== -->
 
-<main>
-
-    <section class="resort-page">
-
+    <main>
+      <section class="resort-page">
         <div class="container">
+          <div id="resort-page-content" class="resort-page-content">
+            <div class="resort-page-loading">
+              <span> ❄️ </span>
 
-            <div
-                id="resort-page-content"
-                class="resort-page-content"
-            >
+              <h1>Loading resort...</h1>
 
-                <div class="resort-page-loading">
-
-                    <span>
-                        ❄️
-                    </span>
-
-                    <h1>
-                        Loading resort...
-                    </h1>
-
-                    <p>
-                        Loading the latest mountain information.
-                    </p>
-
-                </div>
-
+              <p>Loading the latest mountain information.</p>
             </div>
-
+          </div>
         </div>
+      </section>
+    </main>
 
-    </section>
-
-</main>
-
-
-<!-- =========================
+    <!-- =========================
      FOOTER
-========================== -->
+    ========================== -->
 
-<div id="footer"></div>
+    <div id="footer"></div>
 
-
-<!-- =========================
+    <!-- =========================
      RESORT PAGE SCRIPT
-========================== -->
+    ========================== -->
 
-<script
-    type="module"
-    src="/snow-report/js/resort.js"
-></script>
-<script
-    type="module"
-    src="/src/app.js">
-</script>
-
-</body>
-
+    <script type="module" src="/snow-report/js/resort.js"></script>
+    <script type="module" src="/src/app.js"></script>
+  </body>
 </html>
