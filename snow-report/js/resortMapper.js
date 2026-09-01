@@ -15,6 +15,7 @@ function getCountryFlag(country) {
         "New Zealand": "🇳🇿",
         "Norway": "🇳🇴",
         "Spain": "🇪🇸",
+        "Sweden": "🇸🇪",
         "Switzerland": "🇨🇭",
         "United States": "🇺🇸"
 
