@@ -438,6 +438,9 @@ function createResortCard(resort) {
             .replaceAll(" ", "-");
 
 
+    const forecast =
+        resort.snowSureTagline ?? "—";
+
     const temperature =
         resort.temperature ?? "—";
 
@@ -557,16 +560,16 @@ function createResortCard(resort) {
                     <div>
 
                         <small>
-                            Temperature
+                            Forecast
                         </small>
 
-                        <strong>
-    ${
-        temperature === "—"
-            ? "—"
-            : `${temperature}°C`
-    }
-</strong>
+                        <small>
+                            ${
+                                forecast === "—"
+                                    ? "—"
+                                    : `${forecast}`
+                            }
+                        </small>
 
                     </div>
 
