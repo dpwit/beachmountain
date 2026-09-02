@@ -210,7 +210,13 @@ export function mapDetailedResort(
             null,
         
         description:
-            resort.description
+            resort.description,
+
+        apresSki:
+            resort.apresSki
+                ?.top
+            ??
+            null
 
     };
 

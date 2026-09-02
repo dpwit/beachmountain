@@ -264,6 +264,28 @@ resortPageContent.innerHTML = `
 
     </div>
 
+    <div class="snowsure-panel margin-bottom-16">
+
+        <div class="snowsure-panel-header">
+
+            <div>
+
+                <span class="snowsure-label">
+                    Apres Ski
+                </span>
+
+                <h2>
+                    Apres Ski options
+                </h2>
+
+            </div>
+
+        </div>
+
+        ${resort.apresSki}
+
+    </div>
+
 
     <div class="resort-page-footer">
 
