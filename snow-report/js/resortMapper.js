@@ -216,6 +216,18 @@ export function mapDetailedResort(
             resort.apresSki
                 ?.top
             ??
+            null,
+        
+        elevationBase:
+            resort.elevation
+                ?.base
+            ??
+            null,
+        
+        elevationSummit:
+            resort.elevation
+                ?.summit
+            ??
             null
 
     };

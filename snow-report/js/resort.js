@@ -121,6 +121,26 @@ resortPageContent.innerHTML = `
         <div class="resort-overview-card">
 
             <span class="overview-icon">
+                🏔️
+            </span>
+
+            <span class="overview-label">
+                Resort details
+            </span>
+
+            <strong>
+                Base: ${resort.elevationBase}m
+            </strong>
+
+            <strong>
+                Summit: ${resort.elevationSummit}m
+            </strong>
+
+        </div>
+
+        <div class="resort-overview-card">
+
+            <span class="overview-icon">
                 ❄️
             </span>
 
