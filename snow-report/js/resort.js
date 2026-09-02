@@ -94,6 +94,27 @@ resortPageContent.innerHTML = `
 
     </div>
 
+    <div class="snowsure-panel margin-bottom-16">
+
+        <div class="snowsure-panel-header">
+
+            <div>
+
+                <span class="snowsure-label">
+                    Description
+                </span>
+
+                <h2>
+                    Resort description
+                </h2>
+
+            </div>
+
+        </div>
+
+        ${resort.description}
+
+    </div>
 
     <div class="resort-overview">
 

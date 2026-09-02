@@ -207,7 +207,10 @@ export function mapDetailedResort(
             resort.snowSure
                 ?.trend
             ??
-            null
+            null,
+        
+        description:
+            resort.description
 
     };
 
