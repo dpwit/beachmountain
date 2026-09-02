@@ -259,7 +259,10 @@ export function mapResort(apiResort) {
 
 
         temperature:
-            null,
+            apiResort.stats
+                ?.temperature
+
+            ?? "—",
 
 
         liftsOpen:

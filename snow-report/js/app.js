@@ -552,10 +552,9 @@ function createResortCard(resort) {
 
                 </div>
 
-
                 <div class="stat">
 
-                    <span>🌡</span>
+                    <span>🌧️</span>
 
                     <div>
 
