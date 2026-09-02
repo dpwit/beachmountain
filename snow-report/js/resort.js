@@ -85,7 +85,7 @@ resortPageContent.innerHTML = `
 
 
             <span
-                class="status status-${getStatusClass(resort.status)}"
+                class="status-${getStatusClass(resort.status)}"
             >
                 ${resort.status}
             </span>
@@ -121,11 +121,11 @@ resortPageContent.innerHTML = `
         <div class="resort-overview-card">
 
             <span class="overview-icon">
-                🏔️
+                🏔️ Resort details
             </span>
 
             <span class="overview-label">
-                Resort details
+               
             </span>
 
             <strong>
@@ -141,11 +141,11 @@ resortPageContent.innerHTML = `
         <div class="resort-overview-card">
 
             <span class="overview-icon">
-                ❄️
+                ❄️ Snow Depth
             </span>
 
             <span class="overview-label">
-                Snow Depth
+                
             </span>
 
             <strong>
@@ -158,11 +158,11 @@ resortPageContent.innerHTML = `
         <div class="resort-overview-card">
 
             <span class="overview-icon">
-                🌨
+                🌨 24 Hour Snow
             </span>
 
             <span class="overview-label">
-                24 Hour Snow
+                
             </span>
 
             <strong>
@@ -175,11 +175,11 @@ resortPageContent.innerHTML = `
         <div class="resort-overview-card">
 
             <span class="overview-icon">
-                📅
+                📅 7 Day Snow
             </span>
 
             <span class="overview-label">
-                7 Day Snow
+                
             </span>
 
             <strong>
@@ -192,11 +192,11 @@ resortPageContent.innerHTML = `
         <div class="resort-overview-card">
 
             <span class="overview-icon">
-                🚡
+                🚡 Lifts Open
             </span>
 
             <span class="overview-label">
-                Lifts Open
+                
             </span>
 
             <strong>
@@ -213,11 +213,11 @@ resortPageContent.innerHTML = `
         <div class="resort-overview-card">
 
             <span class="overview-icon">
-                🌡
+                🌡 Temperature
             </span>
 
             <span class="overview-label">
-                Temperature
+                
             </span>
 
             <strong>
