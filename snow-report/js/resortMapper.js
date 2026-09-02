@@ -174,7 +174,7 @@ export function mapDetailedResort(
 
         liftsTotal,
 
-        updated:
+                updated:
             resort.meta?.timestamp
             ||
             resort.currentConditions
@@ -183,7 +183,31 @@ export function mapDetailedResort(
             "Recently",
 
         isOpen:
-            resort.isOpen
+            resort.isOpen,
+
+        snowSureScore:
+            resort.snowSure
+                ?.score
+            ??
+            null,
+
+        snowSureRating:
+            resort.snowSure
+                ?.rating
+            ??
+            null,
+
+        snowSureTagline:
+            resort.snowSure
+                ?.tagline
+            ??
+            null,
+
+        snowSureTrend:
+            resort.snowSure
+                ?.trend
+            ??
+            null
 
     };
 

@@ -187,6 +187,62 @@ resortPageContent.innerHTML = `
 
     </div>
 
+    <div class="snowsure-panel">
+
+        <div class="snowsure-panel-header">
+
+            <div>
+
+                <span class="snowsure-label">
+                    SnowSure Score
+                </span>
+
+                <h2>
+                    Snow reliability at a glance
+                </h2>
+
+            </div>
+
+            <div class="snowsure-score">
+
+                <strong>
+                    ${
+                        resort.snowSureScore !== null
+                            ? resort.snowSureScore
+                            : "—"
+                    }
+                </strong>
+
+                <span>
+                    / 100
+                </span>
+
+            </div>
+
+        </div>
+
+        ${
+            resort.snowSureRating
+                ? `
+                    <div class="snowsure-rating">
+                        ${resort.snowSureRating}
+                    </div>
+                `
+                : ""
+        }
+
+        ${
+            resort.snowSureTagline
+                ? `
+                    <p class="snowsure-tagline">
+                        ${resort.snowSureTagline}
+                    </p>
+                `
+                : ""
+        }
+
+    </div>
+
 
     <div class="resort-page-footer">
 
