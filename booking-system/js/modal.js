@@ -21,6 +21,8 @@ let selectedTime;
 let customerName;
 let customerEmail;
 let customerPhone;
+let customerAddress;
+let customerPostcode;
 let serviceRequired;
 let customerNotes;
 
@@ -64,6 +66,12 @@ export function initialiseModal() {
 
     customerPhone =
         document.getElementById("customerPhone");
+    
+    customerAddress =
+        document.getElementById("customerAddress");
+        
+    customerPostcode =
+        document.getElementById("customerPostcode");
 
     serviceRequired =
         document.getElementById("serviceRequired");
@@ -154,6 +162,12 @@ function populateBookingForm(event) {
 
     customerPhone.value =
         event.extendedProps.customerPhone;
+    
+    customerAddress.value =
+        event.extendedProps.customerAddress;
+
+    customerPostcode.value =
+        event.extendedProps.customerPostcode;
 
     serviceRequired.value =
         event.extendedProps.serviceRequired;
@@ -252,6 +266,10 @@ async function handleBookingSubmit(event) {
         customerEmail: customerEmail.value.trim(),
 
         customerPhone: customerPhone.value.trim(),
+
+        customerAddress: customerAddress.value.trim(),
+
+        customerPostcode: customerPostcode.value.trim(),
 
         serviceRequired: serviceRequired.value.trim(),
 
