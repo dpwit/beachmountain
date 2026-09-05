@@ -592,3 +592,7 @@ Retrieved 2026-06-14, License - CC BY-SA 4.0
 .border-radius-16 {
     border-radius: 16px;
 }
+
+.float-left {
+    float:left
+}
