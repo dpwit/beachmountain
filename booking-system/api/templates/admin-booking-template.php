@@ -45,6 +45,16 @@ A new appointment has been received through your website.
 </tr>
 
 <tr>
+<td class="label">Address</td>
+<td><?= htmlspecialchars($booking['customerAddress']) ?></td>
+</tr>
+
+<tr>
+<td class="label">Post code</td>
+<td><?= htmlspecialchars($booking['customerPostcode']) ?></td>
+</tr>
+
+<tr>
 <td class="label">Service</td>
 <td><?= htmlspecialchars($booking['serviceRequired']) ?></td>
 </tr>
