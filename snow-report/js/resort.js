@@ -60,38 +60,36 @@ document.title =
 
 
 resortPageContent.innerHTML = `
+    <div class="display-inline-flex-100">
+        <div class="box-resorts">
+            <div class="resort-hero-content">
 
-    <div class="box-resorts">
+                <span class="resort-country">
 
-        <div class="resort-hero-content">
+                    ${resort.flag}
 
-            <span class="resort-country">
+                    ${resort.country}
 
-                ${resort.flag}
+                </span>
 
-                ${resort.country}
+                <h1>
+                    ${resort.name}
+                </h1>
 
-            </span>
+                <p class="resort-region">
+                    ${resort.region || ""}
+                </p>
 
-
-            <h1>
-                ${resort.name}
-            </h1>
-
-
-            <p class="resort-region">
-                ${resort.region || ""}
-            </p>
-
-
-            <span
-                class="status-${getStatusClass(resort.status)}"
-            >
-                ${resort.status}
-            </span>
-
+                <span
+                    class="status-${getStatusClass(resort.status)}"
+                >
+                    ${resort.status}
+                </span>
+            </div>
         </div>
 
+        <div class="box-resorts-2">
+        </div>
     </div>
 
     <div class="snowsure-panel margin-bottom-16">
