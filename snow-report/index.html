@@ -1,220 +1,142 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Live and up-to-date snow reports and ski resort conditions including snow depth, last snowfall and lifts open for ski resorts around the world.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Live and up-to-date snow reports and ski resort conditions including snow depth, last snowfall and lifts open for ski resorts around the world."
+    />
 
     <title>Snow Reports | Live Ski Resort Conditions</title>
 
-    <link rel="stylesheet" href="/snow-report/css/styles.css">
-    <link rel="preload" href="/src/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    
-</head>
+    <link rel="stylesheet" href="/snow-report/css/styles.css" />
+    <link
+      rel="preload"
+      href="/src/main.css"
+      as="style"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
+    />
+  </head>
 
-<body>
-
+  <body>
     <!-- =========================
          HEADER
     ========================== -->
-   <Header class="site-header">
-        <div id="header"></div>
-    </Header>
-
+    <header class="site-header">
+      <div id="header"></div>
+    </header>
 
     <!-- =========================
          HERO
     ========================== -->
 
     <section class="box-snow-reports">
+      <div class="container">
+        <div class="hero-content">
+          <span class="hero-label"> ❄️ LIVE SNOW CONDITIONS </span>
 
-        <div class="container">
+          <h1>Find the ski resorts with the best snow</h1>
 
-            <div class="hero-content">
+          <p>
+            Find up-to-date information on snow conditions, snowfall, lift
+            status and resort information from ski resorts around the world.
+          </p>
 
-                <span class="hero-label">
-                    ❄️ LIVE SNOW CONDITIONS
-                </span>
+          <!-- SEARCH -->
 
-                <h1>
-                    Find the ski resorts with the best snow
-                </h1>
-
-                <p>
-                    Find up-to-date information on snow conditions, snowfall,
-                    lift status and resort information from
-                    ski resorts around the world.
-                </p>
-
-
-                <!-- SEARCH -->
-
-                <div class="search-area">
-
-    <div class="search-container">
-
-        <input
-            type="search"
-            id="resort-search"
-            placeholder="Search for a ski resort..."
-            autocomplete="off"
-        >
-
-    </div>
-
-
-    <div class="filter-container">
-
-        <select id="country-filter">
-
-            <option value="all">
-                All Countries
-            </option>
-
-            <option value="France">
-                🇫🇷 France
-            </option>
-
-            <option value="Switzerland">
-                🇨🇭 Switzerland
-            </option>
-
-            <option value="Austria">
-                🇦🇹 Austria
-            </option>
-
-        </select>
-
-    </div>
-
-</div>
-
+          <div class="search-area">
+            <div class="search-container">
+              <input
+                type="search"
+                id="resort-search"
+                placeholder="Search for a ski resort..."
+                autocomplete="off"
+              />
             </div>
 
-        </div>
+            <div class="filter-container">
+              <select id="country-filter">
+                <option value="all">All Countries</option>
 
+                <option value="France">🇫🇷 France</option>
+
+                <option value="Switzerland">🇨🇭 Switzerland</option>
+
+                <option value="Austria">🇦🇹 Austria</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-
     <main>
-
-    <!-- =========================
+      <!-- =========================
          FEATURED SNOWFALL
     ========================== -->
 
-    <section class="featured-section">
-
+      <section class="featured-section">
         <div class="container">
+          <div class="featured-card">
+            <div class="featured-content">
+              <span class="section-label"> TOP SNOWFALL TODAY </span>
 
-            <div class="featured-card">
+              <h2 id="featured-resort"></h2>
 
-                <div class="featured-content">
+              <h2 id="featured-title">❄️ Loading snowfall data...</h2>
 
-    <span class="section-label">
-        TOP SNOWFALL TODAY
-    </span>
-
-    <h2 id="featured-title">
-        ❄️ Loading snowfall data...
-    </h2>
-
-    <p id="featured-description">
-        Finding today's top snowfall...
-    </p>
-
-</div>
-
-
-<div class="featured-stat">
-
-    <span>
-        LAST 24 HOURS
-    </span>
-
-    <strong id="featured-snowfall">
-        —
-    </strong>
-
-    <small>
-        of fresh snow
-    </small>
-
-</div>
-
+              <p id="featured-description">Finding today's top snowfall...</p>
             </div>
 
+            <div class="featured-stat">
+              <span> LAST 24 HOURS </span>
+
+              <strong id="featured-snowfall"> — </strong>
+
+              <small> of fresh snow </small>
+            </div>
+          </div>
         </div>
+      </section>
 
-    </section>
-
-
-    <!-- =========================
+      <!-- =========================
          RESORTS
     ========================== -->
 
-        <section
-            class="resorts-section"
-            id="resorts"
-        >
+      <section class="resorts-section" id="resorts">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <span class="section-label"> SNOW REPORTS </span>
 
-            <div class="container">
-
-                <div class="section-header">
-
-                    <div>
-
-                        <span class="section-label">
-                            SNOW REPORTS
-                        </span>
-
-                        <h2>
-                            Popular Ski Resorts
-                        </h2>
-
-                    </div>
-
-                    <p class="results-count">
-                        Showing 6 resorts
-                    </p>
-
-                </div>
-
-
-                <!-- RESORT CARDS -->
-
-                <div
-                    class="resorts-grid"
-                    id="resorts-container"
-                >
-
-                    <!-- Resort cards will appear here -->
-
-                </div>
-
+              <h2>Popular Ski Resorts</h2>
             </div>
 
-        </section>
+            <p class="results-count">Showing 6 resorts</p>
+          </div>
 
+          <!-- RESORT CARDS -->
+
+          <div class="resorts-grid" id="resorts-container">
+            <!-- Resort cards will appear here -->
+          </div>
+        </div>
+      </section>
     </main>
-
 
     <!-- =========================
          FOOTER
     ========================== -->
 
-
     <div id="footer"></div>
 
-    <script
-        type="module"
-        src="/snow-report/js/app.js"
-    ></script>
+    <script type="module" src="/snow-report/js/app.js"></script>
 
-    <script
-        type="module"
-        src="/src/app.js">
-    </script>
-
-</body>
+    <script type="module" src="/src/app.js"></script>
+  </body>
 </html>
