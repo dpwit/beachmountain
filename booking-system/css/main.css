@@ -12,6 +12,18 @@ body {
   font-family: "Inter", sans-serif;
 }
 
+#header {
+  position: sticky;
+
+  top: 0;
+
+  z-index: 100;
+
+  background: rgba(255, 255, 255, 0.95);
+
+  backdrop-filter: blur(12px);
+}
+
 .header-background {
   background-image: url("../dist/img/mountain-scenery-background.webp");
   background-size: cover;
