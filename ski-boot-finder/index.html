@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Beach Mountain | Ski Boot Finder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Find ski boot models based on mondo size, foot volume and preferred flex."
+    />
+
+    <link rel="stylesheet" href="/snow-report/css/styles.css" />
+    <link
+      rel="preload"
+      href="/src/main.css"
+      as="style"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
+    />
+    <link
+      rel="preload"
+      href="styles.css"
+      as="style"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div id="header"></div>
+    </header>
+
+    <main class="page">
+      <h1>Boot fitting guide - find your ski boots</h1>
+      <p>
+        Choose your mondo size, foot volume and preferred flex to see boot
+        models to explore.
+      </p>
+
+      <section class="box-ski-boots" aria-labelledby="finder-title">
+        <div class="section-heading">
+          <div>
+            <h2 id="finder-title">Boot preferences</h2>
+          </div>
+          <button class="text-button" id="reset-button" type="button">
+            Reset
+          </button>
+        </div>
+
+        <form id="boot-finder-form">
+          <div class="field-grid">
+            <div class="field">
+              <label for="boot-size"
+                >Ski boot size <span class="required">*</span></label
+              >
+              <select id="boot-size" name="bootSize" required>
+                <option value="">Select mondo size</option>
+                <option>20/20.5</option>
+                <option>21/21.5</option>
+                <option>22/22.5</option>
+                <option>23/23.5</option>
+                <option>24/24.5</option>
+                <option>25/25.5</option>
+                <option>26/26.5</option>
+                <option>27/27.5</option>
+                <option>28/28.5</option>
+                <option>29/29.5</option>
+                <option>30/30.5</option>
+              </select>
+              <small
+                >Mondo point sizing, as listed in the supplied chart.</small
+              >
+            </div>
+
+            <div class="field">
+              <label for="volume">Volume (last)</label>
+              <select id="volume" name="volume" required>
+                <option value="">Select foot volume</option>
+                <option value="LV">Low Volume (LV)</option>
+                <option value="MV">Medium Volume (MV)</option>
+                <option value="HV">High Volume (HV)</option>
+              </select>
+              <small
+                >Volume is used to estimate the corresponding last width.</small
+              >
+            </div>
+
+            <div class="field">
+              <label for="flex">Preferred flex</label>
+              <select id="flex" name="flex" required>
+                <option value="">Select preferred flex</option>
+                <option value="soft">Soft (60–80)</option>
+                <option value="medium">Medium (90–110)</option>
+                <option value="stiff">Stiff (120–130)</option>
+                <option value="very-stiff">Very stiff (140+)</option>
+                <option value="unsure">Not sure yet</option>
+              </select>
+              <small
+                >Flex is recorded as a preference; model-specific flex data is
+                not yet in the spreadsheet.</small
+              >
+            </div>
+          </div>
+          <button class="btnBrand" type="submit">Find my ski boots</button>
+        </form>
+      </section>
+
+      <section
+        class="box-ski-boots"
+        id="results"
+        class="results"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        <div class="empty-state">
+          <div class="empty-icon" aria-hidden="true">⌕</div>
+          <h2>Your recommendations will appear here</h2>
+          <p>
+            Select your preferences above and choose
+            <strong>Find my ski boots</strong>.
+          </p>
+        </div>
+        <p>
+          <strong>Please note:</strong> These suggestions are a starting point,
+          not a substitute for a professional boot fit. Last widths are
+          indicative and can vary between brands, models and shell sizes.
+        </p>
+        <p class="source-note">
+          Initial boot-model data supplied in the “size-width-boot-chart”
+          spreadsheet tab.
+        </p>
+      </section>
+    </main>
+    <footer>
+      <div id="footer"></div>
+    </footer>
+    <script type="module" src="../src/app.js"></script>
+    <script src="script.js" defer></script>
+  </body>
+</html>

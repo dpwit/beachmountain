@@ -1,0 +1,368 @@
+/* =========================
+   BASE
+========================= */
+:root {
+  --ink: #17232d;
+  --muted: #64717c;
+  --line: #dce3e8;
+  --panel: #ffffff;
+  --page: #f3f6f8;
+  --accent: #176b70;
+  --accent-dark: #10565a;
+  --soft: #eaf3f3;
+  --warning-bg: #fff7e8;
+  --warning-border: #ead7ad;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--page);
+  line-height: 1.5;
+}
+
+button,
+select {
+  font: inherit;
+}
+
+.page {
+  width: min(920px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 56px 0 36px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+.intro {
+  max-width: 620px;
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.finder-panel,
+.result-card,
+.empty-state {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: 0 8px 28px rgb(23 35 45 / 5%);
+}
+.finder-panel {
+  padding: 28px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.section-heading h2,
+.empty-state h2,
+.results-heading h2 {
+  margin: 0;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+}
+.text-button {
+  border: 0;
+  padding: 7px 0 7px 12px;
+  background: transparent;
+  font-weight: 700;
+  cursor: pointer;
+}
+.text-button:hover {
+  color: var(--accent-dark);
+  text-decoration: underline;
+}
+
+.field-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.field label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  font-weight: 750;
+}
+.required {
+  color: #b54737;
+}
+.field select {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 38px 10px 12px;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid #cbd5dc;
+  border-radius: 8px;
+  cursor: pointer;
+}
+select {
+  -webkit-appearance: base-select;
+  -moz-appearance: base-select;
+  appearance: base-select;
+  padding-right: 8px !important;
+}
+.field select:focus {
+  outline: 3px solid rgb(23 107 112 / 17%);
+  border-color: var(--accent);
+}
+.field small {
+  display: block;
+  margin-top: 8px;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.btnBrand {
+  border: #90d5ff;
+  border-radius: 16px;
+  background-color: #90d5ff;
+  cursor: pointer;
+  margin-top: 16px;
+  width: 100%;
+  min-height: 50px;
+  padding: 16px 16px;
+}
+
+.btnBrand:hover {
+  background-color: #089cff;
+  color: #fff;
+  /* Firefox */
+  -moz-transition: all 0.25s ease-in;
+  /* WebKit */
+  -webkit-transition: all 0.25s ease-in;
+  /* Opera */
+  -o-transition: all 0.25s ease-in;
+  /* Standard */
+  transition: all 0.25s ease-in;
+}
+
+.primary-button {
+  width: 100%;
+  min-height: 50px;
+  margin-top: 26px;
+  padding: 12px 20px;
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  font-weight: 750;
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    transform 0.18s ease;
+}
+.primary-button:hover {
+  background: var(--accent-dark);
+}
+.primary-button:active {
+  transform: translateY(1px);
+}
+
+.results {
+  margin-top: 26px;
+}
+.empty-state {
+  padding: 38px 24px;
+  text-align: center;
+}
+.empty-icon {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 14px;
+  place-items: center;
+  color: var(--accent);
+  background: var(--soft);
+  border-radius: 50%;
+  font-size: 1.8rem;
+}
+.empty-state p {
+  margin: 9px 0 0;
+  color: var(--muted);
+}
+
+.results-heading {
+  margin: 0 0 14px;
+}
+.results-heading p {
+  margin: 5px 0 0;
+  color: var(--muted);
+}
+.result-card {
+  margin-bottom: 14px;
+  padding: 22px;
+}
+.result-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.result-card h3 {
+  margin: 0;
+  font-size: 1.08rem;
+}
+.width-tag {
+  flex: 0 0 auto;
+  padding: 5px 9px;
+  color: var(--accent-dark);
+  background: var(--soft);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+.boot-list {
+  margin: 13px 0 0;
+  padding-left: 20px;
+}
+.boot-list li {
+  margin: 6px 0;
+}
+.result-note {
+  margin: 13px 0 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+.notice {
+  margin-top: 16px;
+  padding: 14px 16px;
+  background: var(--warning-bg);
+  border: 1px solid var(--warning-border);
+  border-radius: 10px;
+  color: #624b20;
+  font-size: 0.88rem;
+}
+.notice p {
+  margin: 4px 0 0;
+}
+.no-match {
+  padding: 22px;
+  background: #fff;
+  border: 1px dashed #bac6ce;
+  border-radius: 12px;
+}
+.no-match h3 {
+  margin: 0 0 6px;
+}
+.no-match p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.source-note {
+  font-size: 0.76rem;
+}
+
+@media (max-width: 720px) {
+  .page {
+    padding-top: 36px;
+  }
+  .field-grid {
+    grid-template-columns: 1fr;
+    gap: 17px;
+  }
+  .finder-panel {
+    padding: 21px;
+  }
+  .field small {
+    max-width: 480px;
+  }
+}
+@media (max-width: 420px) {
+  .page {
+    width: min(100% - 22px, 920px);
+  }
+  .result-card {
+    padding: 18px;
+  }
+  .result-top {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+/* The container must be positioned relative: */
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element: */
+}
+
+.select-selected {
+  background-color: DodgerBlue;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,
+.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  background-color: DodgerBlue;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover,
+.same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
