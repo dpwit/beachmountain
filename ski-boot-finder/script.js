@@ -8,11 +8,11 @@
 const bootDataByLast = {
   96: {
     models: ["Salomon S/Pro Race", "Atomic Remedy 110"],
-    volumeNote: "Race / narrow"
+    volumeNote: "Race / narrow",
   },
   97: {
     models: [],
-    volumeNote: "Low volume (LV)"
+    volumeNote: "Low volume (LV)",
   },
   98: {
     models: [
@@ -20,18 +20,18 @@ const bootDataByLast = {
       "K2 Cortex",
       "Atomic Hawx Ultra",
       "Fischer RC4 LV Vac",
-      "Nordica Promachine"
+      "Nordica Promachine",
     ],
-    volumeNote: "Low volume (LV)"
+    volumeNote: "Low volume (LV)",
   },
   99: {
     models: [
       "K2 Revolve",
       "Dalbello Veloce",
       "Dalbello Cabrio Free",
-      "Tecnica Zero G Decoy"
+      "Tecnica Zero G Decoy",
     ],
-    volumeNote: "Low to medium volume"
+    volumeNote: "Low to medium volume",
   },
   100: {
     models: [
@@ -51,13 +51,13 @@ const bootDataByLast = {
       "Nordica Speedmachine",
       "Rossignol Vizion 48 Pro",
       "Rossignol Pure Pro",
-      "Tecnica Mach 1"
+      "Tecnica Mach 1",
     ],
-    volumeNote: "Medium volume (MV)"
+    volumeNote: "Medium volume (MV)",
   },
   101: {
     models: ["Atomic Nexus", "Dalbello Veloce Space"],
-    volumeNote: "Medium volume (MV)"
+    volumeNote: "Medium volume (MV)",
   },
   102: {
     models: [
@@ -69,18 +69,18 @@ const bootDataByLast = {
       "Head Edge",
       "Nordica HF Rear Entry",
       "Phaenom FS 01",
-      "Rossignol Pure"
+      "Rossignol Pure",
     ],
-    volumeNote: "High volume (HV); Nordica describes its fit as medium-wide"
+    volumeNote: "High volume (HV); Nordica describes its fit as medium-wide",
   },
   103: {
     models: ["K2 BFC"],
-    volumeNote: "High volume (HV); Lange describes its fit as comfort volume"
+    volumeNote: "High volume (HV); Lange describes its fit as comfort volume",
   },
   104: {
     models: [],
-    volumeNote: "Wide"
-  }
+    volumeNote: "Wide",
+  },
 };
 
 // Reference widths at each mondo size, taken from size-width-chart.
@@ -95,7 +95,7 @@ const referenceWidthBySize = {
   "27/27.5": 102,
   "28/28.5": 104,
   "29/29.5": 106,
-  "30/30.5": 108
+  "30/30.5": 108,
 };
 
 // The volume chart places LV 2 mm below, MV at, and HV 2 mm
@@ -142,7 +142,7 @@ function renderFlexNotice() {
   return `
     <div class="notice">
       <strong>About flex recommendations</strong>
-      <p>Flex is included in your preferences, but the source spreadsheet does not currently provide flex ratings for individual models. The boots shown are matched by the size-and-volume width calculation only. Please check each model's flex with the manufacturer or a boot fitter.</p>
+      <p>Flex is included in your preferences, but the source data does not currently provide flex ratings for individual models. The boots shown are matched by the size and volume width calculations only. Please check each model's flex with the manufacturer or a boot fitter.</p>
     </div>
   `;
 }
@@ -155,9 +155,7 @@ function renderResults({ size, volume, flex, targetWidth }) {
     return;
   }
 
-  const models = exactMatch.models
-    .map(model => `<li>${model}</li>`)
-    .join("");
+  const models = exactMatch.models.map((model) => `<li>${model}</li>`).join("");
 
   results.innerHTML = `
     <div class="results-heading">
@@ -174,7 +172,7 @@ function renderResults({ size, volume, flex, targetWidth }) {
         <span class="width-tag">Exact width match</span>
       </div>
       <ul class="boot-list">${models}</ul>
-      <p class="result-note">These are the models listed against ${targetWidth} mm in your spreadsheet. Individual model fit and availability should be checked before making a choice.</p>
+      <p class="result-note">These are the models listed against ${targetWidth} mm. Individual model fit and availability should be checked before making a choice.</p>
     </article>
 
     <div class="notice">
@@ -185,7 +183,7 @@ function renderResults({ size, volume, flex, targetWidth }) {
   `;
 }
 
-form.addEventListener("submit", event => {
+form.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const size = sizeSelect.value;
